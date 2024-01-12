@@ -8,10 +8,26 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        primaryWhite: '#F9FAFB',
+        secondaryWhite: '#E5E7EB'
+      },
+      keyframes: {
+        'open-menu': {
+          '0%': { transform: 'scaleY(0)' },
+          '100%': { transform: 'scaleY(1)' },
+        },
+        'open-services': {
+          '0%': { transform: 'scaleY(0) scaleX(0)' },
+          // '50%': { transform: 'scaleX(1.2)' },
+          '100%': { transform: 'scaleY(1) scaleX(1)' },
+        },
+      },
+      animation: {
+        'open-menu': 'open-menu 0.5s ease-in forwards',
+        'close-menu': 'close-menu 0.5s ease-in-out forwards',
+        'open-services': 'open-services 0.5s ease-in-out forwards',
+        'close-services': 'close-services 0.5s ease-in-out forwards'
       },
     },
   },

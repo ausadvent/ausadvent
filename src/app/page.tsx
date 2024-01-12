@@ -1,9 +1,12 @@
 import Image from 'next/image'
 
+// Components
+import Intro from './components/Intro'
+
 export default function Home() {
   return (
-    <main className="text-blue-400">
-      Ausadvent here
+    <main className="">
+      <Intro />
     </main>
   )
 }

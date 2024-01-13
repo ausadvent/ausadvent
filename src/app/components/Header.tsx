@@ -187,7 +187,7 @@ export default function Header() {
                                 </a>
                             </li>
                             <li>
-                                <button className='w-full text-black text-[1rem] py-[0.25rem] rounded bg-gradient-to-br from-[#FFD8AF] to-[#FDBA74]'>
+                                <button className='button  text-[1rem] py-[0.25rem] rounded'>
                                     Get in touch
                                 </button>
                             </li>

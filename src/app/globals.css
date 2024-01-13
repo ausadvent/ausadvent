@@ -8,6 +8,14 @@ body {
   margin: 0;
 }
 
+.cormorant {
+  font-family: var(--font-cormorant);
+}
+
 .page {
   @apply px-[1rem] ;
+}
+
+.button {
+  @apply w-full text-black bg-gradient-to-br from-[#FFD8AF] to-[#FDBA74];
 }

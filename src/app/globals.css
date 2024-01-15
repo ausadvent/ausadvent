@@ -17,5 +17,5 @@ body {
 }
 
 .button {
-  @apply w-full text-black bg-gradient-to-br from-[#FFD8AF] to-[#FDBA74];
+  @apply w-full text-black bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74];
 }

@@ -20,7 +20,6 @@ export default function Services() {
     }
     fetchingData()
   }, [])
-  console.log('hey',services)
   
   return (
     <div className='page py-[2rem]'>

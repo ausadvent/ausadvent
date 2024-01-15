@@ -3,6 +3,7 @@ import { Inter, Noto_Sans } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={`${Noto.className} ${cormorant.variable}`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )

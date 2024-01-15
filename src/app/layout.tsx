@@ -4,6 +4,7 @@ import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import LatestArticles from './components/LatestArticles'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className={`${Noto.className} ${cormorant.variable}`}>
         <Header />
         {children}
+        <LatestArticles />
         <Footer />
       </body>
     </html>

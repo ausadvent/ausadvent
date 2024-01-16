@@ -13,9 +13,13 @@ body {
 }
 
 .page {
-  @apply px-[1rem] ;
+  @apply px-[1rem] sm:max-w-[500px] ;
 }
 
 .button {
   @apply w-full text-black bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74];
+}
+
+.buttonSm {
+  @apply w-[25rem] bg-none border border-[#F59E0B]
 }

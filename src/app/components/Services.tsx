@@ -22,7 +22,7 @@ export default function Services() {
   }, [])
   
   return (
-    <div className='page py-[2rem]'>
+    <div className='page sm:mx-auto py-[2rem]'>
         <h2 className='cormorant text-[1.875rem] font-bold'>OUR SERVICES</h2>
         <p className='mt-[3rem] text-[1rem] leading-[1.5rem]'>Our <strong>Supported Accommodation</strong> service is designed to empower individuals with tailored solutions for independent living.</p>
 
@@ -38,7 +38,7 @@ export default function Services() {
                 <div className='relative'>
                   <Image 
                     src={`http:${service.fields.serviceMainImage.fields.file.url}`}
-                    className='w-[22.37rem] h-[18rem] rounded-tr-3xl rounded-bl-3xl'
+                    className='w-[22.37rem] sm:w-[31.25rem] h-[18rem] rounded-tr-3xl rounded-bl-3xl object-cover'
                     alt={service?.fields.serviceMainImage.fields.description }
                     title={service?.fields.serviceMainImage.fields.title}
                     width={22.37}

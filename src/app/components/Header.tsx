@@ -54,7 +54,7 @@ export default function Header() {
 
     return (
     <div className=''>
-        <div className={`page py-[1rem] flex justify-between items-center z-30 ${mobileMenu && 'bg-[#1E40AF]'}`}>
+        <div className={`page sm:max-w-full sm:px-[6rem] py-[1rem] flex justify-between items-center z-30 ${mobileMenu && 'bg-[#1E40AF]'}`}>
             <Link href="/" className='flex items-center gap-[0.5rem]'>
                 <Image
                     className='w-[2.20rem]'
@@ -100,7 +100,7 @@ export default function Header() {
             {mobileMenu === true && (
                 <div className={`absolute z-10 origin-top bg-[#2563EB] w-screen ${mobileMenu && 'animate-open-menu'} `} >
                     
-                    <nav className='min-h-full p-[2rem] text-primaryWhite' aria-label='mobile'>
+                    <nav className='min-h-full p-[2rem] sm:px-[7rem] text-primaryWhite' aria-label='mobile'>
                         <ul className='flex flex-col gap-[1.25rem] text-[1.25rem]'>
                             <li>Home</li>
                             <li>About us</li>

@@ -20,7 +20,6 @@ export default function LatestArticles() {
         }
         fetchingData()
     }, [])
-    console.log('hey',articles)
 
     // Store the 3 latest articles in a variable
     const recentArticles = articles?.slice(0,3)
@@ -34,10 +33,10 @@ export default function LatestArticles() {
   
     return (
         <div>
-            <div className='pt-[3rem]'>
+            <div className='pt-[3rem] sm:pt-[2rem]'>
                 <h2 className='cormorant text-[1.5rem] font-bold text-center'>LATEST ARTICLES</h2>
                 {/* Articles box */}
-                <div className='relative mt-[3rem] h-[16rem]'>
+                <div className='relative mt-[3rem] sm:mt-[2.5rem] h-[16rem]'>
                     {/* Hero */}
                     <div className='absolute inset-0 box-content z-1 w-full h-[16rem] '>
                         <Image 
@@ -48,7 +47,7 @@ export default function LatestArticles() {
                             width={100}
                             height={100}
                             unoptimized
-                            loading='eager'
+                            loading='lazy'
                         />
                         {/* to-[#416AF1] */}
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#16244B] opacity-70 " aria-hidden="true"></div>
@@ -69,7 +68,7 @@ export default function LatestArticles() {
                                 }}
                             />
                             <div className='flex flex-col gap-[1rem] text-primaryWhite'>
-                                <h3 className='cormorant text-[1.875rem] font-bold leading-[1.875rem]'>{articles && articles[currentArticle]?.fields?.articleTitle && articles[currentArticle]?.fields?.articleTitle.toUpperCase()}</h3>
+                                <h3 className='cormorant text-[1.875rem] sm:text-[2.25rem] font-bold leading-[1.875rem] sm:leading-[2.125rem]'>{articles && articles[currentArticle]?.fields?.articleTitle && articles[currentArticle]?.fields?.articleTitle.toUpperCase()}</h3>
                                 <div className="flex gap-[0.5rem] items-center">
                                     <Image src={Eye} title='Eye icon' alt='Eye icon' />
                                     <p>Read</p>

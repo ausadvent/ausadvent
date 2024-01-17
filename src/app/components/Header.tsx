@@ -57,7 +57,7 @@ export default function Header() {
         <div className={`page sm:max-w-full sm:px-[6rem] py-[1rem] flex justify-between items-center z-30 ${mobileMenu && 'bg-[#1E40AF]'}`}>
             <Link href="/" className='flex items-center gap-[0.5rem]'>
                 <Image
-                    className='w-[2.20rem]'
+                    className='w-[2.20rem] h-[1.4rem]'
                     src={Logo}
                     alt="Ausadvent logo"
                     title="Company's logo"

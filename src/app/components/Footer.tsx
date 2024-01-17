@@ -15,12 +15,12 @@ export default function Footer() {
   return (
     <div className='bg-[#DBEAFE]'>
         {/* Flags container */}
-        <div className="page sm:mx-auto py-[2rem] sm:flex sm:items-center ">
-            <div className="flex justify-center gap-[1rem]">
+        <div className="page sm:mx-auto py-[2rem] sm:flex sm:items-center md:gap-[1rem] ">
+            <div className="flex justify-center gap-[1rem] md:w-[7rem]">
                 <Image src={Aboriginal} className='w-[3rem] h-[2rem]' title='Aboriginal flag' alt='Aboriginal flag' loading='eager' />
                 <Image src={Islanders} className='w-[3rem] h-[2rem]' title='Islanders flag' alt='Islanders flag' loading='eager' />
             </div>
-            <p className="mt-[1rem] sm:mt-0 text-[0.75rem] leading-[1rem] text-center">We acknowledge the First Nations peoples as the traditional custodians of the lands where we live, learn and work. </p>
+            <p className="mt-[1rem] sm:mt-0 text-[0.75rem] leading-[1rem] text-center md:text-left md:w-[23rem] ">We acknowledge the First Nations peoples as the traditional custodians of the lands where we live, learn and work. </p>
         </div>
 
         {/* Blue container */}
@@ -28,14 +28,13 @@ export default function Footer() {
             <div className="page sm:mx-auto pt-[3rem] ">
                 {/* First box */}
                 <div className="flex flex-col items-center gap-[0.5rem]">
-                    {/* Change lotus icon */}
                     <Image src={Symbol} className='w-[2rem] h-[1.4rem]' title='Ausadvent symbol' alt='Lotus flower' loading='eager' />
                     <h2 className='font-bold text-[#93C5FD] text-center leading-4'>AUSADVENT <br /> CARE</h2>
                     <p className='text-primaryWhite text-[0.875rem] text-center leading-[1.25rem]'>At Ausadvent Care, we&apos;re more than just care providers; we&apos;re compassionate partners on your journey towards independence, growth, and fulfilment. </p>
                     <p className='text-primaryWhite text-[0.875rem] text-center leading-[1.25rem]'>Connect with us</p>
                     <div className="flex gap-[1rem]">
-                        <Image src={Instagram} className='w-[2rem] h-[2rem]' title='Instagram logo' alt='Instagram logo' loading='lazy' />
-                        <Image src={Facebook} className='w-[2rem] h-[2rem]' title='Facebook logo' alt='Facebook logo' loading='lazy' />
+                        <Link href='https://www.instagram.com/ausadventcare' target='_blank'><Image src={Instagram} className='w-[2rem] h-[2rem]' title='Instagram logo' alt='Instagram logo' loading='lazy' /></Link>
+                        <Link href='https://www.facebook.com/ausadventcare' target='_blank'><Image src={Facebook} className='w-[2rem] h-[2rem]' title='Facebook logo' alt='Facebook logo' loading='lazy' /></Link>
                     </div>
                 </div>
 
@@ -71,7 +70,7 @@ export default function Footer() {
                     </div>
                 </div>
                 {/* Closing text */}
-                <p className='mt-[1.5rem] pb-[1rem] text-primaryWhite text-[0.775rem]'>© 2021 Ausadvent Care. All Rights Reserved.  Site | Bytecho</p>     
+                <p className='mt-[1.5rem] pb-[1rem] text-primaryWhite text-[0.775rem] sm:text-[0.875rem] sm:text-center'>© 2021 Ausadvent Care. All Rights Reserved.  Site | Bytecho</p>     
             </div>
         </div>
     </div>

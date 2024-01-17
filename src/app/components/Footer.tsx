@@ -25,18 +25,18 @@ export default function Footer() {
 
         {/* Blue container */}
         <div className='bg-gradient-to-b from-[#1D51C3] to-[#3E7BFF]'>
-            <div className="page sm:mx-auto pt-[3rem] md:pt-[4.5rem] md:flex md:gap-[2rem] ">
+            <div className="page sm:mx-auto pt-[3rem] md:pt-[4.5rem] lg:pt-[5rem] md:flex md:gap-[2rem] ">
                 {/* First box */}
                 <div className="flex flex-col items-center gap-[0.5rem] md:gap-[2rem] ">
                     <div className='flex flex-col md:flex-row gap-[0.5rem] items-center'>
-                        <Image src={Symbol} className='w-[2rem] md:w-[2.9rem] h-[1.4rem] md:h-[2rem]' title='Ausadvent symbol' alt='Lotus flower' loading='eager' />
+                        <Image src={Symbol} className='w-[2rem] md:w-[2.9rem] h-[1.4rem] md:h-[2rem]' title='Ausadvent symbol' alt='Lotus flower' width={20} height={20} loading='eager' />
                         <h2 className='font-bold text-[#93C5FD] text-center md:text-left leading-4'>AUSADVENT <br /> CARE</h2>
                     </div>
                     <p className='text-primaryWhite text-[0.875rem] text-center md:text-left leading-[1.25rem]'>At Ausadvent Care, we&apos;re more than just care providers; we&apos;re compassionate partners on your journey towards independence, growth, and fulfilment. </p>
                     <p className='text-primaryWhite text-[0.875rem] text-center leading-[1.25rem] md:hidden'>Connect with us</p>
                     <div className="flex gap-[1rem] md:hidden">
-                        <Link href='https://www.instagram.com/ausadventcare' target='_blank'><Image src={Instagram} className='w-[2rem] h-[2rem]' title='Instagram logo' alt='Instagram logo' loading='lazy' /></Link>
-                        <Link href='https://www.facebook.com/ausadventcare' target='_blank'><Image src={Facebook} className='w-[2rem] h-[2rem]' title='Facebook logo' alt='Facebook logo' loading='lazy' /></Link>
+                        <Link href='https://www.instagram.com/ausadventcare' target='_blank'><Image src={Instagram} className='w-[2rem] h-[2rem]' title='Instagram logo' alt='Instagram logo' width={20} height={20} loading='lazy' /></Link>
+                        <Link href='https://www.facebook.com/ausadventcare' target='_blank'><Image src={Facebook} className='w-[2rem] h-[2rem]' title='Facebook logo' alt='Facebook logo' width={20} height={20} loading='lazy' /></Link>
                     </div>
                 </div>
 
@@ -72,13 +72,13 @@ export default function Footer() {
                     </div>
                     <p className='hidden md:flex md:mt-[1.5rem] text-primaryWhite text-[0.875rem] text-center leading-[1.25rem] '>Connect with us</p>
                     <div className="hidden md:flex gap-[1rem] md:mt-[0.5rem]">
-                        <Link href='https://www.instagram.com/ausadventcare' target='_blank'><Image src={Instagram} className='w-[2rem] h-[2rem]' title='Instagram logo' alt='Instagram logo' loading='lazy' /></Link>
-                        <Link href='https://www.facebook.com/ausadventcare' target='_blank'><Image src={Facebook} className='w-[2rem] h-[2rem]' title='Facebook logo' alt='Facebook logo' loading='lazy' /></Link>
+                        <Link href='https://www.instagram.com/ausadventcare' target='_blank'><Image src={Instagram} className='w-[2rem] h-[2rem]' title='Instagram logo' alt='Instagram logo' width={20} height={20} loading='lazy' /></Link>
+                        <Link href='https://www.facebook.com/ausadventcare' target='_blank'><Image src={Facebook} className='w-[2rem] h-[2rem]' title='Facebook logo' alt='Facebook logo' width={20} height={20} loading='lazy' /></Link>
                     </div>
                 </div>
                 {/* Closing text */}
             </div>
-            <p className='px-[1rem] mt-[1.5rem] pb-[1rem] md:max-w-[640px] md:mx-auto text-primaryWhite text-[0.775rem] sm:text-[0.875rem] sm:text-center md:text-left'>© 2021 Ausadvent Care. All Rights Reserved.  Site | Bytecho</p>     
+            <p className='px-[1rem] mt-[1.5rem] lg:mt-[2.5rem] pb-[1rem] md:max-w-[640px] md:mx-auto text-primaryWhite text-[0.775rem] sm:text-[0.875rem] sm:text-center md:text-left'>© 2021 Ausadvent Care. All Rights Reserved.  Site | Bytecho</p>     
         </div>
     </div>
   )

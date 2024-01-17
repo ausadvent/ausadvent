@@ -33,12 +33,12 @@ export default function LatestArticles() {
   
     return (
         <div>
-            <div className='pt-[3rem] sm:pt-[2rem] md:pt-[2.5rem]'>
-                <h2 className='cormorant text-[1.5rem] font-bold text-center'>LATEST ARTICLES</h2>
+            <div className='pt-[3rem] sm:pt-[2rem] md:pt-[2.5rem] lg:pt-[4.5rem]'>
+                <h2 className='cormorant text-[1.5rem] lg:text-[2.25rem] font-bold text-center'>LATEST ARTICLES</h2>
                 {/* Articles box */}
-                <div className='relative mt-[3rem] sm:mt-[2.5rem] h-[16rem] md:h-[25rem]'>
+                <div className='relative mt-[3rem] sm:mt-[2.5rem] lg:mt-[4.5rem] h-[16rem] md:h-[25rem] lg:h-[31.25rem]'>
                     {/* Hero */}
-                    <div className='absolute inset-0 box-content z-1 w-full h-[16rem] md:h-[25rem]'>
+                    <div className='absolute inset-0 box-content z-1 w-full h-[16rem] md:h-[25rem] lg:h-[31.25rem]'>
                         <Image 
                             className='inset-0 w-full h-full object-cover opacity-90'
                             src={articles && articles[currentArticle]?.fields.articleMainImage.fields.file.url}  
@@ -53,7 +53,7 @@ export default function LatestArticles() {
                         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#16244B] opacity-70 " aria-hidden="true"></div>
                     </div>
                     {/* Carousel container */}
-                    <div className='px-[1rem] flex justify-between h-[16rem] md:h-[25rem] '>
+                    <div className='px-[1rem] lg:px-[3.5rem] flex justify-between lg:gap-[3.5rem] h-[16rem] md:h-[25rem] lg:h-[31.25rem] '>
                         <Image
                             className='z-10'
                             src={Left} 
@@ -69,10 +69,10 @@ export default function LatestArticles() {
                         />
 
                         {/* Text */}
-                        <div className="relative py-[1rem] md:pb-[4rem] px-[0.5rem] h-full flex flex-col justify-end gap-[1rem]">
+                        <div className="relative py-[1rem] md:pb-[4rem] lg:pb-[5rem] px-[0.5rem] h-full flex flex-col justify-end gap-[1rem]">
                             <div className="md:pb-[1rem] w-full flex justify-between items-start gap-[0.5rem]">
                                 <div className='flex flex-col gap-[1rem] text-primaryWhite'>
-                                    <h3 className='cormorant text-[1.875rem] sm:text-[2.25rem] md:text-[3rem] font-bold leading-[1.875rem] sm:leading-[2.125rem] md:leading-[3rem]'>{articles && articles[currentArticle]?.fields?.articleTitle && articles[currentArticle]?.fields?.articleTitle.toUpperCase()}</h3>
+                                    <h3 className='cormorant text-[1.875rem] sm:text-[2.25rem] md:text-[3rem] lg:text-[3.75rem] font-bold leading-[1.875rem] sm:leading-[2.125rem] md:leading-[3rem] lg:leading-[3.625rem]'>{articles && articles[currentArticle]?.fields?.articleTitle && articles[currentArticle]?.fields?.articleTitle.toUpperCase()}</h3>
                                     <div className="flex gap-[0.5rem] items-center">
                                         <Image src={Eye} title='Eye icon' alt='Eye icon' />
                                         <p>Read</p>

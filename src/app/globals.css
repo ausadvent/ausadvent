@@ -13,7 +13,7 @@ body {
 }
 
 .page {
-  @apply px-[1rem] sm:max-w-[500px] md:max-w-[640px] ;
+  @apply px-[1rem] sm:max-w-[500px] md:max-w-[640px] lg:max-w-[768px] ;
 }
 
 .button {

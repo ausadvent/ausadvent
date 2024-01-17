@@ -33,7 +33,7 @@ export default async function Values() {
     const values = await fetchValues()
 
     return (
-    <div className='page sm:px-[2rem] sm:mx-auto py-[3rem] md:py-[4.5rem]'>
+    <div className='page sm:px-[2rem] sm:mx-auto py-[3rem] md:py-[4.5rem] lg:py-[5rem]'>
         <h2 className='cormorant text-[#1E3A8A] text-[1.875rem] font-bold'>OUR CORE VALUES</h2>
         <p className='mt-[2rem] text-[1rem] leading-[1.5rem]'>Our mission is to maintain the comfort and safety of our clients while providing them with the appropriate care services to nurture their independence.</p>
 

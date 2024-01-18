@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <div className='bg-[#DBEAFE]'>
         {/* Flags container */}
-        <div className="page sm:mx-auto py-[2rem] sm:flex sm:items-center md:gap-[1rem] ">
+        <div className="page sm:mx-auto py-[2rem] sm:flex sm:items-center xl:justify-center md:gap-[1rem] ">
             <div className="flex justify-center gap-[1rem] md:w-[7rem]">
                 <Image src={Aboriginal} className='w-[3rem] h-[2rem]' title='Aboriginal flag' alt='Aboriginal flag' loading='eager' />
                 <Image src={Islanders} className='w-[3rem] h-[2rem]' title='Islanders flag' alt='Islanders flag' loading='eager' />
@@ -25,14 +25,14 @@ export default function Footer() {
 
         {/* Blue container */}
         <div className='bg-gradient-to-b from-[#1D51C3] to-[#3E7BFF]'>
-            <div className="page sm:mx-auto pt-[3rem] md:pt-[4.5rem] lg:pt-[5rem] md:flex md:gap-[2rem] ">
+            <div className="page sm:mx-auto pt-[3rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[6rem] md:flex md:gap-[2rem] ">
                 {/* First box */}
-                <div className="flex flex-col items-center gap-[0.5rem] md:gap-[2rem] ">
+                <div className="flex flex-col items-center gap-[0.5rem] md:gap-[2rem] xl:max-w-[11.6rem] 2xl:max-w-[24rem]">
                     <div className='flex flex-col md:flex-row gap-[0.5rem] items-center'>
                         <Image src={Symbol} className='w-[2rem] md:w-[2.9rem] h-[1.4rem] md:h-[2rem]' title='Ausadvent symbol' alt='Lotus flower' width={20} height={20} loading='eager' />
                         <h2 className='font-bold text-[#93C5FD] text-center md:text-left leading-4'>AUSADVENT <br /> CARE</h2>
                     </div>
-                    <p className='text-primaryWhite text-[0.875rem] text-center md:text-left leading-[1.25rem]'>At Ausadvent Care, we&apos;re more than just care providers; we&apos;re compassionate partners on your journey towards independence, growth, and fulfilment. </p>
+                    <p className='text-primaryWhite text-[0.875rem] 2xl:text-[1.125rem] leading-[1.25rem] 2xl:leading-[1.625rem] text-center md:text-left '>At Ausadvent Care, we&apos;re more than just care providers; we&apos;re compassionate partners on your journey towards independence, growth, and fulfilment. </p>
                     <p className='text-primaryWhite text-[0.875rem] text-center leading-[1.25rem] md:hidden'>Connect with us</p>
                     <div className="flex gap-[1rem] md:hidden">
                         <Link href='https://www.instagram.com/ausadventcare' target='_blank'><Image src={Instagram} className='w-[2rem] h-[2rem]' title='Instagram logo' alt='Instagram logo' width={20} height={20} loading='lazy' /></Link>
@@ -41,7 +41,7 @@ export default function Footer() {
                 </div>
 
                 {/* Second box */}
-                <div className="mt-[1.5rem] md:mt-0 text-primaryWhite flex flex-col items-center md:items-start ">
+                <div className="mt-[1.5rem] md:mt-0 text-primaryWhite flex flex-col items-center md:items-start xl:w-[32.14rem] 2xl:max-w-[24rem] ">
                     <h3 className='text-[1.125rem]'>Quick links</h3>
                     <nav className='mt-[1rem]'>
                         <ul className='flex flex-col gap-[0.5rem] text-center md:text-left'>
@@ -78,7 +78,7 @@ export default function Footer() {
                 </div>
                 {/* Closing text */}
             </div>
-            <p className='px-[1rem] mt-[1.5rem] lg:mt-[2.5rem] pb-[1rem] md:max-w-[640px] md:mx-auto text-primaryWhite text-[0.775rem] sm:text-[0.875rem] sm:text-center md:text-left'>© 2021 Ausadvent Care. All Rights Reserved.  Site | Bytecho</p>     
+            <p className='px-[1rem] mt-[1.5rem] lg:mt-[2.5rem] pb-[1rem] xl:px-[8rem] md:max-w-[640px] xl:min-w-full md:mx-auto xl:ml-0 text-primaryWhite text-[0.775rem] sm:text-[0.875rem] sm:text-center md:text-left'>© 2021 Ausadvent Care. All Rights Reserved.  Site | Bytecho</p>     
         </div>
     </div>
   )

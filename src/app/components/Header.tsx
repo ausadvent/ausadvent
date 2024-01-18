@@ -54,7 +54,7 @@ export default function Header() {
 
     return (
     <div className=''>
-        <div className={`page sm:max-w-full sm:px-[6rem] lg:px-[8rem] py-[1rem] flex justify-between items-center z-30 ${mobileMenu && 'bg-[#1E40AF]'}`}>
+        <div className={`page sm:max-w-full sm:px-[6rem] lg:px-[8rem] 3xl:px-[12rem] py-[1rem] flex justify-between items-center z-30 ${mobileMenu && 'bg-[#1E40AF]'}`}>
             <Link href="/" className='flex items-center gap-[0.5rem]'>
                 <Image
                     className='w-[2.20rem] h-[1.4rem]'
@@ -98,9 +98,9 @@ export default function Header() {
             <div className="hidden xl:flex ">
                 <nav className='w-[50rem] ' >
                     <ul className='flex justify-between items-center text-primaryWhite'>
-                        <li>Home</li>
-                        <li>About us</li>
-                        <li className='flex items-center gap-[0.2rem]'>
+                        <li className=' hover:text-[#F59E0B] cursor-pointer'>Home</li>
+                        <li className=' hover:text-[#F59E0B] cursor-pointer'>About us</li>
+                        <li className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
                             <p>Services</p>
                             {!servicesDisplay ? (
                                 <svg 
@@ -132,14 +132,14 @@ export default function Header() {
                                                 setServicesDisplay(false)
                                             }}
                                         >
-                                            <p>{service.title}</p>
+                                            <p className='hover:text-[#FC7]'>{service.title}</p>
                                         </Link>
                                     ))}
                                 </div>
                             )}
                         </li>
-                        <li>NDIS</li>
-                        <li className='flex items-center gap-[0.2rem]'>
+                        <li className=' hover:text-[#F59E0B] cursor-pointer'>NDIS</li>
+                        <li className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
                             <p>Locations</p>
                             {!locationsDisplay ? (
                                 <svg 
@@ -171,20 +171,20 @@ export default function Header() {
                                                 setLocationsDisplay(false)
                                             }}
                                         >
-                                            <p>{location.title}</p>
+                                            <p className='hover:text-[#FC7]'>{location.title}</p>
                                         </Link>
                                     ))}
                                 </div>
                             )}
                         </li>
-                        <li>Articles</li>
-                        <li>
+                        <li className=' hover:text-[#F59E0B] cursor-pointer'>Articles</li>
+                        <li className=' hover:text-[#F59E0B] cursor-pointer'>
                             <a href="tel:+61439430007" className='flex items-center gap-1'>
                                 <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' alt='phone ringing icon' />
                                 <p>+61 0439430007</p>
                             </a>
                         </li>
-                        <li>
+                        <li className=' hover:text-[#F59E0B] cursor-pointer'>
                             <button className='button px-[1rem] text-[1rem] py-[0.25rem] rounded hover:bg-none hover:text-primaryWhite hover:border hover:border-[#FDBA74] transition duration-300 ease-linear '>
                                 Get in touch
                             </button>

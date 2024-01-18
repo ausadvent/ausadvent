@@ -24,8 +24,8 @@ export default function Intro() {
             {/* Content */}
             <div className='page sm:mx-auto py-[2rem] h-[38rem] sm:h-[42rem] md:h-[45rem] xl:h-[59rem] text-primaryWhite flex flex-col md:grid grid-cols-2 md:gap-[2rem] xl:gap-[5rem] justify-between sm:justify-around md:items-center text-center md:text-left'>
                 <div className=' flex flex-col gap-[3.5rem] md:gap-[2rem]'>
-                    <h1 className='text-[1.7rem] sm:text-[2rem] xl:text-[3rem] font-black leading-[2rem] xl:leading-[2.875rem] '>YOUR REGISTERED <span className='text-[#FC7]'>NDIS CARE PROVIDER</span>, SUPPORTING QUEENSLAND AND WESTERN AUSTRALIA</h1>
-                    <h2 className='cormorant text-[1.5rem] sm:text-[1.875rem] xl:text-[3rem] sm:leading-8 xl:leading-[3.125rem] font-bold '>Empowering Lives, Blooming  Independence</h2>
+                    <h1 className='text-[1.7rem] sm:text-[2rem] xl:text-[3rem] 3xl:text-[4rem] font-black leading-[2rem] xl:leading-[2.875rem] 3xl:leading-[3.75rem] '>YOUR REGISTERED <span className='text-[#FC7]'>NDIS CARE PROVIDER</span>, SUPPORTING QUEENSLAND AND WESTERN AUSTRALIA</h1>
+                    <h2 className='cormorant text-[1.5rem] sm:text-[1.875rem] xl:text-[3rem] 3xl:text-[4rem] sm:leading-8 xl:leading-[3.125rem] 3xl:leading-[3.75rem] font-bold '>Empowering Lives, Blooming  Independence</h2>
                 </div>
                 <div className='md:mt-[8rem] xl:mt-[17rem] flex flex-col gap-[3.5rem] md:gap-[2rem]'>
                     <p className=' text-[1rem] xl:text-[1.25rem] font-semibold leading-[1.75rem]'>We are a registered NDIS provider redefining care. our commitment goes beyond assistance to tailor support services to your unique needs. </p>

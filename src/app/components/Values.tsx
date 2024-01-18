@@ -38,11 +38,11 @@ export default async function Values() {
         <p className='mt-[2rem] xl:max-w-[48rem] xl:text-[1.125rem] leading-[1.625rem]'>Our mission is to maintain the comfort and safety of our clients while providing them with the appropriate care services to nurture their independence.</p>
 
         {/* Services cards container */}
-        <div className='mt-[3rem] xl:mt-[5rem] flex flex-col xl:grid xl:grid-cols-2 2xl:flex 2xl:flex-row 2xl:flex-wrap gap-[3rem]'>
+        <div className='mt-[3rem] xl:mt-[5rem] flex flex-col xl:grid xl:grid-cols-2 2xl:flex 2xl:flex-row 2xl:flex-wrap gap-[3rem] 3xl:justify-center '>
             {values.slice().reverse().map((value:any, index:any) => (
                 <div 
                     key={index} 
-                    className={`py-[3rem] xl:py-[2rem] px-[1rem] xl:px-[2rem] 2xl:w-[23.3rem] bg-[#FFEDD5] rounded-tr-xl xl:rounded-tr-3xl rounded-bl-xl xl:rounded-bl-3xl flex flex-col md:flex-row items-center xl:flex-col gap-[0.5rem] sm:gap-[1rem] xl:gap-[0rem] ${index === values.length -1 ? 'xl:col-span-full xl:w-1/2 mx-auto' : ''} ${index === values.length - 1 || index === values.length - 2 ? 'mx-auto 2xl:min-w-[35rem]' : '' }`}
+                    className={`py-[3rem] xl:py-[2rem] px-[1rem] xl:px-[2rem] 2xl:w-[23.3rem] 3xl:w-[27rem] bg-[#FFEDD5] rounded-tr-xl xl:rounded-tr-3xl rounded-bl-xl xl:rounded-bl-3xl flex flex-col md:flex-row items-center xl:flex-col gap-[0.5rem] sm:gap-[1rem] xl:gap-[0rem] ${index === values.length -1 ? 'xl:col-span-full xl:w-1/2 mx-auto' : ''} ${index === values.length - 1 || index === values.length - 2 ? 'mx-auto 2xl:min-w-[35rem]' : '' }`}
                 >
                     <Image 
                         src={value?.fields?.valueImage.fields.file.url} 

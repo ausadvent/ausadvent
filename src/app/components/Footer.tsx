@@ -25,7 +25,7 @@ export default function Footer() {
 
         {/* Blue container */}
         <div className='bg-gradient-to-b from-[#1D51C3] to-[#3E7BFF]'>
-            <div className="page sm:mx-auto pt-[3rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[6rem] md:flex md:gap-[2rem] ">
+            <div className="page sm:mx-auto pt-[3rem] md:pt-[4.5rem] lg:pt-[5rem] xl:pt-[6rem] md:flex md:gap-[2rem] 3xl:gap-[4.5rem] ">
                 {/* First box */}
                 <div className="flex flex-col items-center gap-[0.5rem] md:gap-[2rem] xl:max-w-[11.6rem] 2xl:max-w-[24rem]">
                     <div className='flex flex-col md:flex-row gap-[0.5rem] items-center'>

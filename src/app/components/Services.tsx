@@ -27,7 +27,7 @@ export default function Services() {
         <p className='mt-[3rem] md:mt-[4.5rem] lg:mt-[5rem] xl:mt-[6rem] xl:max-w-[44rem] xl:mx-auto text-[1rem] md:text-[1.25rem] leading-[1.5rem] md:leading-[1.75rem] md:text-center'>Our <strong>Supported Accommodation</strong> service is designed to empower individuals with tailored solutions for independent living.</p>
 
         {/* Services cards container */}
-        <div className='mt-[3rem] md:mt-[4.5rem] lg:mt-[5rem] xl:mt-[6rem] flex flex-col gap-[3rem] md:gap-[8rem] 2xl:grid xl:grid-cols-2'>
+        <div className='mt-[3rem] md:mt-[4.5rem] lg:mt-[5rem] xl:mt-[6rem] flex flex-col gap-[3rem] md:gap-[8rem] 2xl:grid xl:grid-cols-2 3xl:px-[6rem]'>
           {services?.slice().reverse().map((service:any, index:any) => (
             <div key={service?.fields.serviceUrl} className={`flex flex-col md:flex-row gap-[2rem] ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''} 2xl:flex-col`}>
               <div className='flex gap-[1rem] items-start md:hidden 2xl:flex'>

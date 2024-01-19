@@ -54,7 +54,7 @@ export default function Services() {
               <div className='flex flex-col gap-[1rem]'>
                 {/* Title */}
                 <div className='hidden md:flex gap-[1rem] items-center 2xl:hidden'>
-                  <Image className='lg:w-[1.5rem] lg:h-[2rem] ' src={Symbol} alt='Ausadvent symbol' title='Ausadvent symbol' />
+                  <Image className='lg:w-[1.5rem] lg:h-[2rem] ' src={Symbol} alt='Ausadvent symbol' title='Ausadvent symbol' loading='lazy' />
                   <h3 className='cormorant text-[1.5rem] lg:text-[2.25rem] font-bold leading-[1.625rem] lg:leading-[2.375rem]'>{service?.fields.serviceTitle}</h3>
                 </div>
                 {/* Description */}

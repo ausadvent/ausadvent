@@ -5,6 +5,7 @@ import { fetchData } from '../utils/fetchServices'
 import Intro from './Intro'
 import Portfolio from './Portfolio'
 import ServicesDescription from './ServicesDescription'
+import Framework from '../components/Framework'
 
 export default async function Services() {
     const services = await fetchData()
@@ -14,6 +15,7 @@ export default async function Services() {
         <Intro />
         <Portfolio services={services} />
         <ServicesDescription services={services} />
+        <Framework />
     </div>
   )
 }

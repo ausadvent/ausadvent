@@ -3,34 +3,46 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link';
 import Image from 'next/image';
+import { fetchData } from '../utils/fetchServices';
 
 // assets
 import Logo from '../../../assets/logo.png'
 import Phone from '../../../assets/phone_icon.svg'
 
 export default function Header() {
-    const services = [
-        {
-          id: 'lifestyle',
-          title: 'Lifestyle Assistance',
-          route: '/'
-        },
-        {
-            id: 'community',
-            title: 'Community Engagement',
-            route: '/'
-          },
-        {
-          id: 'accommodation',
-          title: 'Supported accommodation',
-          route: '/'
-        },
-        {
-          id: 'health',
-          title: 'Health & Well-being',
-          route: '/#locations'
+    // Fetch data
+    const [servicesFetched, setServicesFetched] = useState()
+    useEffect(() => {
+        async function fetchingData() {
+            const res:any = await fetchData()
+            setServicesFetched(res)
         }
-    ]
+        fetchingData()
+    }, [])
+    console.log(servicesFetched)
+    
+    // const services = [
+    //     {
+    //       id: 'lifestyle',
+    //       title: 'Lifestyle Assistance',
+    //       route: '/'
+    //     },
+    //     {
+    //         id: 'community',
+    //         title: 'Community Engagement',
+    //         route: '/'
+    //       },
+    //     {
+    //       id: 'accommodation',
+    //       title: 'Supported accommodation',
+    //       route: '/'
+    //     },
+    //     {
+    //       id: 'health',
+    //       title: 'Health & Well-being',
+    //       route: '/#locations'
+    //     }
+    // ]
 
     const locations = [
         {
@@ -98,10 +110,10 @@ export default function Header() {
             <div className="hidden xl:flex ">
                 <nav className='w-[50rem] ' >
                     <ul className='flex justify-between items-center text-primaryWhite'>
-                        <li className=' hover:text-[#F59E0B] cursor-pointer'>Home</li>
+                        <li className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/'}>Home</Link></li>
                         <li className=' hover:text-[#F59E0B] cursor-pointer'>About us</li>
-                        <li className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
-                            <p>Services</p>
+                        <li className='flex items-center gap-[0.2rem] cursor-pointer'>
+                            <p className='hover:text-[#F59E0B]'><Link href={'/services'}>Services</Link></p>
                             {!servicesDisplay ? (
                                 <svg 
                                     onClick={() => {
@@ -124,17 +136,18 @@ export default function Header() {
                             {/* Services display for desktop */}
                             {servicesDisplay && (
                                 <div className='absolute pl-[0.1rem] mt-[10rem] flex flex-col gap-[0.5rem] text-[1rem] text-secondaryWhite animate-open-services origin-top-left'>
-                                    {services.map((service:any) => (
-                                        <Link
-                                            key={service.id}
-                                            href={service.route}
+                                    {(servicesFetched as any).map((service:any, index:any) => (
+                                        <Link 
+                                            key={index}
+                                            href={`/services#${service.fields.serviceUrl}`}
+                                            scroll
                                             onClick={() => {
                                                 setServicesDisplay(false)
                                             }}
                                         >
-                                            <p className='hover:text-[#FC7]'>{service.title}</p>
+                                            <p className='hover:text-[#F59E0B]'>{service.fields.serviceTitle}</p>
                                         </Link>
-                                    ))}
+                                ))}
                                 </div>
                             )}
                         </li>
@@ -201,10 +214,10 @@ export default function Header() {
                 
                 <nav className='min-h-full p-[2rem] sm:px-[7rem] text-primaryWhite' aria-label='mobile'>
                     <ul className='flex flex-col gap-[1.25rem] text-[1.25rem]'>
-                        <li>Home</li>
+                        <li><Link href={'/'} scroll>Home</Link></li>
                         <li>About us</li>
                         <li className='flex items-center gap-[0.2rem]'>
-                            <p>Services</p>
+                            <p><Link href={'/services'}>Services</Link></p>
                             {!servicesDisplay ? (
                                 <svg 
                                     onClick={() => {
@@ -227,16 +240,17 @@ export default function Header() {
                         {/* Services display for mobile */}
                         {servicesDisplay && (
                             <div className='pl-[1.5rem] flex flex-col gap-[0.5rem] text-[1rem] text-secondaryWhite  animate-open-services origin-top-left'>
-                                {services.map((service:any) => (
-                                    <Link
-                                        key={service.id}
-                                        href={service.route}
+                                {(servicesFetched as any).map((service:any, index:any) => (
+                                    <Link 
+                                        key={index}
+                                        href={`/services#${service.fields.serviceUrl}`}
+                                        scroll
                                         onClick={() => {
                                             setMobileMenu(!mobileMenu)
                                             setServicesDisplay(false)
                                         }}
                                     >
-                                        <p>{service.title}</p>
+                                        <p>{service.fields.serviceTitle}</p>
                                     </Link>
                                 ))}
                             </div>

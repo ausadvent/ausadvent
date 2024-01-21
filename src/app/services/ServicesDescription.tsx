@@ -7,6 +7,7 @@ import Link from 'next/link'
 // Assets
 import Vector from '../../../assets/rounded-vector.svg'
 import DownArrow from '../../../assets/down-arrow.svg'
+import RightArrow from '../../../assets/blue-right-arrow-2.svg'
 import MessageIcon from '../../../assets/message-icon.svg'
 import MessageIcon2 from '../../../assets/message-icon-2.svg'
 
@@ -18,20 +19,20 @@ export default function ServicesDescription({services}:any) {
             {services.map((service: any, index: any) => (
                 <div 
                     key={index}
-                    className='py-[4.5rem] bg-[#FFEDD5] rounded-tr-[6rem] sm:rounded-tr-[9rem] rounded-bl-[6rem] sm:rounded-bl-[9rem] text-[#374151] '
+                    className='py-[4.5rem] bg-[#FFEDD5] rounded-tr-[6rem] sm:rounded-tr-[9rem] xl:rounded-tr-[15rem] rounded-bl-[6rem] sm:rounded-bl-[9rem] xl:rounded-bl-[15rem] text-[#374151] '
                     id={service.fields.serviceUrl}
                 >
-                    <div className='page sm:mx-auto flex flex-col gap-[3rem]'>
+                    <div className='page sm:mx-auto flex flex-col gap-[3rem] xl:gap-[4.5rem]'>
                         {/* Title */}
                         <div className='relative'>
-                            <h2 className=' cormorant text-[2.25rem] md:text-[3rem] leading-[2.375rem] md:leading-[3.125rem] font-semibold' >{service?.fields.serviceTitle}</h2>
+                            <h2 className=' cormorant text-[2.25rem] md:text-[3rem] xl:text-[4rem] leading-[2.375rem] md:leading-[3.125rem] xl:leading-[4.375rem] font-semibold' >{service?.fields.serviceTitle}</h2>
                             <div className="absolute sm:mt-1 left-0 w-2/5 sm:w-[6.375rem] border-b-[0.3rem] border-blue-400"></div>
                         </div>
 
                         {/* Main image */}
-                        <div className='relative h-[18.75rem] md:h-[28.125rem] w-full'>
+                        <div className='relative h-[18.75rem] md:h-[28.125rem] xl:h-[34.375rem] w-full'>
                             <Image 
-                                className=' h-[18.75rem] md:h-[28.125rem] w-full object-cover rounded-tr-[2rem]'
+                                className=' h-[18.75rem] md:h-[28.125rem] xl:h-[34.375rem] w-full object-cover rounded-tr-[2rem]'
                                 src={service.fields.imageN2.fields.file.url}
                                 title={service.fields.imageN2.fields.title}
                                 alt={service.fields.imageN2.fields.description}
@@ -40,15 +41,15 @@ export default function ServicesDescription({services}:any) {
                                 loading='lazy' 
                                 unoptimized  
                             />
-                            <div className="absolute right-0 top-[18.75rem] md:top-[28.125rem] w-2/5 border-b-[0.3rem] border-blue-400"></div>
+                            <div className="absolute right-0 top-[18.75rem] md:top-[28.125rem] xl:top-[34.375rem] w-2/5 border-b-[0.3rem] border-blue-400"></div>
                         </div>
                         
-                        <h3 className='cormorant text-[1.5rem] md:text-[1.875rem] font-bold leading-[1.625rem] md:leading-[2.065rem]'>{service?.fields.serviceSlogan}</h3>
+                        <h3 className='cormorant text-[1.5rem] md:text-[1.875rem] xl:text-[2.25rem] font-bold leading-[1.625rem] md:leading-[2.065rem] xl:leading-[2.375rem]'>{service?.fields.serviceSlogan}</h3>
                         
-                        <p>{service?.fields.principalDescription}</p>
+                        <p className='lg:text-[1.125rem] xl:hidden'>{service?.fields.principalDescription}</p>
                         
-                        {/* Picture this container */}
-                        <div className="flex flex-col gap-[1rem]">
+                        {/* Picture this container until md inclusive */}
+                        <div className="flex flex-col gap-[1rem] lg:hidden">
                             <h4 className='font-bold'>Picture this:</h4>
                             {service?.fields.picture.content.map((item: any, index: any) => {
                                 if(item.nodeType.startsWith("paragraph")) {
@@ -71,55 +72,81 @@ export default function ServicesDescription({services}:any) {
                                     )
                                 }
                             })}
-
                         </div>
 
-                        {/* About boxes parent container */}
-                        <div className="flex flex-col items-center gap-[1.5rem]">
-                            <h3 className="cormorant text-[1.775rem] leading-[2rem]">Remember, {service.fields.serviceAcronym} Is All About:</h3>
-                            {/* About box 1*/}
-                            <div className="p-[1rem] flex flex-col gap-[1rem] bg-[#FDBA74] border-2 border-[#2563EB] rounded">
-                                {service?.fields.aboutBox1.content.map((item: any, index: any) => {
-                                    if(item.nodeType.startsWith("heading")) {
-                                        return (
-                                            <h3 key={index} className='text-[1.125rem] font-semibold text-[#1F2937]'>{item.content[0].value}</h3>
-                                        )
-                                    } else {
-                                        return (
-                                            <p key={index}>{item.content[0].value}</p>
-                                        )
-                                    }
-                                } )}
+                        {/* Picture this container from lg */}
+                        <div className="hidden lg:flex items-stretch gap-[1.5rem] xl:gap-[2rem]">
+                            <Image 
+                                className='w-[23.25rem] xl:min-w-[31rem] object-cover rounded-tr-[2rem]'
+                                src={service.fields.picture.content[1].data.target.fields.file.url} 
+                                title={service.fields.picture.content[1].data.target.fields.title}
+                                alt={service.fields.picture.content[1].data.target.fields.description}
+                                width={20}
+                                height={20}
+                                loading='lazy'
+                                unoptimized
+                            />
+                            {/* Paragraphs */}
+                            <div className="flex flex-col gap-[1rem] text-[1.125rem]">
+                            <p className='hidden xl:inline text-[1.125rem]'>{service?.fields.principalDescription}</p>
+                                <h4 className='font-bold'>Picture this:</h4>
+                                <p>{service.fields.picture.content[0].content[0].value}</p>
+                                <p>{service.fields.picture.content[2].content[0].value}</p>
                             </div>
-                            <Image className='w-[1.64rem] h-[0.8rem] mx-auto' src={DownArrow} title='Down arrow' alt='Down arrow' width={20} height={20} loading='lazy' />
-                            {/* About box 2*/}
-                            <div className="p-[1rem] flex flex-col gap-[1rem] bg-[#FDBA74] border-2 border-[#2563EB] rounded">
-                                {service?.fields.aboutBox2.content.map((item: any, index: any) => {
-                                    if(item.nodeType.startsWith("heading")) {
-                                        return (
-                                            <h3 key={index} className='text-[1.125rem] font-semibold text-[#1F2937]'>{item.content[0].value}</h3>
-                                        )
-                                    } else {
-                                        return (
-                                            <p key={index}>{item.content[0].value}</p>
-                                        )
-                                    }
-                                } )}
-                            </div>
-                            <Image className='w-[1.64rem] h-[0.8rem] mx-auto' src={DownArrow} title='Down arrow' alt='Down arrow' width={20} height={20} loading='lazy' />
-                            {/* About box 3 */}
-                            <div className="p-[1rem] flex flex-col gap-[1rem] bg-[#FDBA74] border-2 border-[#2563EB] rounded">
-                                {service?.fields.aboutBox3.content.map((item: any, index: any) => {
-                                    if(item.nodeType.startsWith("heading")) {
-                                        return (
-                                            <h3 key={index} className='text-[1.125rem] font-semibold text-[#1F2937]'>{item.content[0].value}</h3>
-                                        )
-                                    } else {
-                                        return (
-                                            <p key={index}>{item.content[0].value}</p>
-                                        )
-                                    }
-                                } )}
+                        </div>
+
+                        {/* About boxes + Heading parent container */}
+                        <div className="flex flex-col items-center gap-[1.5rem] lg:gap-[4rem] xl:gap-[4.5rem]">
+                            <h3 className="cormorant text-[1.775rem] lg:text-[2.25rem] xl:text-[3rem] leading-[2rem] lg:leading-[2.375rem]">Remember, {service.fields.serviceAcronym} Is All About:</h3>
+                            {/* Just boxes container */}
+                            <div className="flex flex-col lg:flex-row items-center lg:justify-center lg:items-stretch gap-[1.5rem] lg:gap-[0.5rem] xl:gap-[1rem]">
+                                {/* About box 1*/}
+                                <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
+                                    {service?.fields.aboutBox1.content.map((item: any, index: any) => {
+                                        if(item.nodeType.startsWith("heading")) {
+                                            return (
+                                                <h3 key={index} className='text-[1.125rem] xl:text-[1.25rem] font-semibold text-[#1F2937]'>{item.content[0].value}</h3>
+                                            )
+                                        } else {
+                                            return (
+                                                <p key={index} className='xl:text-[1.125rem]'>{item.content[0].value}</p>
+                                            )
+                                        }
+                                    } )}
+                                </div>
+                                <Image className='hidden lg:inline w-[1.64rem] h-[1.5rem] mx-auto self-center' src={RightArrow} title='Right arrow' alt='Right arrow' width={20} height={20} loading='lazy' />
+                                <Image className='lg:hidden w-[1.64rem] h-[1.5rem] mx-auto self-center' src={DownArrow} title='Down arrow' alt='Down arrow' width={20} height={20} loading='lazy' />
+                                {/* About box 2*/}
+                                <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
+                                    {service?.fields.aboutBox2.content.map((item: any, index: any) => {
+                                        if(item.nodeType.startsWith("heading")) {
+                                            return (
+                                                <h3 key={index} className='text-[1.125rem] xl:text-[1.25rem] font-semibold text-[#1F2937]'>{item.content[0].value}</h3>
+                                            )
+                                        } else {
+                                            return (
+                                                <p key={index} className='xl:text-[1.125rem]'>{item.content[0].value}</p>
+                                            )
+                                        }
+                                    } )}
+                                </div>
+                                <Image className='hidden lg:inline w-[1.64rem] h-[1.5rem] mx-auto self-center' src={RightArrow} title='Right arrow' alt='Right arrow' width={20} height={20} loading='lazy' />
+                                <Image className='lg:hidden w-[1.64rem] h-[1.5rem] mx-auto self-center' src={DownArrow} title='Down arrow' alt='Down arrow' width={20} height={20} loading='lazy' />
+                                {/* About box 3 */}
+                                <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
+                                    {service?.fields.aboutBox3.content.map((item: any, index: any) => {
+                                        if(item.nodeType.startsWith("heading")) {
+                                            return (
+                                                <h3 key={index} className='text-[1.125rem] xl:text-[1.25rem] font-semibold text-[#1F2937]'>{item.content[0].value}</h3>
+                                            )
+                                        } else {
+                                            return (
+                                                <p key={index} className=' xl:text-[1.125rem]'>{item.content[0].value}</p>
+                                            )
+                                        }
+                                    } )}
+                                </div>
+
                             </div>
 
                             <p>Learn more about <Link className='text-[#2563EB] font-semibold' target='_blank' href={'https://www.ndis.gov.au/providers/housing-and-living-supports-and-services/supported-independent-living-provider-guidance/sil-funding-and-budgets' }> NDIS funding for SIL</Link> on the official website</p>
@@ -133,12 +160,12 @@ export default function ServicesDescription({services}:any) {
 
                         {/* Note */}
                         {service.fields.finalNote ? (
-                            <div className='mb-[2rem] py-[1.5rem] px-[0.5rem] flex flex-col gap-[1rem] border border-[#F59E0B] rounded-lg '>
+                            <div className='mb-[2rem] py-[1.5rem] px-[0.5rem] lg:px-[1rem] flex flex-col gap-[1rem] border border-[#F59E0B] rounded-lg '>
                                 <div className="flex items-center gap-[0.5rem]">
                                     <Image className='w-[1.05rem] h-[1rem]' src={MessageIcon2} title='Message icon' alt='Message icon' width={20} height={20} loading='lazy' />
-                                    <p className='text-[#A16207] font-semibold'>Important note:</p>
+                                    <p className='text-[#A16207] font-semibold xl:text-[1.25rem]'>Important note:</p>
                                 </div>
-                                <p className=' font-semibold '>{service.fields.finalNote}</p>
+                                <p className=' font-semibold  xl:text-[1.25rem] '>{service.fields.finalNote}</p>
                             </div>
                         ) : ('')}
                     </div>

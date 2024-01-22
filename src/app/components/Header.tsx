@@ -66,7 +66,7 @@ export default function Header() {
 
     return (
     <div className=''>
-        <div className={`page sm:max-w-full sm:px-[6rem] lg:px-[8rem] 3xl:px-[12rem] py-[1rem] flex justify-between items-center z-30 ${mobileMenu && 'bg-[#1E40AF]'}`}>
+        <div className={`page sm:max-w-full sm:px-[6rem] lg:px-[4rem] 3xl:px-[12rem] py-[1rem] flex justify-between items-center z-30 ${mobileMenu && 'bg-[#1E40AF]'}`}>
             <Link href="/" className='flex items-center gap-[0.5rem]'>
                 <Image
                     className='w-[2.20rem] h-[1.4rem]'
@@ -85,7 +85,7 @@ export default function Header() {
             </Link>
             <button
                 id='hamburguer-button'
-                className=' cursor-pointer relative xl:hidden'
+                className=' cursor-pointer relative lg:hidden'
                 onClick={() => {
                     setMobileMenu(!mobileMenu)
                 }}
@@ -107,9 +107,9 @@ export default function Header() {
             </button>
 
             {/* Nav area for desktop */}
-            <div className="hidden xl:flex ">
-                <nav className='w-[50rem] ' >
-                    <ul className='flex justify-between items-center text-primaryWhite'>
+            <div className="hidden lg:flex ">
+                <nav className='w-[46.86rem] xl:w-[50rem]' >
+                    <ul className='flex lg:text-[0.875rem] xl:text-[1rem] justify-between items-center text-primaryWhite'>
                         <li className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/'}>Home</Link></li>
                         <li className=' hover:text-[#F59E0B] cursor-pointer'>About us</li>
                         <li className='flex items-center gap-[0.2rem] cursor-pointer'>

@@ -10,6 +10,7 @@ import DownArrow from '../../../assets/down-arrow.svg'
 import RightArrow from '../../../assets/blue-right-arrow-2.svg'
 import MessageIcon from '../../../assets/message-icon.svg'
 import MessageIcon2 from '../../../assets/message-icon-2.svg'
+import divider from '../../../assets/divider.svg'
 
 export default function ServicesDescription({services}:any) {
     console.log(services)
@@ -168,6 +169,16 @@ export default function ServicesDescription({services}:any) {
                                 <p className=' font-semibold  xl:text-[1.25rem] '>{service.fields.finalNote}</p>
                             </div>
                         ) : ('')}
+
+                        {/* Just for the last service */}
+                        {service === services[services.length - 1] ? (
+                            <div className='flex flex-col gap-[1rem] mb-[1rem] sm:mb-[3rem]'>
+                                <h3 className='cormorant text-[1.875rem] font-bold text-[#A16207] leading-[2.065rem] text-center'>At Ausadvent Care, we are committed to providing unparalleled support</h3>
+                                <Image className='w-[6.375rem] h-[0.312rem] mx-auto' src={divider} title='Blue divider' alt='Blue divider' width={20} height={20} loading='lazy' />
+                                <p className='text-center'> Focusing on <strong>skill development</strong>, and facilitating <strong>community integration</strong>, ensuring that Medium-Term Accommodation becomes a transformative step toward long-term <strong>independent living</strong>.</p>
+                            </div>
+                            ) : null
+                        }
                     </div>
                 </div>
             ))}

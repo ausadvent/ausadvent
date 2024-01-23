@@ -111,7 +111,7 @@ export default function Header() {
                 <nav className='w-[46.86rem] xl:w-[50rem]' >
                     <ul className='flex lg:text-[0.875rem] xl:text-[1rem] justify-between items-center text-primaryWhite'>
                         <li className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/'}>Home</Link></li>
-                        <li className=' hover:text-[#F59E0B] cursor-pointer'>About us</li>
+                        <li className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/about'}>About us</Link></li>
                         <li className='flex items-center gap-[0.2rem] cursor-pointer'>
                             <p className='hover:text-[#F59E0B]'><Link href={'/services'}>Services</Link></p>
                             {!servicesDisplay ? (
@@ -215,7 +215,7 @@ export default function Header() {
                 <nav className='min-h-full p-[2rem] sm:px-[7rem] text-primaryWhite' aria-label='mobile'>
                     <ul className='flex flex-col gap-[1.25rem] text-[1.25rem]'>
                         <li><Link href={'/'} scroll>Home</Link></li>
-                        <li>About us</li>
+                        <li><Link href={'/about'}>About us</Link></li>
                         <li className='flex items-center gap-[0.2rem]'>
                             <p><Link href={'/services'}>Services</Link></p>
                             {!servicesDisplay ? (

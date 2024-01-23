@@ -9,11 +9,13 @@ import LatestArticles from './components/LatestArticles'
 const inter = Inter({ subsets: ['latin'] })
 
 const Noto = Noto_Sans({ subsets: ['latin']})
+
 const cormorant = Cormorant_Garamond({ 
   weight: '700',
   subsets: ['latin'],
   variable: '--font-cormorant'
 })
+
 
 export const metadata: Metadata = {
   title: {

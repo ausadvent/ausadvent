@@ -11,11 +11,11 @@ export default async function Services() {
     const services = await fetchData()
 
     return (
-      <div>
+      <main>
         <Intro />
         <Portfolio services={services} />
         <ServicesDescription services={services} />
         <Framework />
-      </div>
+      </main>
     )
 }

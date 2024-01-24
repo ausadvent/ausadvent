@@ -7,12 +7,12 @@ import Closing from './Closing'
 
 export default function About() {
   return (
-    <div>
+    <main>
         <Intro />
         <Commitment />
         <Values />
         <Framework />
         <Closing />
-    </div>
+    </main>
   )
 }

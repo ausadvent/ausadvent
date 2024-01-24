@@ -19,7 +19,6 @@ export default function Header() {
         }
         fetchingData()
     }, [])
-    console.log(servicesFetched)
     
     // const services = [
     //     {

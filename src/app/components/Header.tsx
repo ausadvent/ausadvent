@@ -58,6 +58,13 @@ export default function Header() {
       
     const [mobileMenu, setMobileMenu] = useState(false);
     
+    const toggleMenu = () => {
+        setMobileMenu(false);
+        setServicesDisplay(false)
+        setLocationsDisplay(false)
+      };
+  
+
     // Set state for services options
     const [servicesDisplay, setServicesDisplay] = useState(false);
 
@@ -109,8 +116,8 @@ export default function Header() {
             <div className="hidden lg:flex ">
                 <nav className='w-[46.86rem] xl:w-[50rem]' >
                     <ul className='flex lg:text-[0.875rem] xl:text-[1rem] justify-between items-center text-primaryWhite'>
-                        <li className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/'}>Home</Link></li>
-                        <li className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/about'}>About us</Link></li>
+                        <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/'}>Home</Link></li>
+                        <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/about'}>About us</Link></li>
                         <li className='flex items-center gap-[0.2rem] cursor-pointer'>
                             <p className='hover:text-[#F59E0B]'><Link href={'/services'}>Services</Link></p>
                             {!servicesDisplay ? (
@@ -141,7 +148,7 @@ export default function Header() {
                                             href={`/services#${service.fields.serviceUrl}`}
                                             scroll
                                             onClick={() => {
-                                                setServicesDisplay(false)
+                                                toggleMenu()
                                             }}
                                         >
                                             <p className='hover:text-[#F59E0B]'>{service.fields.serviceTitle}</p>
@@ -150,7 +157,7 @@ export default function Header() {
                                 </div>
                             )}
                         </li>
-                        <li className=' hover:text-[#F59E0B] cursor-pointer'>NDIS</li>
+                        <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/ndis'} >NDIS</Link></li>
                         <li className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
                             <p>Locations</p>
                             {!locationsDisplay ? (
@@ -180,7 +187,7 @@ export default function Header() {
                                             key={location.id}
                                             href={location.route}
                                             onClick={() => {
-                                                setLocationsDisplay(false)
+                                                toggleMenu()
                                             }}
                                         >
                                             <p className='hover:text-[#FC7]'>{location.title}</p>
@@ -189,14 +196,14 @@ export default function Header() {
                                 </div>
                             )}
                         </li>
-                        <li className=' hover:text-[#F59E0B] cursor-pointer'>Articles</li>
-                        <li className=' hover:text-[#F59E0B] cursor-pointer'>
+                        <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'>Articles</li>
+                        <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'>
                             <a href="tel:+61439430007" className='flex items-center gap-1'>
                                 <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' alt='phone ringing icon' />
                                 <p className='font-bold'>+61 0439430007</p>
                             </a>
                         </li>
-                        <li className=' hover:text-[#F59E0B] cursor-pointer'>
+                        <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'>
                             <button className='button px-[1rem] text-[1rem] py-[0.25rem] rounded hover:bg-none hover:text-primaryWhite hover:border hover:border-[#FDBA74] transition duration-300 ease-linear '>
                                 Get in touch
                             </button>
@@ -209,14 +216,14 @@ export default function Header() {
         {/* Mobile menu area */}
 
         {mobileMenu === true && (
-            <div className={`absolute z-10 origin-top bg-[#2563EB] w-screen ${mobileMenu && 'animate-open-menu'} `} >
+            <div className={`absolute  z-10 origin-top bg-[#2563EB] rounded-b-2xl border-b border-[#F59E0B] shadow-2xl w-screen ${mobileMenu && 'animate-open-menu'} `} >
                 
                 <nav className='min-h-full p-[2rem] sm:px-[7rem] text-primaryWhite' aria-label='mobile'>
                     <ul className='flex flex-col gap-[1.25rem] text-[1.25rem]'>
-                        <li><Link href={'/'} scroll>Home</Link></li>
-                        <li><Link href={'/about'}>About us</Link></li>
+                        <li onClick={() => toggleMenu()}><Link href={'/'} scroll>Home</Link></li>
+                        <li onClick={() => toggleMenu()}><Link href={'/about'}>About us</Link></li>
                         <li className='flex items-center gap-[0.2rem]'>
-                            <p><Link href={'/services'}>Services</Link></p>
+                            <p><Link href={'/services'} onClick={() => {setMobileMenu(false); setServicesDisplay(false);}}>Services</Link></p>
                             {!servicesDisplay ? (
                                 <svg 
                                     onClick={() => {
@@ -245,8 +252,7 @@ export default function Header() {
                                         href={`/services#${service.fields.serviceUrl}`}
                                         scroll
                                         onClick={() => {
-                                            setMobileMenu(!mobileMenu)
-                                            setServicesDisplay(false)
+                                            toggleMenu()
                                         }}
                                     >
                                         <p>{service.fields.serviceTitle}</p>
@@ -254,8 +260,9 @@ export default function Header() {
                                 ))}
                             </div>
                         )}
+                        <li onClick={() => toggleMenu()}><Link href={'/ndis'}>NDIS</Link></li>
                         <li className='flex items-center gap-[0.2rem]'>
-                            <p>Locations</p>
+                            <p onClick={() => {setMobileMenu(false); setLocationsDisplay(false);}}>Locations</p>
                             {!locationsDisplay ? (
                                 <svg 
                                     onClick={() => {
@@ -282,8 +289,7 @@ export default function Header() {
                                         key={location.id}
                                         href={location.route}
                                         onClick={() => {
-                                            setMobileMenu(!mobileMenu)
-                                            setServicesDisplay(false)
+                                            toggleMenu()
                                         }}
                                     >
                                         <p>{location.title}</p>
@@ -291,14 +297,14 @@ export default function Header() {
                                 ))}
                             </div>
                         )}
-                        <li>Articles</li>
-                        <li>
+                        <li onClick={() => toggleMenu()}>Articles</li>
+                        <li onClick={() => toggleMenu()}>
                             <a href="tel:+61439430007" className='flex items-center gap-1'>
                                 <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' alt='phone ringing icon' />
                                 <p>+61 0439430007</p>
                             </a>
                         </li>
-                        <li>
+                        <li onClick={() => toggleMenu()}>
                             <button className='button  text-[1rem] py-[0.25rem] rounded'>
                                 Get in touch
                             </button>

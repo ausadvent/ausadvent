@@ -31,7 +31,7 @@ export default async function Blog() {
     const articles = await fetchArticles()
 
     return (
-    <section>
+    <main>
         <Intro />
         {articles ? (
             <div>
@@ -40,6 +40,6 @@ export default async function Blog() {
         ) : (
             <p>Loading articles...</p>
         )}
-    </section>     
+    </main>     
   )
 }

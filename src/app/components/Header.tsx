@@ -196,7 +196,7 @@ export default function Header() {
                                 </div>
                             )}
                         </li>
-                        <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'>Articles</li>
+                        <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/blog'}>Blog</Link></li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'>
                             <a href="tel:+61439430007" className='flex items-center gap-1'>
                                 <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' alt='phone ringing icon' />
@@ -297,7 +297,7 @@ export default function Header() {
                                 ))}
                             </div>
                         )}
-                        <li onClick={() => toggleMenu()}>Articles</li>
+                        <li onClick={() => toggleMenu()}><Link href={'/blog'}>Blog</Link></li>
                         <li onClick={() => toggleMenu()}>
                             <a href="tel:+61439430007" className='flex items-center gap-1'>
                                 <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' alt='phone ringing icon' />

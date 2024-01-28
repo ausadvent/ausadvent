@@ -20,7 +20,7 @@ const client = createClient({
 async function fetchStandards() {
     try {
         const res = await client.getEntries({ content_type: 'nationalStandards'})
-        console.log(res.items)
+        // console.log(res.items)
         return res.items
     } catch(e) {
         console.log(e)

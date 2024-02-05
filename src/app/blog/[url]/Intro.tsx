@@ -15,11 +15,11 @@ export default function Intro({article}: any) {
                     height={20}
                     unoptimized
                 />
-                <div className="absolute inset-0 bg-gradient-to-b  from-transparent to-[#1e3a8a] " aria-hidden="true"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent  to-[#1e3a8a] " aria-hidden="true"></div>
             </div>
 
             {/* Content */}
-            <div className='page pt-[2rem] md:pt-[4.5rem] lg:pt-[8rem] xl:pt-[12rem] h-[38rem] sm:h-[42rem] md:h-[44rem] xl:h-[58rem] text-primaryWhite '>
+            <div className=' pt-[8rem] md:pt-[4.5rem] lg:pt-[8rem] xl:pt-[12rem] h-[38rem] sm:h-[42rem] md:h-[44rem] xl:h-[58rem] text-primaryWhite '>
                 <h2 className='text-[0.75rem] lg:text-[1.2rem] text-[#93C5FD]'>
                     Articles | {article.fields.articleTitle}
                 </h2>

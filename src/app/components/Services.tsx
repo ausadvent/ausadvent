@@ -59,7 +59,7 @@ export default function Services() {
                 </div>
                 {/* Description */}
                 <p className='md:text-[1.25rem] md:leading-[1.75rem]'>{service?.fields.serviceDescription}</p>
-                <Link href={service?.fields.serviceUrl} className='flex items-center gap-[0.5rem]'>
+                <Link href={`/services#${service.fields.serviceUrl}`} className='flex items-center gap-[0.5rem]'>
                   <Image src={Eye} alt='eye icon' title='eye icon' />
                   <p className='text-[#F59E0B]'>Read more</p>
                   <Image src={Right} alt='Right arrow' title='Right arrow' />

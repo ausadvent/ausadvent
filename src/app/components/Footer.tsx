@@ -29,7 +29,7 @@ export default function Footer() {
                 {/* First box */}
                 <div className="flex flex-col items-center gap-[0.5rem] md:gap-[2rem] xl:max-w-[11.6rem] 2xl:max-w-[24rem]">
                     <div className='flex flex-col md:flex-row gap-[0.5rem] items-center'>
-                        <Image src={Symbol} className='w-[2rem] md:w-[2.9rem] h-[1.4rem] md:h-[2rem]' title='Ausadvent symbol' alt='Lotus flower' width={20} height={20} loading='eager' />
+                        <Image src={Symbol} className='w-[2rem] md:w-[2.9rem] h-[1.4rem] md:h-[2rem]' title='Ausadvent symbol' alt='Lotus flower' width={20} height={20} loading='lazy' />
                         <h2 className='font-bold text-[#93C5FD] text-center md:text-left leading-4'>AUSADVENT <br /> CARE</h2>
                     </div>
                     <p className='text-primaryWhite text-[0.875rem] 2xl:text-[1.125rem] leading-[1.25rem] 2xl:leading-[1.625rem] text-center md:text-left '>At Ausadvent Care, we&apos;re more than just care providers; we&apos;re compassionate partners on your journey towards independence, growth, and fulfilment. </p>
@@ -46,11 +46,11 @@ export default function Footer() {
                     <nav className='mt-[1rem]'>
                         <ul className='flex flex-col gap-[0.5rem] text-center md:text-left'>
                             <li><Link href={'/'}>Home</Link></li>
-                            <li><Link href={'/'}>Services</Link></li>
-                            <li><Link href={'/'}>About us</Link></li>
-                            <li><Link href={'/'}>NDIS</Link></li>
+                            <li><Link href={'/services'}>Services</Link></li>
+                            <li><Link href={'/about'}>About us</Link></li>
+                            <li><Link href={'/ndis'}>NDIS</Link></li>
                             <li><Link href={'/'}>Locations</Link></li>
-                            <li><Link href={'/'}>Articles</Link></li>
+                            <li><Link href={'/blog'}>Articles</Link></li>
                         </ul>
                     </nav>
                     <button className='mt-[0.5rem] py-[0.5rem] w-[12.5rem] md:w-[8.14rem] rounded border border-[#FFD8AF]'>Get in touch</button>

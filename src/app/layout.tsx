@@ -1,11 +1,21 @@
 import type { Metadata } from 'next'
 import { Inter, Noto_Sans } from 'next/font/google'
+import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import Header from './components/Header'
+import Footer from './components/Footer'
+import LatestArticles from './components/LatestArticles'
 
 const inter = Inter({ subsets: ['latin'] })
 
 const Noto = Noto_Sans({ subsets: ['latin']})
+
+const cormorant = Cormorant_Garamond({ 
+  weight: '700',
+  subsets: ['latin'],
+  variable: '--font-cormorant'
+})
+
 
 export const metadata: Metadata = {
   title: {
@@ -22,9 +32,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={Noto.className}>
+      <body className={`${Noto.className} ${cormorant.variable}`}>
         <Header />
         {children}
+        <LatestArticles />
+        <Footer />
       </body>
     </html>
   )

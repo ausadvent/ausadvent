@@ -11,7 +11,6 @@ import Link from 'next/link';
 
 export default function ArticlesList({articles}:any) {
 
-    console.log(articles)
   return (
       <section className='bg-blue-100 py-[2rem] 2xl:py-[4rem] 3xl:py-[8rem] sm:flex sm:justify-center '>
           <div className='page flex flex-col gap-[4rem] 3xl:gap-[8rem]'>

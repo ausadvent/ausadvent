@@ -41,8 +41,6 @@ export default function LatestArticles() {
     //     currentArticle < recentArticles?.length - 1 ? setCurrentArticle(currentArticle + 1) : setCurrentArticle(0)
     // }, 5000)
 
-  
-    console.log(articles)
     return (
         <div>
             <div className='pt-[3rem] sm:pt-[2rem] md:pt-[2.5rem] lg:pt-[4.5rem] 3xl:mt-[6rem]'>

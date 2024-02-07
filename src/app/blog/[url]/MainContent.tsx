@@ -13,10 +13,7 @@ interface closingContent {
 }
 
 export default function MainContent({article} : any) {
-  useEffect(() => {
-    console.log(article)
-  }, [article])
-  
+
     return (
     <section className='bg-blue-100 pt-[2rem] pb-[3rem] md:pb-[4rem] 2xl:py-[4rem] 3xl:py-[8rem] sm:flex sm:justify-center'>
         <div className='page flex flex-col gap-[1.5rem] md:gap-[1.9rem] '>

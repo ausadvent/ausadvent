@@ -20,39 +20,17 @@ export default function Header() {
         fetchingData()
     }, [])
     
-    // const services = [
-    //     {
-    //       id: 'lifestyle',
-    //       title: 'Lifestyle Assistance',
-    //       route: '/'
-    //     },
-    //     {
-    //         id: 'community',
-    //         title: 'Community Engagement',
-    //         route: '/'
-    //       },
-    //     {
-    //       id: 'accommodation',
-    //       title: 'Supported accommodation',
-    //       route: '/'
-    //     },
-    //     {
-    //       id: 'health',
-    //       title: 'Health & Well-being',
-    //       route: '/#locations'
-    //     }
-    // ]
 
     const locations = [
         {
             id: 1,
             title: 'Western Australia',
-            route: '/'
+            route: 'western'
         },
         {
             id: 2,
             title: 'Queensland',
-            route: '/'
+            route: 'queensland'
         }
     ]
       
@@ -159,7 +137,7 @@ export default function Header() {
                         </li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/ndis'} >NDIS</Link></li>
                         <li className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
-                            <p>Locations</p>
+                            <p><Link href={'/locations'}>Locations</Link></p>
                             {!locationsDisplay ? (
                                 <svg 
                                     onClick={() => {
@@ -179,13 +157,14 @@ export default function Header() {
                                     <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="6 15 12 9 18 15" />
                                 </svg>
                             )}
-                            {/* Services display for desktop */}
+                            {/* Locations display for desktop */}
                             {locationsDisplay && (
                                 <div className='absolute pl-[0.1rem] mt-[5.5rem] flex flex-col gap-[0.5rem] text-[1rem] text-secondaryWhite animate-open-services origin-top-left'>
                                     {locations.map((location:any) => (
                                         <Link
                                             key={location.id}
-                                            href={location.route}
+                                            href={`/locations#${location.route}`}
+                                            scroll
                                             onClick={() => {
                                                 toggleMenu()
                                             }}
@@ -262,7 +241,7 @@ export default function Header() {
                         )}
                         <li onClick={() => toggleMenu()}><Link href={'/ndis'}>NDIS</Link></li>
                         <li className='flex items-center gap-[0.2rem]'>
-                            <p onClick={() => {setMobileMenu(false); setLocationsDisplay(false);}}>Locations</p>
+                            <p onClick={() => {setMobileMenu(false); setLocationsDisplay(false);}}><Link href={'/locations'}>Locations</Link></p>
                             {!locationsDisplay ? (
                                 <svg 
                                     onClick={() => {
@@ -287,7 +266,8 @@ export default function Header() {
                                 {locations.map((location:any) => (
                                     <Link
                                         key={location.id}
-                                        href={location.route}
+                                        href={`/locations#${location.route}`}
+                                        scroll
                                         onClick={() => {
                                             toggleMenu()
                                         }}

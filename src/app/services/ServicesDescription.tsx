@@ -13,7 +13,7 @@ import MessageIcon2 from '../../../assets/message-icon-2.svg'
 import divider from '../../../assets/divider.svg'
 
 export default function ServicesDescription({services}:any) {
-    console.log(services)
+   
     return (
     <div className='bg-[#FFD8AF] rounded-3xl'>
         <div className="py-[1.5rem] flex flex-col gap-[3.5rem]">

@@ -4,6 +4,7 @@ import Image from 'next/image'
 // Assets
 import Hero from '../../../assets/homeHero.webp'
 import Lotus from '../../../assets/intro-lotus.svg'
+import Link from 'next/link'
 
 export default function Intro() {
     return (
@@ -29,7 +30,11 @@ export default function Intro() {
                 </div>
                 <div className='md:mt-[8rem] lg:mt-[6rem] xl:mt-[17rem] flex flex-col gap-[3.5rem] md:gap-[2rem]'>
                     <p className=' text-[1rem] xl:text-[1.25rem] font-semibold leading-[1.75rem]'>We are a registered NDIS provider redefining care. our commitment goes beyond assistance to tailor support services to your unique needs. </p>
-                    <button className='w-full sm:w-[25rem] md:w-full xl:w-1/2 xl:ml-0 text-black bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] sm:mx-auto sm:bg-none border md:border-[2px] sm:border-[#F59E0B] py-[0.5rem] rounded-lg text-[1.125rem] sm:text-white lg:hover:border-transparent group lg:hover:bg-gradient-to-b lg:hover:from-[#FFD8AF] lg:hover:to-[#FDBA74] lg:transition lg:duration-500 lg:ease-linear '>Contact us</button>
+                    <Link href={'/locations#form'} >
+                        <button className='w-full sm:w-[25rem] md:w-full xl:w-1/2 xl:ml-0 text-black bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] sm:mx-auto sm:bg-none border md:border-[2px] sm:border-[#F59E0B] py-[0.5rem] rounded-lg text-[1.125rem] sm:text-white lg:hover:border-transparent group lg:hover:bg-gradient-to-b lg:hover:from-[#FFD8AF] lg:hover:to-[#FDBA74] lg:transition lg:duration-500 lg:ease-linear '>
+                            Contact us
+                        </button>
+                    </Link>
                 </div>
             </div>
 

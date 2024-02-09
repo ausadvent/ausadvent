@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 // Assets
@@ -13,11 +13,11 @@ import MessageIcon2 from '../../../assets/message-icon-2.svg'
 import divider from '../../../assets/divider.svg'
 
 export default function ServicesDescription({services}:any) {
-   
+    
     return (
     <div className='bg-[#FFD8AF] rounded-3xl'>
         <div className="py-[1.5rem] flex flex-col gap-[3.5rem]">
-            {services.map((service: any, index: any) => (
+            {services?.slice().reverse().map((service: any, index: any) => (
                 <div 
                     key={index}
                     className='py-[4.5rem] bg-[#FFEDD5] rounded-tr-[6rem] sm:rounded-tr-[9rem] xl:rounded-tr-[15rem] rounded-bl-[6rem] sm:rounded-bl-[9rem] xl:rounded-bl-[15rem] text-[#374151] '

@@ -53,7 +53,11 @@ export default function Footer() {
                             <li><Link href={'/blog'}>Articles</Link></li>
                         </ul>
                     </nav>
-                    <button className='mt-[0.5rem] py-[0.5rem] w-[12.5rem] md:w-[8.14rem] rounded border border-[#FFD8AF]'>Get in touch</button>
+                    <Link href={'/locations#form'} scroll >
+                        <button className='mt-[0.5rem] py-[0.5rem] w-[12.5rem] md:w-[8.14rem] rounded border border-[#FFD8AF]'>
+                            Get in touch
+                        </button>
+                    </Link>
                 </div>
 
                 {/* Third box */}

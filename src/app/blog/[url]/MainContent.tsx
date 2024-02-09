@@ -1,10 +1,22 @@
 'use client'
 
+import Image from 'next/image'
 import React, { useEffect } from 'react'
 
 interface stepsContent {
-  nodeType: string,
-  content: { value: string } []
+  nodeType: string | 'data' ,
+  content: { value: string } [];
+  data: {
+    target: {
+      fields: {
+        file: {
+          url: string
+        };
+        title: string;
+        description: string
+      }
+    }
+  }
 }
 
 interface closingContent {
@@ -24,8 +36,18 @@ export default function MainContent({article} : any) {
                   <div key={index} className=''>
                     {entry.nodeType === "heading-3" ? (
                       <h3 className='cormorant text-[1.575rem] leading-[1.575rem] font-semibold'>{entry.content[0].value}</h3>
-                    ): (
+                    ): entry.nodeType === "paragraph" ? (
                         <p>{entry.content[0].value}</p>
+                    ) : (
+                      <Image 
+                        className='w-full h-[12.5rem] sm:h-[16rem] md:h-[25rem] xl:h-[31.25rem] rounded-tr-[2rem]' 
+                        src={entry.data.target.fields.file.url} 
+                        title={entry.data.target.fields.title} 
+                        alt={entry.data.target.fields.description} 
+                        width={20} height={20} 
+                        loading='lazy'  
+                        unoptimized 
+                      />
                     ) }
                   </div>
                 ))}

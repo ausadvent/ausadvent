@@ -49,7 +49,7 @@ export default function Form() {
   }, [formik.values])
 
   return (
-    <div>
+    <div id='form'>
       <h2 className='cormorant text-[#1F2937] text-[1.5rem] md:text-[1.875rem] lg:text-[2.25rem] font-bold '>Contact us</h2>
       <form
         onSubmit={formik.handleSubmit}

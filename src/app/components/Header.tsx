@@ -183,9 +183,11 @@ export default function Header() {
                             </a>
                         </li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'>
-                            <button className='button px-[1rem] text-[1rem] py-[0.25rem] rounded hover:bg-none hover:text-primaryWhite hover:border hover:border-[#FDBA74] transition duration-300 ease-linear '>
-                                Get in touch
-                            </button>
+                            <Link href={'/locations#form'} scroll>
+                                <button className='button px-[1rem] text-[1rem] py-[0.25rem] rounded hover:bg-none hover:text-primaryWhite hover:border hover:border-[#FDBA74] transition duration-300 ease-linear '>
+                                    Get in touch
+                                </button>
+                            </Link>
                         </li>
                     </ul>
                 </nav>
@@ -285,9 +287,11 @@ export default function Header() {
                             </a>
                         </li>
                         <li onClick={() => toggleMenu()}>
-                            <button className='button  text-[1rem] py-[0.25rem] rounded'>
-                                Get in touch
-                            </button>
+                           <Link href={'/locations#form'} scroll>
+                                <button className='button  text-[1rem] py-[0.25rem] rounded'>
+                                    Get in touch
+                                </button>
+                           </Link>
                         </li>
                     </ul>
                 </nav>

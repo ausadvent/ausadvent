@@ -136,7 +136,7 @@ export default function Header() {
                             )}
                         </li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/ndis'} >NDIS</Link></li>
-                        <li className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
+                        <li onClick={() => toggleMenu()} className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
                             <p><Link href={'/locations'}>Locations</Link></p>
                             {!locationsDisplay ? (
                                 <svg 
@@ -243,7 +243,7 @@ export default function Header() {
                         )}
                         <li onClick={() => toggleMenu()}><Link href={'/ndis'}>NDIS</Link></li>
                         <li className='flex items-center gap-[0.2rem]'>
-                            <p onClick={() => {setMobileMenu(false); setLocationsDisplay(false);}}><Link href={'/locations'}>Locations</Link></p>
+                            <p onClick={() => {toggleMenu(); setMobileMenu(false); setLocationsDisplay(false);}}><Link href={'/locations'}>Locations</Link></p>
                             {!locationsDisplay ? (
                                 <svg 
                                     onClick={() => {

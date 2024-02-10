@@ -1,0 +1,43 @@
+{
+  "api": {
+    "ausadventQuotes": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "handleAusadventQuotes"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "handleAusadventQuotes": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_handleAusadventQuotes_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleAusadventQuotes"
+        }
+      ]
+    },
+    "AMPLIFY_function_handleAusadventQuotes_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "handleAusadventQuotes"
+        }
+      ]
+    }
+  }
+}

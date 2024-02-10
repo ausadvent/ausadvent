@@ -6,6 +6,9 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import LatestArticles from './components/LatestArticles'
 
+// Amplify config
+import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
+
 const inter = Inter({ subsets: ['latin'] })
 
 const Noto = Noto_Sans({ subsets: ['latin']})
@@ -33,10 +36,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${Noto.className} ${cormorant.variable}`}>
-        <Header />
-        {children}
-        <LatestArticles />
-        <Footer />
+        <>
+          <ConfigureAmplifyClientSide />
+          <Header />
+          {children}
+          <LatestArticles />
+          <Footer />
+        </>
       </body>
     </html>
   )

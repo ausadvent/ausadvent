@@ -4,6 +4,25 @@ import { useFormik } from 'formik'
 import * as Yup from "yup";
 import React, { useEffect } from 'react'
 
+// Amplify configuration
+import config from '@/amplifyconfiguration.json'
+import { Amplify } from 'aws-amplify';
+import { post } from 'aws-amplify/api';
+
+// Api key
+const apiKey:string|undefined =  process.env.NEXT_PUBLIC_API_KEY;
+
+Amplify.configure(config, {
+  API: {
+    REST: {
+      headers: async () => {
+        return { 'X-Api-Key': apiKey || ''}
+      }
+    }
+  }
+})
+
+
 export default function Form() {
   
   const formik = useFormik({
@@ -38,6 +57,21 @@ export default function Form() {
     onSubmit: async (values) => {
       try {
         // console.log('submitted')
+        let resOperation = post({
+          apiName: 'ausadventQuotes',
+          path: '/items',
+          options: {
+            body: {
+              values
+            }
+          }
+        })
+
+        if((await resOperation.response).statusCode == 200) {
+          console.log('sent to BK')
+        } else {
+          console.log('Not sent')
+        }
       } catch (error) {
         console.error('Error', error)
       }

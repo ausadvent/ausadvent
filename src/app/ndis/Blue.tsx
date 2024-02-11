@@ -3,8 +3,8 @@ import React from 'react'
 import Link from 'next/link'
 
 // Assets
-import Guide from '../../../assets/ndis-blue-1.png'
-import Overwhelm from '../../../assets/ndis-blue-2.png'
+import Guide from '../../../assets/ndis-blue-1.webp'
+import Overwhelm from '../../../assets/ndis-blue-2.webp'
 import Lotus from '../../../assets/ndis-lotus-3.png'
 
 export default function Blue() {

@@ -9,7 +9,7 @@ import Contact from './Contact'
 
 export default function Locations() {
   return (
-    <main className='sm:mx-auto bg-blue-100 pb-[4rem]'>
+    <main className='sm:mx-auto bg-blue-100  pb-[4rem]'>
         <Intro />
         <div className='xl:max-w-[1024px] xl:mx-auto xl:flex xl:gap-[2rem] xl:items-stretch'>
           <div className='xl:flex-1 h-full'>
@@ -19,8 +19,8 @@ export default function Locations() {
             <Western />
           </div>
         </div>
-        <Reach />
-        <Contact />
+          <Reach />
+          <Contact />
     </main>
   )
 }

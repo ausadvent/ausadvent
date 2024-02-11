@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Noto_Sans } from 'next/font/google'
+import { Inter, Noto_Sans, Nunito_Sans } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import Header from './components/Header'
@@ -11,7 +11,7 @@ import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const Noto = Noto_Sans({ subsets: ['latin']})
+const Noto = Nunito_Sans({ subsets: ['latin']})
 
 const cormorant = Cormorant_Garamond({ 
   weight: '700',

@@ -6,10 +6,9 @@ import { fetchArticles } from '../utils/fetchArticles'
 import Image from 'next/image'
 
 // Assets
-import Left from '../../../assets/blue-left.svg'
-import Right from '../../../assets/blue-right.svg'
-import Eye from '../../../assets/white-eye.svg'
-import WhiteRight from '../../../assets/white-arrow.svg'
+import Left from '../../../assets/latest-left.svg'
+import Right from '../../../assets/latest-right.svg'
+import Eye from '../../../assets/yellow-eye.svg'
 import Link from 'next/link'
 
 export default function LatestArticles() {
@@ -29,8 +28,8 @@ export default function LatestArticles() {
 
     useEffect(() => {
         async function fetchingData() {
-        const res:any = await fetchArticles()
-        setArticles(res)
+            const res:any = await fetchArticles()
+            setArticles(res)
         }
         fetchingData()
     }, [])
@@ -79,15 +78,20 @@ export default function LatestArticles() {
                         />
 
                         {/* Text */}
-                        <div className="relative xl:w-full py-[1rem] md:pb-[4rem] lg:pb-[5rem] xl:pb-[8rem] 2xl:pb-[12rem] 3xl:pb-[15rem] px-[0.5rem] h-full flex flex-col justify-end gap-[1rem]">
+                        <div className="relative xl:w-full md:px-[4rem] py-[1rem] md:pb-[4rem] lg:pb-[5rem] xl:pb-[8rem] 2xl:pb-[12rem] 3xl:pb-[15rem] px-[0.5rem] h-full flex flex-col justify-end gap-[1rem]">
                             <div className="md:pb-[1rem] w-full flex justify-between items-start gap-[0.5rem]">
                                 <div className='flex flex-col gap-[1rem] text-primaryWhite'>
                                     <h3 className='cormorant text-[1.875rem] sm:text-[2.25rem] md:text-[3rem] lg:text-[3.75rem] 3xl:text-[4.5rem] font-bold leading-[1.875rem] sm:leading-[2.125rem] md:leading-[3rem] lg:leading-[3.625rem]'>{articles && articles[currentArticle]?.fields?.articleTitle && articles[currentArticle]?.fields?.articleTitle.toUpperCase()}</h3>
                                    {articles && (
                                      <Link href="/blog/[article]" as={linkHref} className="flex gap-[0.5rem] items-center lg:hover:cursor-pointer">
-                                        <Image className='' src={Eye} title='Eye icon' alt='Eye icon' loading='lazy' />
-                                        <p className='2xl:text-[1.125rem]'>Read</p>
-                                        <Image src={WhiteRight} title='Right arrow' alt='Right arrow' loading='lazy' />
+                                        {/* <Image className='' src={Eye} title='Eye icon' alt='Eye icon' loading='lazy' /> */}
+                                        <svg className="w-[1rem] md:w-[1.5rem] h-[1rem] md:h-[1.5rem] text-[#F59E0B]"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  
+                                            <path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="2" />
+                                            <path d="M2 12l1.5 2a11 11 0 0 0 17 0l1.5 -2" />
+                                            <path d="M2 12l1.5 -2a11 11 0 0 1 17 0l1.5 2" />
+                                        </svg>
+                                        <p className='text-[#F59E0B] md:text-[1.25rem]'>Read</p>
+                                        <Image className=' w-4 md:w-6 h-4 md:h-5' src={Right} title='Right arrow' alt='Right arrow' loading='lazy' />
                                     </Link>
                                    )}
                                 </div>
@@ -95,9 +99,9 @@ export default function LatestArticles() {
                             
                             {/* Dots */}
                             <div className='mx-auto  w-full flex justify-center gap-2'>
-                                <button className={` w-[0.3rem] h-[0.3rem] rounded-full bg-[#2563EB] ${currentArticle === 0 && 'bg-white'}`}></button>
-                                <button className={`w-[0.3rem] h-[0.3rem] rounded-full bg-[#2563EB] ${currentArticle === 1 && 'bg-white'}`}></button>
-                                <button className={`w-[0.3rem] h-[0.3rem] rounded-full bg-[#2563EB] ${currentArticle === 2 && 'bg-white'}`}></button>
+                                <button className={` w-[0.5rem] h-[0.5rem] rounded-full bg-[#2563EB] ${currentArticle === 0 && 'bg-white'}`}></button>
+                                <button className={`w-[0.5rem] h-[0.5rem] rounded-full bg-[#2563EB] ${currentArticle === 1 && 'bg-white'}`}></button>
+                                <button className={`w-[0.5rem] h-[0.5rem] rounded-full bg-[#2563EB] ${currentArticle === 2 && 'bg-white'}`}></button>
                             </div>
 
                         </div>

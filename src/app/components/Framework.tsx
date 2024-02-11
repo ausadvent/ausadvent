@@ -58,7 +58,7 @@ export default async function Framework() {
         <p className='mt-[2rem] lg:mt-[4rem] 2xl:mt-[4.5rem] cormorant text-[#1E3A8A] 2xl:w-[48rem] 2xl:mx-auto text-[1.25rem] lg:text-[1.5rem] leading-[1.375rem] lg:leading-[1.625rem] font-bold '>By embracing and embodying these National Standards, Ausadvent Care consistently delivers high-quality services, prioritising the rights, inclusion, and outcomes of our valued participants.</p>
 
         {/* Principles container */}
-        <div className="mt-[2rem] lg:mt-[4rem] 2xl:mt-[4.5rem] flex flex-col lg:flex-row gap-[2rem] mb-[1rem]">
+        <div className="mt-[2rem] lg:mt-[4rem] 2xl:mt-[4.5rem] 3xl:px-[6rem] flex flex-col lg:flex-row gap-[2rem] mb-[1rem]">
             {/* Container # 1 */}
             <div className='relative flex flex-col gap-[1rem] lg:basis-1/2'>
                 <div className='flex items-center gap-[0.5rem]'>

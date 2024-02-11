@@ -4,7 +4,7 @@ import Image from 'next/image'
 // Assets
 import Aboriginal from '../../../assets/Aboriginal-flag.svg'
 import Islanders from '../../../assets/Islanders-flag.svg'
-import Symbol from '../../../assets/footer-lotus.svg'
+import Symbol from '../../../assets/logo.png'
 import Instagram from '../../../assets/Instagram-logo.svg'
 import Facebook from '../../../assets/Facebook-card.svg'
 import Link from 'next/link'
@@ -54,7 +54,7 @@ export default function Footer() {
                         </ul>
                     </nav>
                     <Link href={'/locations#form'} scroll >
-                        <button className='mt-[0.5rem] py-[0.5rem] w-[12.5rem] md:w-[8.14rem] rounded border border-[#FFD8AF]'>
+                        <button className='mt-[0.5rem] py-[0.5rem] w-[12.5rem] md:w-[8.14rem] rounded border-2 border-[#FFD8AF]'>
                             Get in touch
                         </button>
                     </Link>
@@ -64,7 +64,13 @@ export default function Footer() {
                 <div className="mt-[1.5rem] md:mt-0 text-primaryWhite flex flex-col items-center md:items-start text-center md:text-left">
                     <h3 className='text-[1.25rem]'>Contact us</h3>
                     <div className="mt-[1rem] md:mt-[1.5rem] flex flex-col gap-[0.5rem] md:gap-[1rem]">
-                        <p className=" ">Building 6, 2404 Logan Road, Eight Miles Plain QLD 4113</p>
+                        <Link 
+                            href="https://www.google.com/maps/place/Building+6,+2404+Logan+Road,+Eight+Miles+Plain,+QLD+4113" 
+                            target='_blank'
+                            className=" "
+                        >
+                                Building 6, 2404 Logan Road, Eight Miles Plain QLD 4113
+                        </Link>
                         <a href="tel:+61439430007" className="flex gap-[0.5rem] justify-center md:justify-start items-center">
                             <Image className='h-[1rem] w-[1rem]' src={Call} title='Call icon' alt='Phone calling icon' loading='lazy' />
                             <p>+61 0439430007</p>

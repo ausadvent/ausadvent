@@ -13,7 +13,7 @@ export default function Reach() {
                 <h2 className="cormorant text-[#A16207] text-[1.5rem] md:text-[1.875rem] font-bold">To Reach Out</h2>
             </div>
 
-            <p className='mt-[1rem] md:text-[1.125rem] '>Symply call as at</p>
+            <p className='mt-[1rem] md:text-[1.125rem] '>Simply call as at</p>
             <div className="mt-[0.5rem] flex gap-[0.5rem] items-center text-[#2563EB] md:text-[1.125rem] font-semibold">
                 <Image className='w-[1rem] h-[1rem]' src={Phone} title='Phone icon' alt='Phone icon' width={20} height={20} loading='lazy' />
                 <a href="tel:+61439430007">+61 0439430007</a>

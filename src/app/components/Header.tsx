@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { fetchData } from '../utils/fetchServices';
 
 // assets
-import Logo from '../../../assets/logo.png'
+import Logo from '../../../assets/logo-header.svg'
 import Phone from '../../../assets/phone_icon.svg'
 
 export default function Header() {
@@ -49,7 +49,7 @@ export default function Header() {
     const [locationsDisplay, setLocationsDisplay] = useState(false)
 
     return (
-    <div className=''>
+    <div className='z-20 bg-gradient'>
         <div className={`page sm:max-w-full sm:px-[6rem] lg:px-[4rem] 3xl:px-[12rem] py-[1rem] flex justify-between items-center z-30 ${mobileMenu && 'bg-[#1E40AF]'}`}>
             <Link href="/" className='flex items-center gap-[0.5rem]'>
                 <Image
@@ -75,7 +75,7 @@ export default function Header() {
                 }}
             >
                 {mobileMenu === false ? (
-                    <svg className="h-[1rem] w-[1.375rem] text-primaryWhite"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="h-[1.5rem] w-[2rem] text-primaryWhite"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                 ) : (
@@ -84,7 +84,7 @@ export default function Header() {
                             setServicesDisplay(false)
                             setLocationsDisplay(false)
                         }} 
-                        className="h-[1rem] w-[1.33rem] text-primaryWhite"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        className="h-[1.5rem] w-[2rem] text-primaryWhite"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
                 )}
@@ -92,8 +92,8 @@ export default function Header() {
 
             {/* Nav area for desktop */}
             <div className="hidden lg:flex ">
-                <nav className='w-[46.86rem] xl:w-[50rem]' >
-                    <ul className='flex lg:text-[0.875rem] xl:text-[1rem] justify-between items-center text-primaryWhite'>
+                <nav className='w-[46.86rem] xl:w-[55rem]' >
+                    <ul className='flex lg:text-[0.875rem] xl:text-[1.25rem] justify-between items-center text-primaryWhite'>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/'}>Home</Link></li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/about'}>About us</Link></li>
                         <li className='flex items-center gap-[0.2rem] cursor-pointer'>

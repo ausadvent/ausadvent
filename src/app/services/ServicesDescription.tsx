@@ -102,7 +102,7 @@ export default function ServicesDescription({services}:any) {
                             {/* Just boxes container */}
                             <div className="flex flex-col lg:flex-row items-center lg:justify-center lg:items-stretch gap-[1.5rem] lg:gap-[0.5rem] xl:gap-[1rem]">
                                 {/* About box 1*/}
-                                <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
+                                <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] 2xl:justify-center bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
                                     {service?.fields.aboutBox1.content.map((item: any, index: any) => {
                                         if(item.nodeType.startsWith("heading")) {
                                             return (
@@ -118,7 +118,7 @@ export default function ServicesDescription({services}:any) {
                                 <Image className='hidden lg:inline w-[1.64rem] h-[1.5rem] mx-auto self-center' src={RightArrow} title='Right arrow' alt='Right arrow' width={20} height={20} loading='lazy' />
                                 <Image className='lg:hidden w-[1.64rem] h-[1.5rem] mx-auto self-center' src={DownArrow} title='Down arrow' alt='Down arrow' width={20} height={20} loading='lazy' />
                                 {/* About box 2*/}
-                                <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
+                                <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] 2xl:justify-center bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
                                     {service?.fields.aboutBox2.content.map((item: any, index: any) => {
                                         if(item.nodeType.startsWith("heading")) {
                                             return (
@@ -134,7 +134,7 @@ export default function ServicesDescription({services}:any) {
                                 <Image className='hidden lg:inline w-[1.64rem] h-[1.5rem] mx-auto self-center' src={RightArrow} title='Right arrow' alt='Right arrow' width={20} height={20} loading='lazy' />
                                 <Image className='lg:hidden w-[1.64rem] h-[1.5rem] mx-auto self-center' src={DownArrow} title='Down arrow' alt='Down arrow' width={20} height={20} loading='lazy' />
                                 {/* About box 3 */}
-                                <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
+                                <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] 2xl:justify-center bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
                                     {service?.fields.aboutBox3.content.map((item: any, index: any) => {
                                         if(item.nodeType.startsWith("heading")) {
                                             return (
@@ -156,7 +156,7 @@ export default function ServicesDescription({services}:any) {
                         {/* Contact us message */}
                         <div className="mx-auto flex gap-[0.5rem] items-center">
                             <Image className='w-[1rem] h-[1rem]' src={MessageIcon} title='Message icon' alt='Message icon' width={20} height={20} loading='lazy' />
-                            <p className='font-semibold'><span className='text-[#2563EB]'>Contact us</span> for a free consultation</p>
+                            <p className='font-semibold'><Link href={'/locations#form'} scroll className='text-[#2563EB]'>Contact us</Link> for a free consultation</p>
                         </div>
 
                         {/* Note */}

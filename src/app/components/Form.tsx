@@ -135,7 +135,7 @@ export default function Form() {
           </span >
           <input 
             required
-            type="number" 
+            type="text" 
             name='phoneNumber'
             value={formik.values.phoneNumber}
             onChange={formik.handleChange}

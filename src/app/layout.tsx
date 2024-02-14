@@ -8,6 +8,7 @@ import LatestArticles from './components/LatestArticles'
 
 // Amplify config
 import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
+import Support from './components/Support'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -40,6 +41,7 @@ export default function RootLayout({
           <ConfigureAmplifyClientSide />
           <Header />
           {children}
+          <Support />
           <LatestArticles />
           <Footer />
         </>

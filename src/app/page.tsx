@@ -16,7 +16,6 @@ export default function Home() {
       <Values />
       <Independence />
       <Framework />
-      <Support />
     </main>
   )
 }

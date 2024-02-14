@@ -97,7 +97,7 @@ export default function Header() {
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/'}>Home</Link></li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/about'}>About us</Link></li>
                         <li className='flex items-center gap-[0.2rem] cursor-pointer'>
-                            <p className='hover:text-[#F59E0B]'><Link href={'/services'}>Services</Link></p>
+                            <p className='hover:text-[#F59E0B]'><Link href={'/services'} onClick={() => setLocationsDisplay(false)}>Services</Link></p>
                             {!servicesDisplay ? (
                                 <svg 
                                     onClick={() => {
@@ -136,8 +136,9 @@ export default function Header() {
                             )}
                         </li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/ndis'} >NDIS</Link></li>
-                        <li onClick={() => toggleMenu()} className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
-                            <p><Link href={'/locations'}>Locations</Link></p>
+                       
+                         <li className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
+                            <p><Link href={'/locations'} onClick={() => setServicesDisplay(false)}>Locations</Link></p>
                             {!locationsDisplay ? (
                                 <svg 
                                     onClick={() => {
@@ -204,7 +205,7 @@ export default function Header() {
                         <li onClick={() => toggleMenu()}><Link href={'/'} scroll>Home</Link></li>
                         <li onClick={() => toggleMenu()}><Link href={'/about'}>About us</Link></li>
                         <li className='flex items-center gap-[0.2rem]'>
-                            <p><Link href={'/services'} onClick={() => {setMobileMenu(false); setServicesDisplay(false);}}>Services</Link></p>
+                            <p><Link href={'/services'} onClick={() => {setMobileMenu(false); setServicesDisplay(false); setLocationsDisplay(false)}}>Services</Link></p>
                             {!servicesDisplay ? (
                                 <svg 
                                     onClick={() => {

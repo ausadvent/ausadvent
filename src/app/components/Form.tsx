@@ -2,7 +2,8 @@
 
 import { useFormik } from 'formik'
 import * as Yup from "yup";
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import Lottie, {LottieRefCurrentProps} from 'lottie-react';
 
 // Amplify configuration
 import config from '@/amplifyconfiguration.json'
@@ -22,9 +23,24 @@ Amplify.configure(config, {
   }
 })
 
+// Assets
+import Success from '../../../assets/sucess.json'
+import Failure from '../../../assets/failure.json'
 
 export default function Form() {
   
+  // States
+  const [buttonText, setButtonText] = useState('Submit');
+  const [isSending, setIsSending] = useState(false)
+
+  // State to render or hide form when success sending message
+  const [renderForm, setRenderForm] = useState(true);
+  const [renderSuccessMessage, setRenderSuccessMessage] = useState(false);
+
+   // State to render error when sending message
+   const [renderErrorMessage, setRenderErrorMessage] = useState(false);
+
+
   const formik = useFormik({
     // Declare initial values
     initialValues: {
@@ -43,7 +59,7 @@ export default function Form() {
       lastName: Yup.string()
         .max(20, 'Last name must be 20 characters or less')
         .required("Last name is required"),
-      phoneNumber: Yup.number()
+      phoneNumber: Yup.string()
         .min(10, 'Please provide a valid phone number')
         .required("Phone number is required"),
       email: Yup.string()
@@ -55,6 +71,8 @@ export default function Form() {
     }),
 
     onSubmit: async (values) => {
+      setButtonText('Sending...')
+      setIsSending(true)
       try {
         // console.log('submitted')
         let resOperation = post({
@@ -68,120 +86,162 @@ export default function Form() {
         })
 
         if((await resOperation.response).statusCode == 200) {
-          console.log('sent to BK')
+          setRenderForm(!renderForm)
+          setRenderSuccessMessage(true)
+          setTimeout(() => {
+            setButtonText('Message sent')
+            setIsSending(false)
+            console.log('sent to BK')
+          }, 2000)
         } else {
-          console.log('Not sent')
+          setRenderForm(false);
+          setRenderErrorMessage(true)
+          setTimeout(() => {
+            setButtonText('Message not sent')
+            setIsSending(false)
+          }, 2000)
         }
       } catch (error) {
-        console.error('Error', error)
+        setRenderForm(false)
+        setRenderErrorMessage(true)
+        setTimeout(() => {
+          // Reset the button text and indicate that the form has been sent
+          setButtonText('Message not sent');
+          setIsSending(false);
+        }, 4000);
       }
     }
   })
   
-  useEffect(() => {
-    console.log(formik.values)
-  }, [formik.values])
-
+  
   return (
     <div id='form' className=''>
       <h2 className='cormorant text-[#1F2937] text-[1.5rem] md:text-[1.875rem] lg:text-[2.25rem] font-bold '>Contact us</h2>
-      <form
-        onSubmit={formik.handleSubmit}
-        className='mt-[0.5rem] lg:mt-[2rem] px-[1rem] md:px-[3rem] py-[2rem] lg:py-[3rem]  bg-white rounded-tr-[2rem] rounded-bl-[1rem] flex flex-col gap-[1rem]'
-      >
-        <label htmlFor="firstName" className="flex flex-col gap-[0.5rem]">
-          <span className={`${formik.touched.firstName && formik.errors.firstName ? 'text-red-600' : 'text-black'}`}>
-            {formik.touched.firstName && formik.errors.firstName 
-              ? formik.errors.firstName 
-              : 'First name'
-            }
-          </span>
-          <input 
-            required
-            type="text" 
-            name='firstName'
-            value={formik.values.firstName}
-            onChange={formik.handleChange}
-            placeholder='Enter your first name'
-            onBlur={formik.handleBlur}
-            className='rounded border border-[#9CA3AF] p-1 md:p-3 '
-          />
-        </label>
-        <label htmlFor="lastName" className="flex flex-col gap-[0.5rem]">
-          <span className={`${formik.touched.lastName && formik.errors.lastName ? 'text-red-600' : 'text-black'}`}>
-            {formik.touched.lastName && formik.errors.lastName 
-              ? formik.errors.lastName 
-              : 'Last name'
-            }
-          </span >
-          <input 
-            required
-            type="text" 
-            name='lastName'
-            value={formik.values.lastName}
-            onChange={formik.handleChange}
-            placeholder='Enter your last name'
-            onBlur={formik.handleBlur}
-            className='rounded border border-[#9CA3AF] p-1 md:p-3'
-          />
-          
-        </label>
-        <label htmlFor="phoneNumber" className="flex flex-col gap-[0.5rem]">
-          <span className={`${formik.touched.phoneNumber && formik.errors.phoneNumber ? 'text-red-600' : 'text-black'}`}>
-            {formik.touched.phoneNumber && formik.errors.phoneNumber 
-              ? formik.errors.phoneNumber 
-              : 'Phone number'
-            }
-          </span >
-          <input 
-            required
-            type="text" 
-            name='phoneNumber'
-            value={formik.values.phoneNumber}
-            onChange={formik.handleChange}
-            placeholder='Enter your phone number'
-            onBlur={formik.handleBlur}
-            className='rounded border border-[#9CA3AF] p-1 md:p-3'
-          />
-        </label>
-        <label htmlFor="email" className="flex flex-col gap-[0.5rem]">
-          <span className={`${formik.touched.email && formik.errors.email ? 'text-red-600' : 'text-black'}`}>
-            {formik.touched.email && formik.errors.email 
-              ? formik.errors.email 
-              : 'Email address'
-            }
-          </span >
-          <input 
-            required
-            type="email" 
-            name='email'
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            placeholder='Enter your email address'
-            onBlur={formik.handleBlur}
-            className='rounded border border-[#9CA3AF] p-1 md:p-3 '
-          />
-        </label>
-        <label htmlFor="message" className="flex flex-col gap-[0.5rem]">
-          <span className={`${formik.touched.message && formik.errors.message ? 'text-red-600' : 'text-black'}`}>
-            {formik.touched.message && formik.errors.message 
-              ? formik.errors.message 
-              : 'Message'
-            }
-          </span >
-          <textarea 
-            required 
-            name='message'
-            value={formik.values.message}
-            onChange={formik.handleChange}
-            placeholder='Leave us a message'
-            onBlur={formik.handleBlur}
-            className='rounded border border-[#9CA3AF] p-1 md:p-3  min-h-[5rem]'
-          />
-        </label>
+      {renderForm && (
+        <form
+          onSubmit={formik.handleSubmit}
+          className='mt-[0.5rem] lg:mt-[2rem] px-[1rem] md:px-[3rem] py-[2rem] lg:py-[3rem]  bg-white rounded-tr-[2rem] rounded-bl-[1rem] flex flex-col gap-[1rem]'
+        >
+          <label htmlFor="firstName" className="flex flex-col gap-[0.5rem]">
+            <span className={`${formik.touched.firstName && formik.errors.firstName ? 'text-red-600' : 'text-black'}`}>
+              {formik.touched.firstName && formik.errors.firstName 
+                ? formik.errors.firstName 
+                : 'First name'
+              }
+            </span>
+            <input 
+              required
+              type="text" 
+              name='firstName'
+              value={formik.values.firstName}
+              onChange={formik.handleChange}
+              placeholder='Enter your first name'
+              onBlur={formik.handleBlur}
+              className='rounded border border-[#9CA3AF] p-1 md:p-3 '
+            />
+          </label>
+          <label htmlFor="lastName" className="flex flex-col gap-[0.5rem]">
+            <span className={`${formik.touched.lastName && formik.errors.lastName ? 'text-red-600' : 'text-black'}`}>
+              {formik.touched.lastName && formik.errors.lastName 
+                ? formik.errors.lastName 
+                : 'Last name'
+              }
+            </span >
+            <input 
+              required
+              type="text" 
+              name='lastName'
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              placeholder='Enter your last name'
+              onBlur={formik.handleBlur}
+              className='rounded border border-[#9CA3AF] p-1 md:p-3'
+            />
+            
+          </label>
+          <label htmlFor="phoneNumber" className="flex flex-col gap-[0.5rem]">
+            <span className={`${formik.touched.phoneNumber && formik.errors.phoneNumber ? 'text-red-600' : 'text-black'}`}>
+              {formik.touched.phoneNumber && formik.errors.phoneNumber 
+                ? formik.errors.phoneNumber 
+                : 'Phone number'
+              }
+            </span >
+            <input 
+              required
+              type="text" 
+              name='phoneNumber'
+              value={formik.values.phoneNumber}
+              onChange={formik.handleChange}
+              placeholder='Enter your phone number'
+              onBlur={formik.handleBlur}
+              className='rounded border border-[#9CA3AF] p-1 md:p-3'
+            />
+          </label>
+          <label htmlFor="email" className="flex flex-col gap-[0.5rem]">
+            <span className={`${formik.touched.email && formik.errors.email ? 'text-red-600' : 'text-black'}`}>
+              {formik.touched.email && formik.errors.email 
+                ? formik.errors.email 
+                : 'Email address'
+              }
+            </span >
+            <input 
+              required
+              type="email" 
+              name='email'
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              placeholder='Enter your email address'
+              onBlur={formik.handleBlur}
+              className='rounded border border-[#9CA3AF] p-1 md:p-3 '
+            />
+          </label>
+          <label htmlFor="message" className="flex flex-col gap-[0.5rem]">
+            <span className={`${formik.touched.message && formik.errors.message ? 'text-red-600' : 'text-black'}`}>
+              {formik.touched.message && formik.errors.message 
+                ? formik.errors.message 
+                : 'Message'
+              }
+            </span >
+            <textarea 
+              required 
+              name='message'
+              value={formik.values.message}
+              onChange={formik.handleChange}
+              placeholder='Leave us a message'
+              onBlur={formik.handleBlur}
+              className='rounded border border-[#9CA3AF] p-1 md:p-3  min-h-[5rem]'
+            />
+          </label>
 
-        <button className='bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] w-full py-[0.5rem] lg:py-[1rem] rounded text-center lg:text-[1.125rem] font-bold'>Submit</button>
-      </form>
+          <button className='bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] w-full py-[0.5rem] lg:py-[1rem] rounded text-center lg:text-[1.125rem] font-bold'>
+            {buttonText}
+          </button>
+        </form>
+      )}
+
+      {/* Render succes animation */}
+      {!renderForm && renderSuccessMessage && (
+        <div className='flex flex-col  items-center'>
+          <Lottie 
+            className=''
+            animationData={Success}
+          />
+          {/* <div className='border-b-2 border-pink-200 w-1/3'></div> */}
+          <h3 className='cormorant text-[1.25rem] xl:text-[1.875rem] font-bold'>Your message has been sent</h3>
+        </div>
+      )}
+
+      {/* Render error animation when the form could not be sent */}
+      {!renderForm && renderErrorMessage && (
+         <div className='flex flex-col  items-center'>
+          <Lottie 
+            className=''
+            animationData={Failure}
+          />
+          {/* <div className='border-b-2 border-pink-200 w-1/3'></div> */}
+          <h3 className='cormorant text-[1.25rem] leading-[1.25rem] font-bold text-center'>Your message could not been sent. Please try again later</h3>
+        </div>
+      )}
     </div>
   )
 }

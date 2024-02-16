@@ -4,7 +4,7 @@ import Image from 'next/image'
 // Assets
 import Aboriginal from '../../../assets/Aboriginal-flag.svg'
 import Islanders from '../../../assets/Islanders-flag.svg'
-import Symbol from '../../../assets/logo.png'
+import Symbol from '../../../assets/Logo-footer.png'
 import Instagram from '../../../assets/Instagram-logo.svg'
 import Facebook from '../../../assets/Facebook-card.svg'
 import Link from 'next/link'

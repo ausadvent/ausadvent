@@ -46,7 +46,7 @@ export default async function Values() {
                 >
                     <Image 
                         src={value?.fields?.valueImage.fields.file.url} 
-                        className='w-[6rem] h-[6rem] md:w-[16rem] md:h-[16rem] xl:w-[6rem] xl:h-[6rem]'
+                        className='w-[8rem] h-[8rem] md:w-[16rem] md:h-[16rem] xl:w-[6rem] xl:h-[6rem]'
                         alt={value?.fields?.valueImage.fields.description} 
                         title={value?.fields?.valueImage.fields.title}
                         width={22.37}

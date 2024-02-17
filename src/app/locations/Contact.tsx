@@ -4,7 +4,7 @@ import Form from '../components/Form'
 export default function Contact() {
   return (
     <section className='page sm:mx-auto mt-[2rem] md:mt-[4rem] '>
-        <div className='bg-[#FEF9C3] rounded-tr-[2rem] rounded-bl-[1rem] px-[1rem] py-[2rem] md:p-[2rem] lg:p-[3rem] xl:flex xl:gap-[2rem]'>
+        <div className='bg-[#FEF9C3] rounded-tr-[2rem] xl:rounded-tr-[4rem] rounded-bl-[1rem] xl:rounded-bl-[3rem] px-[1rem] py-[2rem] md:p-[2rem] lg:p-[3rem] xl:flex xl:gap-[2rem]'>
             {/* Yellow container */}
             <div className='flex flex-col gap-[1rem] lg:gap-[2rem] py-[1rem] md:py-[2rem] xl:w-1/3 xl:self-center'>
                 <div className=''>

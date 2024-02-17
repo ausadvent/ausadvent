@@ -15,7 +15,7 @@
       "function": {
         "handleAusadventQuotes": {
           "deploymentBucketName": "amplify-amplify86e9931b47654-staging-91213-deployment",
-          "s3Key": "amplify-builds/handleAusadventQuotes-2b4362457038542b4542-build.zip"
+          "s3Key": "amplify-builds/handleAusadventQuotes-78752f396a6846334b72-build.zip"
         }
       },
       "api": {

@@ -13,7 +13,7 @@ export default function Western() {
                 <h2 className="cormorant text-[#6B7280] md:text-[1.5rem] font-bold">Western Australia</h2>
                 <div className=' border-b-[0.3125rem] border-[#F59E0B] w-[5.375rem] lg:-mt-[1rem]  '></div>
                 <p className='hidden lg:inline xl:hidden  text-[#6B7280] md:text-[1.125rem] '>Level 6, 140 William Street, Perth, Western Australia 6000</p>
-                <p className='hidden lg:inline xl:hidden   text-[#6B7280]  md:text-[1.125rem] font-semibold'>We have expanded our services to Western Australia, operating throughout the North and south Perth.</p>
+                <p className='hidden lg:inline xl:hidden   text-[#6B7280]  md:text-[1.125rem] font-semibold'>We have expanded our services to Western Australia, operating throughout Perth and Western Australia.</p>
             </div>
             <div className='lg:w-1/2 xl:w-full xl:flex flex-col gap-[1rem]'>
               <p className='lg:hidden xl:inline mt-[1rem] text-[#6B7280] md:text-[1.125rem] '>Level 6, 140 William Street, Perth, Western Australia 6000</p>

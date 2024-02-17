@@ -12,7 +12,7 @@ export default function Queensland() {
               <h2 className="cormorant text-[#6B7280] md:text-[1.5rem] font-bold">Queensland</h2>
               <div className=' border-b-[0.3125rem] border-[#F59E0B] w-[5.375rem] lg:-mt-[1rem]  '></div>
               <p className='hidden lg:inline xl:hidden  text-[#6B7280] md:text-[1.125rem] '>Building 6, 2404 Logan Road, Eight Miles Plain QLD 4113</p>
-              <p className='hidden lg:inline xl:hidden   text-[#6B7280]  md:text-[1.125rem] font-semibold'>Operating throughout Toowoomba, Rockhampton, Ipswich, and South Brisbane regions..</p>
+              <p className='hidden lg:inline xl:hidden   text-[#6B7280]  md:text-[1.125rem] font-semibold'>Operating in Queensland, throughout Toowoomba, Rockhampton, Ipswich, Gold Coast, North & South Brisbane and The Sunshine Coast.</p>
           </div>
           <div className='lg:w-1/2 xl:w-full xl:flex flex-col gap-[1rem]'>
             <p className='lg:hidden xl:inline mt-[1rem] text-[#6B7280] md:text-[1.125rem] '>Building 6, 2404 Logan Road, Eight Miles Plain QLD 4113</p>

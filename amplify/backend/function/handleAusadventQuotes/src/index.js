@@ -19,22 +19,30 @@ exports.handler = async (event) => {
 
     const parsedBody = JSON.parse(event.body);
 
+
     try {
         const resToClient = await sendMailToCustomers(parsedBody)
         console.log('sending mail to client', resToClient)
+        
         const resToAu = await sendMailToAu(parsedBody)
         console.log('sending mail to Ausadvent', resToAu)
 
-        return {
-            statusCode: 200,
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Headers": "*"
-           },
-           body: JSON.stringify({status: 200}),
+        if(resToClient && resToAu) {
+            return {
+                statusCode: 200,
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "*"
+                },
+                body: JSON.stringify({ status: 200 }),
+            };
+        } else {
+            throw new Error('sending failed')
         }
+         
     } catch (error) {
         console.error('error', error)
+        
         return {
             statusCode: 400,
             body: 'Sending failed'
@@ -130,6 +138,10 @@ const sendMailToCustomers = async(body) => {
     try {
         const resultForClients = await sesClient.send(sendEmailCommand)
         console.log('Result mail to cx', resultForClients);
+
+        return {
+            statusCode: 200
+        }
     } catch (error) {
         console.error('error', error)
     }
@@ -223,6 +235,10 @@ const sendMailToAu = async(body) => {
     try {
         const resultForAusadvent = await sesClient.send(sendEmailCommand)
         console.log('Result mail to cx', resultForAusadvent);
+
+        return {
+            statusCode: 200
+        }
     } catch (error) {
         console.error('error', error)
     }

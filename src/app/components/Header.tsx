@@ -62,10 +62,10 @@ export default function Header() {
                     loading='eager'
                 />
 
-                <h1 className='flex flex-col font-bold text-[0.75rem] leading-[0.75rem] text-primaryWhite'>
+                <h2 className='flex flex-col font-bold text-[0.75rem] leading-[0.75rem] text-primaryWhite'>
                     <p>AUSADVENT</p>
                     <p className=''>CARE</p>
-                </h1>
+                </h2>
             </Link>
             <button
                 id='hamburguer-button'
@@ -179,7 +179,7 @@ export default function Header() {
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/blog'}>Blog</Link></li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'>
                             <a href="tel:+61439430007" className='flex items-center gap-1'>
-                                <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' alt='phone ringing icon' />
+                                <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' title='phone ringing icon' alt='phone ringing icon' width={20} height={20} loading='eager' />
                                 <p className='font-bold'>+61 0439430007</p>
                             </a>
                         </li>
@@ -283,7 +283,7 @@ export default function Header() {
                         <li onClick={() => toggleMenu()}><Link href={'/blog'}>Blog</Link></li>
                         <li onClick={() => toggleMenu()}>
                             <a href="tel:+61439430007" className='flex items-center gap-1'>
-                                <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' alt='phone ringing icon' />
+                                <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' title='phone ringing icon' alt='phone ringing icon' width={20} height={20} loading='eager' />
                                 <p>+61 0439430007</p>
                             </a>
                         </li>

@@ -10,9 +10,14 @@ export default function Intro() {
             {/* Background image */}
             <div className="absolute inset-0 h-[41.5rem] sm:h-[45.5rem] md:h-[48.5rem] xl:h-[62.5rem] -z-10">
                 <Image 
-                    src={BgImage} 
-                    alt='Hero image, hands holding with support' 
                     className='absolute inset-0 w-full h-full object-cover opacity-80'
+                    src={BgImage} 
+                    title='Hero image'
+                    alt='Hero image, hands holding with support'
+                    width={20}
+                    height={20}
+                    loading='eager'
+                    unoptimized 
                 />
                 <div className="absolute inset-0 bg-black opacity-40" aria-hidden="true"></div>
             </div>

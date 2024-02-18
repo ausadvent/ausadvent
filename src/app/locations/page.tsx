@@ -1,4 +1,5 @@
 import React from 'react'
+import { Metadata } from 'next'
 
 // Components
 import Queensland from './Queensland'
@@ -6,6 +7,29 @@ import Western from './Western'
 import Intro from './Intro'
 import Reach from './Reach'
 import Contact from './Contact'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Locations',
+    description: 'Ausadvent Care provides NDIS solutions in Queensland and Western Australia',
+    openGraph: {
+      title: 'Locations',
+      description: 'Ausadvent Care provides NDIS solutions in Queensland and Western Australia',
+      url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png',
+      type: 'website',
+      images: [
+        {
+          url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png'
+        }
+      ]
+    },
+    robots: {
+      index: true,
+      follow: true
+    }
+  }
+}
+
 
 export default function Locations() {
   return (

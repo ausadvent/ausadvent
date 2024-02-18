@@ -8,6 +8,29 @@ import ServicesDescription from './ServicesDescription'
 import Framework from '../components/Framework'
 import Support from '../components/Support'
 import Jump from './Jump'
+import { Metadata } from 'next'
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Services',
+    description: 'Services of Ausadvent Care, a national champion for independent living, guiding individuals towards vibrant lives throughout Queensland and Western Australia',
+    openGraph: {
+      title: 'Service of Ausadvent Care',
+      description: 'Services of Ausadvent Care, a national champion for independent living, guiding individuals towards vibrant lives throughout Queensland and Western Australia',
+      url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png',
+      type: 'website',
+      images: [
+        {
+          url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png'
+        }
+      ]
+    },
+    robots: {
+      index: true,
+      follow: true
+    }
+  }
+}
 
 export default async function Services() {
     const services = await fetchData()

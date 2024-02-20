@@ -119,7 +119,7 @@ export default function Header() {
                             )}
                             {/* Services display for desktop */}
                             {servicesDisplay && (
-                                <div className='absolute pl-[0.1rem] mt-[10rem] flex flex-col gap-[0.5rem] text-[1rem] text-secondaryWhite animate-open-services origin-top-left'>
+                                <div className='absolute bg-[#2563EB] rounded border border-[#F59E0B] mt-[11rem] py-[0.5rem] px-[0.5rem] flex flex-col gap-[0.5rem] text-[0.8rem] text-secondaryWhite animate-open-services origin-top-left'>
                                     {(servicesFetched as any).map((service:any, index:any) => (
                                         <Link 
                                             key={index}
@@ -137,7 +137,7 @@ export default function Header() {
                         </li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/ndis'} >NDIS</Link></li>
                        
-                         <li className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
+                        <li className='flex items-center gap-[0.2rem] hover:text-[#F59E0B] cursor-pointer'>
                             <p><Link href={'/locations'} onClick={() => setServicesDisplay(false)}>Locations</Link></p>
                             {!locationsDisplay ? (
                                 <svg 
@@ -160,7 +160,7 @@ export default function Header() {
                             )}
                             {/* Locations display for desktop */}
                             {locationsDisplay && (
-                                <div className='absolute pl-[0.1rem] mt-[5.5rem] flex flex-col gap-[0.5rem] text-[1rem] text-secondaryWhite animate-open-services origin-top-left'>
+                                <div className='absolute bg-[#2563EB] rounded border border-[#F59E0B] mt-[6.5rem] py-[0.5rem] px-[0.5rem] flex flex-col gap-[0.5rem] text-[0.8rem] text-secondaryWhite animate-open-services origin-top-left'>
                                     {locations.map((location:any) => (
                                         <Link
                                             key={location.id}

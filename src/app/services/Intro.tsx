@@ -26,7 +26,7 @@ export default function Intro() {
                     </Link>
                 </div>
                 <Link href={'/locations#form'} scroll >
-                  <button className='2xl:hidden w-full lg:w-2/3 xl:w-[31.25rem] lg:mx-auto xl:mr-0 text-black bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] border py-[0.5rem] lg:py-[1rem] rounded-lg text-[1.125rem]'>
+                  <button className='2xl:hidden w-full lg:w-2/3 xl:w-[31.25rem] lg:mx-auto xl:mr-0 text-black bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74]  py-[0.5rem] lg:py-[1rem] rounded-lg text-[1.125rem]'>
                     Contact us
                   </button>
                 </Link>

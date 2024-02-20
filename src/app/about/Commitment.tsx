@@ -12,7 +12,9 @@ export default function Commitment() {
             <h3 className='cormorant text-[1.5rem] lg:text-[1.875rem] 2xl:text-[2.25rem] 3xl:text-[3rem] leading-[1.625rem] 2xl:leading-[2.375rem] 3xl:leading-[3.125rem] font-bold text-blueHigher'>Your Needs Blossom with Personalised Services</h3>
             <div className="flex flex-col gap-[1rem] lg:text-[1.125rem] 2xl:text-[1.25rem]">
                 <p className="text-[#374151]">From reliable transportation and personal care to social support and skill development, <strong>Ausadvent Care</strong> tailors its services to your unique needs and NDIS goals. </p>
-                <p className="text-[#374151]">Whether you&apos;re seeking <Link className='text-[#2563EB] font-bold' href={`/services#supported-independent-living`}>Supported Independent Living</Link> in your own home, exploring <Link className='text-[#2563EB] font-bold' href={`/services#short-term-accommodation`}>Short Term Accommodation</Link> options, or customising your <Link className='text-[#2563EB] font-bold' href={`/services#individual-living-options`}>Individual Living Options</Link>, we&apos;ll work alongside you to craft a plan that helps you bloom.</p>
+                <p className="text-[#374151]">
+                  Whether you&apos;re seeking <Link className='text-[#2563EB] font-bold' href={`/services#supported-independent-living`}>Supported Independent Living</Link> in your own home, exploring <Link className='text-[#2563EB] font-bold' href={`/services#short-term-accommodation`}>Short Term </Link> or <Link className='text-[#2563EB] font-bold' href={`/services#medium-term-accommodation`}>Medium Term </Link> Accommodation options, or customising your <Link className='text-[#2563EB] font-bold' href={`/services#individualised-living-options`}>Individualised Living Options</Link>, we&apos;ll work alongside you to craft a plan that helps you bloom.
+                  </p>
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 // assets
 import Lotus from '../../../assets/cta-yellow-logo.png'
+import Link from 'next/link'
 
 export default function Support() {
   return (
@@ -15,9 +16,11 @@ export default function Support() {
             <p className=' text-blueHigher text-[1.25rem] md:text-[1.5rem] xl:text-[1.875rem] 3xl:text-[2.25rem] leading-[1.25rem] md:leading-[1.5rem] xl:leading-[1.875rem] 3xl:leading-[2.25rem] font-bold'>
               Get a free consultation and unlock your NDIS potential
             </p>
-            <button className=' py-[1rem] md:py-[1.5rem] rounded text-[1.125rem] md:text-[1.25rem] 3xl:text-[1.5rem] font-semibold w-full text-primaryWhite bg-gradient-to-b from-[#1D51C3] to-[#3E7BFF]'>
-              Contact us
-            </button>
+            <Link href={'/locations#form'} scroll >
+              <button className=' py-[1rem] md:py-[1.5rem] rounded text-[1.125rem] md:text-[1.25rem] 3xl:text-[1.5rem] font-semibold w-full text-primaryWhite bg-gradient-to-b from-[#1D51C3] to-[#3E7BFF]'>
+                Contact us
+              </button>
+            </Link>
           </div>
         </div>
       </div>

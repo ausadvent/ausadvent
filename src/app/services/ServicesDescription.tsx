@@ -13,7 +13,7 @@ import MessageIcon2 from '../../../assets/message-icon-2.svg'
 import divider from '../../../assets/divider.svg'
 
 export default function ServicesDescription({services}:any) {
-    
+
     return (
     <div className='bg-[#FFD8AF] rounded-3xl'>
         <div className="py-[1.5rem] flex flex-col gap-[3.5rem]">
@@ -150,7 +150,7 @@ export default function ServicesDescription({services}:any) {
 
                             </div>
 
-                            <p>Learn more about <Link className='text-[#2563EB] font-semibold' target='_blank' href={'https://www.ndis.gov.au/providers/housing-and-living-supports-and-services/supported-independent-living-provider-guidance/sil-funding-and-budgets' }> NDIS funding for SIL</Link> on the official website</p>
+                            <p>Learn more about <Link className='text-[#2563EB] font-semibold' target='_blank' href={`${service.fields.ndisLink}`}> NDIS funding for {service.fields.serviceAcronym}</Link> on the official website</p>
                         </div>
                         
                         {/* Contact us message */}

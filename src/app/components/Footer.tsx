@@ -4,7 +4,7 @@ import Image from 'next/image'
 // Assets
 import Aboriginal from '../../../assets/Aboriginal-flag.svg'
 import Islanders from '../../../assets/Islanders-flag.svg'
-import Symbol from '../../../assets/Logo-footer.png'
+import Symbol from '../../../assets/logo-footer.svg'
 import Instagram from '../../../assets/Instagram-logo.svg'
 import Facebook from '../../../assets/Facebook-card.svg'
 import Link from 'next/link'
@@ -30,7 +30,7 @@ export default function Footer() {
                 <div className="flex flex-col items-center gap-[0.5rem] md:gap-[2rem] xl:max-w-[11.6rem] 2xl:max-w-[24rem]">
                     <div className='flex flex-col md:flex-row gap-[0.5rem] items-center'>
                         <Image src={Symbol} className='w-[2rem] md:w-[2.9rem] h-[1.4rem] md:h-[2rem]' title='Ausadvent symbol' alt='Lotus flower' width={20} height={20} loading='lazy' />
-                        <h2 className='font-bold text-[#93C5FD] text-center md:text-left leading-4'>AUSADVENT <br /> CARE</h2>
+                        <h2 className='font-bold text-primaryWhite text-center md:text-left leading-4'>AUSADVENT <br /> CARE</h2>
                     </div>
                     <p className='text-primaryWhite text-[0.875rem] 2xl:text-[1.125rem] leading-[1.25rem] 2xl:leading-[1.625rem] text-center md:text-left '>At Ausadvent Care, we&apos;re more than just care providers; we&apos;re compassionate partners on your journey towards independence, growth, and fulfilment. </p>
                     <p className='text-primaryWhite text-[0.875rem] text-center leading-[1.25rem] md:hidden'>Connect with us</p>

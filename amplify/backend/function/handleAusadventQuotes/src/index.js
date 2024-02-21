@@ -132,7 +132,7 @@ const sendMailToCustomers = async(body) => {
     const sendEmailCommand = createSendEmailCommand(
         `${body.values.email}`,
         // Change it for the CX email address
-        "bytechodigital@gmail.com"
+        "admin@ausadventcare.com.au"
     );
 
     try {
@@ -228,8 +228,8 @@ const sendMailToAu = async(body) => {
 
     const sendEmailCommand = createSendEmailCommand(
         // Change it for the CX email address
-        "bytechodigital@gmail.com",
-        `${body.values.email}`,
+        "admin@ausadventcare.com.au",
+        `no-reply@ausadventcare.com.au`,
     );
 
     try {

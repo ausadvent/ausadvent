@@ -16,11 +16,11 @@ export async function generateMetadata(): Promise<Metadata> {
       openGraph: {
         title: 'Blog',
         description: 'Latest articles about NDIS solutions',
-        url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png',
+        url: 'https://www.ausadventcare.com.au/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fblog-hero.1e100538.webp&w=3840&q=75',
         type: 'website',
         images: [
           {
-            url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png'
+            url: 'https://www.ausadventcare.com.au/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fblog-hero.1e100538.webp&w=3840&q=75'
           }
         ]
       },

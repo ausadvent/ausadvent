@@ -17,11 +17,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: 'Service of Ausadvent Care',
       description: 'Services of Ausadvent Care, a national champion for independent living, guiding individuals towards vibrant lives throughout Queensland and Western Australia',
-      url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png',
+      url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png',
       type: 'website',
       images: [
         {
-          url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png'
+          url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png'
         }
       ]
     },

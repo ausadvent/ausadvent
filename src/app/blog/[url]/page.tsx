@@ -19,17 +19,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     // Find the current article
     const currentArticle:any = articles.find(entry => entry.fields.articleUrl === params.url)
   
+  // Ensure the image URL is absolute
+  const imageUrl = currentArticle?.fields.articleMainImage.fields.file.url;
+  const absoluteImageUrl = imageUrl.startsWith("http")
+    ? imageUrl
+    : `https:${imageUrl}`;
+
   return {
     title: `${currentArticle.fields.articleTitle}`,
     description: `${currentArticle.fields.introductoryText.content[0].content[0].value.slice(0, 70)}`,
     openGraph: {
       title: `${currentArticle.fields.articleTitle}`,
       description: `${currentArticle.fields.introductoryText.content[0].content[0].value.slice(0, 70)}`,
-      url: `${currentArticle?.fields.articleMainImage.fields.file.url}`,
+      url: absoluteImageUrl,
       type: 'website',
       images: [
         {
-          url: `${currentArticle?.fields.articleMainImage.fields.file.url}`
+          url: absoluteImageUrl
         }
       ]
     },

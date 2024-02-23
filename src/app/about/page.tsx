@@ -17,11 +17,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: 'About Ausadvent Care',
       description: 'About page of Ausadvent Care, a registered care provider located in Queensland and Western Australia',
-      url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png',
+      url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png',
       type: 'website',
       images: [
         {
-          url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png'
+          url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png'
         }
       ]
     },

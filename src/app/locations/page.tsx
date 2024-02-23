@@ -15,11 +15,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: 'Locations',
       description: 'Ausadvent Care provides NDIS solutions in Queensland and Western Australia',
-      url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png',
+      url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png',
       type: 'website',
       images: [
         {
-          url: 'https://www.aihr.com/wp-content/uploads/Learning-and-development-manager.png'
+          url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png'
         }
       ]
     },

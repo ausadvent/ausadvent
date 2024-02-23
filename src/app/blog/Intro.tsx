@@ -11,7 +11,8 @@ export default function Intro() {
             <div className="absolute inset-0 h-[41.5rem] sm:h-[45.5rem] md:h-[48.5rem] xl:h-[62.5rem] -z-10">
                 <Image 
                     src={BgImage} 
-                    alt='Hero image, hands holding with support' 
+                    title='Hero image'
+                    alt='Two women with a laptop' 
                     className='absolute inset-0 w-full h-full object-cover opacity-80'
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#1e3a8a] to-transparent opacity-90 " aria-hidden="true"></div>

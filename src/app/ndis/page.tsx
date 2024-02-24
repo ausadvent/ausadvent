@@ -14,11 +14,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: 'Service of Ausadvent Care',
       description: 'Navigate through the NDIS landscape with ausadvent care, a dedicated group of experts in Brisbane and Perth',
-      url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png',
+      url: 'https://www.ausadventcare.com.au/_next/static/media/ndis-hero.717476c0.webp',
       type: 'website',
       images: [
         {
-          url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png'
+          url: 'https://www.ausadventcare.com.au/_next/static/media/ndis-hero.717476c0.webp'
         }
       ]
     },

@@ -2,8 +2,13 @@
 
 import { useFormik } from 'formik'
 import * as Yup from "yup";
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Lottie, {LottieRefCurrentProps} from 'lottie-react';
+import { sendGAEvent } from '@next/third-parties/google';
+
+// Assets
+import Success from '../../../assets/sucess.json'
+import Failure from '../../../assets/failure.json'
 
 // Amplify configuration
 import config from '@/amplifyconfiguration.json'
@@ -23,9 +28,7 @@ Amplify.configure(config, {
   }
 })
 
-// Assets
-import Success from '../../../assets/sucess.json'
-import Failure from '../../../assets/failure.json'
+
 
 export default function Form() {
   
@@ -213,7 +216,10 @@ export default function Form() {
             />
           </label>
 
-          <button className='bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] w-full py-[0.5rem] lg:py-[1rem] rounded text-center lg:text-[1.125rem] font-bold'>
+          <button 
+            className='bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] w-full py-[0.5rem] lg:py-[1rem] rounded text-center lg:text-[1.125rem] font-bold'
+            onClick={(() => sendGAEvent({ event: 'contactButtonClicked', value: 'Clicked from Home Intro'}))}
+          >
             {buttonText}
           </button>
         </form>

@@ -13,6 +13,9 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       title: 'Blog',
       description: 'Latest articles about NDIS solutions',
+      alternates: {
+        canonical: 'https://www.ausadventcare.com.au/blog'
+      },
       openGraph: {
         title: 'Blog',
         description: 'Latest articles about NDIS solutions',

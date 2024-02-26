@@ -17,7 +17,7 @@ export default function Intro() {
                     alt='Hero image, hands holding with support'
                     width={20}
                     height={20}
-                    loading='eager'
+                    priority={true}
                     unoptimized 
                 />
                 <div className="absolute inset-0 bg-black opacity-40" aria-hidden="true"></div>

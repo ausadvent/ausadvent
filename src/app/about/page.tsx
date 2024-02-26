@@ -14,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'About page',
     description: 'About page of Ausadvent Care, a registered care provider located in Queensland and Western Australia',
+    alternates: {
+      canonical: 'https://www.ausadventcare.com.au/about'
+    },
     openGraph: {
       title: 'About Ausadvent Care',
       description: 'About page of Ausadvent Care, a registered care provider located in Queensland and Western Australia',

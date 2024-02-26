@@ -11,6 +11,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'NDIS',
     description: 'Navigate through the NDIS landscape with ausadvent care, a dedicated group of experts in Brisbane and Perth',
+    alternates: {
+      canonical: 'https://www.ausadventcare.com.au/ndis'
+    },
     openGraph: {
       title: 'Service of Ausadvent Care',
       description: 'Navigate through the NDIS landscape with ausadvent care, a dedicated group of experts in Brisbane and Perth',

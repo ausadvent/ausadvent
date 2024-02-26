@@ -28,6 +28,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${currentArticle.fields.articleTitle}`,
     description: `${currentArticle.fields.introductoryText.content[0].content[0].value.slice(0, 70)}`,
+    alternates: {
+      canonical: `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`
+    },
     openGraph: {
       title: `${currentArticle.fields.articleTitle}`,
       description: `${currentArticle.fields.introductoryText.content[0].content[0].value.slice(0, 70)}`,

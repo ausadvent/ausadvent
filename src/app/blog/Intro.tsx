@@ -10,10 +10,11 @@ export default function Intro() {
         {/* Background image */}
         <div className="absolute inset-0 h-[41.5rem] sm:h-[45.5rem] md:h-[48.5rem] xl:h-[62.5rem] -z-10">
             <Image 
+                className='absolute inset-0 w-full h-full object-cover opacity-80'
                 src={BgImage} 
                 title='Hero image'
                 alt='Two women with a laptop' 
-                className='absolute inset-0 w-full h-full object-cover opacity-80'
+                priority={true}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#1e3a8a] to-transparent opacity-90 " aria-hidden="true"></div>
         </div>

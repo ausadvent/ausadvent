@@ -14,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Services',
     description: 'Services of Ausadvent Care, a national champion for independent living, guiding individuals towards vibrant lives throughout Queensland and Western Australia',
+    alternates: {
+      canonical: 'https://www.ausadventcare.com.au/services'
+    },
     openGraph: {
       title: 'Service of Ausadvent Care',
       description: 'Services of Ausadvent Care, a national champion for independent living, guiding individuals towards vibrant lives throughout Queensland and Western Australia',

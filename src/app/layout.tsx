@@ -3,6 +3,7 @@ import { Inter, Noto_Sans, Nunito_Sans } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import ReactGA from 'react-ga4'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 // Amplify config
 import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
@@ -11,7 +12,6 @@ import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import LatestArticles from './components/LatestArticles'
-import { GoogleAnalytics } from '@next/third-parties/google'
 
 
 // Fonts
@@ -43,6 +43,9 @@ export const metadata: Metadata = {
     template: "%s - Ausadvent Care"
   },
   description: 'Registered care provider located in Queensland and Western Australia.',
+  alternates: {
+    canonical: 'https://www.ausadventcare.com.au'
+  },
   openGraph: {
     title: 'Ausadvent Care',
     description: 'Registered care provider located in Queensland and Western Australia. Our services under the NDIS scheme, including Supported Independent Living, Short Term Accommodation and Individual Living Options',

@@ -16,11 +16,11 @@ export default function Intro() {
                     src={Hero} 
                     title='Hero image'
                     alt='Hero image, hands holding with support'
-                    width={20}
-                    height={20}
+                    // width={1080}
+                    // height={776}
+                    fill
+                    sizes='100vw'
                     priority={true}
-                    placeholder='blur'
-                    unoptimized 
                 />
                 <div className="absolute inset-0 bg-black opacity-40" aria-hidden="true"></div>
                 <div className='hidden md:flex md:absolute -z-1 bottom-0 right-0'>

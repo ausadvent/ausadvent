@@ -45,13 +45,12 @@ export default async function Values() {
                     className={`py-[3rem] xl:py-[2rem] px-[1rem] xl:px-[2rem] 2xl:w-[23.3rem] 3xl:w-[27rem] bg-[#FFEDD5] rounded-tr-xl xl:rounded-tr-3xl rounded-bl-xl xl:rounded-bl-3xl flex flex-col md:flex-row items-center xl:flex-col gap-[0.5rem] sm:gap-[1rem] xl:gap-[0rem] ${index === values.length -1 ? 'xl:col-span-full xl:w-1/2 mx-auto' : ''} ${index === values.length - 1 || index === values.length - 2 ? ' mx-auto 2xl:min-w-[35rem] 3xl:min-w-[40rem]' : '' }`}
                 >
                     <Image 
-                        src={value?.fields?.valueImage.fields.file.url} 
+                        src={`https:${value?.fields?.valueImage.fields.file.url}`} 
                         className='w-[8rem] h-[8rem] md:w-[16rem] md:h-[16rem] xl:w-[6rem] xl:h-[6rem]'
                         alt={value?.fields?.valueImage.fields.description} 
                         title={value?.fields?.valueImage.fields.title}
                         width={22.37}
                         height={18} 
-                        // unoptimized
                     />
                     <div className='flex flex-col items-center md:items-start xl:items-center gap-[0.5rem] sm:gap-[1rem] xl:gap-[0rem] '>
                         <div className='flex items-center gap-[1rem]'>

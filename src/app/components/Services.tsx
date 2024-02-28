@@ -31,19 +31,19 @@ export default function Services() {
           {services?.slice().reverse().map((service:any, index:any) => (
             <div key={service?.fields.serviceUrl} className={`flex flex-col md:flex-row gap-[2rem] ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''} 2xl:flex-col`}>
               <div className='flex gap-[1rem] items-start md:hidden 2xl:flex'>
-                <Image className='w-[1.625rem] h-[2rem]' src={Symbol} alt='Ausadvent symbol' title='Ausadvent symbol' width={20} height={20} loading='lazy' />
+                <Image className='w-[1.625rem] h-[2rem]' src={Symbol} alt='Ausadvent symbol' title='Ausadvent symbol' width={26} height={32} loading='lazy' />
                 <h3 className='cormorant text-[1.875rem] 2xl:text-[3rem] font-bold leading-[2rem] 2xl:leading-[3.125rem]'>{service?.fields.serviceTitle}</h3>
               </div>
               {/* Image container */}
               <div className='relative'>
                 <div className='md:w-[19rem] lg:w-[23rem] xl:w-[31rem] 2xl:w-full'>
                   <Image 
-                    src={`http:${service.fields.serviceMainImage.fields.file.url}`}
+                    src={`https:${service.fields.serviceMainImage.fields.file.url}`}
                     className='w-full sm:w-[31.25rem] md:w-[19rem] lg:w-[23rem] xl:w-[31rem] 2xl:w-full h-[18rem] rounded-tr-3xl rounded-bl-3xl object-cover'
                     alt={service?.fields.serviceMainImage.fields.description }
                     title={service?.fields.serviceMainImage.fields.title}
-                    width={22.37}
-                    height={18} 
+                    width={380}
+                    height={288} 
                     unoptimized
                     loading='lazy'
                   />
@@ -54,15 +54,15 @@ export default function Services() {
               <div className='flex flex-col gap-[1rem]'>
                 {/* Title */}
                 <div className='hidden md:flex gap-[1rem] items-center 2xl:hidden'>
-                  <Image className='lg:w-[1.5rem] lg:h-[2rem] ' src={Symbol} alt='Ausadvent symbol' title='Ausadvent symbol' loading='lazy' />
+                  <Image className='lg:w-[1.5rem] lg:h-[2rem]' src={Symbol} alt='Ausadvent symbol' title='Ausadvent symbol' loading='lazy' />
                   <h3 className='cormorant text-[1.5rem] lg:text-[2.25rem] font-bold leading-[1.625rem] lg:leading-[2.375rem]'>{service?.fields.serviceTitle}</h3>
                 </div>
                 {/* Description */}
                 <p className='md:text-[1.25rem] md:leading-[1.75rem]'>{service?.fields.serviceDescription}</p>
                 <Link href={`/services#${service.fields.serviceUrl}`} className='flex items-center gap-[0.5rem]'>
-                  <Image src={Eye} alt='eye icon' title='eye icon' />
+                  <Image src={Eye} alt='eye icon' title='eye icon' height={14} width={18} />
                   <p className='text-[#F59E0B]'>Read more</p>
-                  <Image src={Right} alt='Right arrow' title='Right arrow' />
+                  <Image src={Right} alt='Right arrow' title='Right arrow' height={8} width={6} />
                 </Link>
               </div>
             </div>

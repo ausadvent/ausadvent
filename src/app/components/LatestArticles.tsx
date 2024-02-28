@@ -63,19 +63,23 @@ export default function LatestArticles() {
                     </div>
                     {/* Carousel container */}
                     <div className='px-[1rem] lg:px-[3.5rem] flex justify-between lg:gap-[3.5rem] h-[16rem] md:h-[25rem] lg:h-[31.25rem] xl:h-[37.5rem] 2xl:h-[43.75rem]'>
-                        <Image
-                            className='z-10 hover:cursor-pointer'
-                            src={Left} 
-                            title='Left arrow' 
-                            alt='Left arrow' 
-                            onClick={() => {
-                                if(currentArticle > 0) {
-                                    setCurrentArticle(currentArticle -1)
-                                } else {
-                                    setCurrentArticle(recentArticles.length - 1)
-                                }
-                            }}
-                        />
+                        <div className="h-full flex">
+                            <Image
+                                className='z-10 hover:cursor-pointer self-center w-[34px] h-[30px]'
+                                src={Left} 
+                                title='Left arrow' 
+                                alt='Left arrow' 
+                                width={16}
+                                height={16}
+                                onClick={() => {
+                                    if(currentArticle > 0) {
+                                        setCurrentArticle(currentArticle -1)
+                                    } else {
+                                        setCurrentArticle(recentArticles.length - 1)
+                                    }
+                                }}
+                            />
+                        </div>
 
                         {/* Text */}
                         <div className="relative xl:w-full md:px-[4rem] py-[1rem] md:pb-[4rem] lg:pb-[5rem] xl:pb-[8rem] 2xl:pb-[12rem] 3xl:pb-[15rem] px-[0.5rem] h-full flex flex-col justify-end gap-[1rem]">
@@ -84,7 +88,6 @@ export default function LatestArticles() {
                                     <h3 className='cormorant text-[1.875rem] sm:text-[2.25rem] md:text-[3rem] lg:text-[3.75rem] 3xl:text-[4.5rem] font-bold leading-[1.875rem] sm:leading-[2.125rem] md:leading-[3rem] lg:leading-[3.625rem]'>{articles && articles[currentArticle]?.fields?.articleTitle && articles[currentArticle]?.fields?.articleTitle.toUpperCase()}</h3>
                                    {articles && (
                                      <Link href="/blog/[article]" as={linkHref} className="flex gap-[0.5rem] items-center lg:hover:cursor-pointer">
-                                        {/* <Image className='' src={Eye} title='Eye icon' alt='Eye icon' loading='lazy' /> */}
                                         <svg className="w-[1rem] md:w-[1.5rem] h-[1rem] md:h-[1.5rem] text-[#F59E0B]"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  
                                             <path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="2" />
                                             <path d="M2 12l1.5 2a11 11 0 0 0 17 0l1.5 -2" />
@@ -99,26 +102,30 @@ export default function LatestArticles() {
                             
                             {/* Dots */}
                             <div className='mx-auto  w-full flex justify-center gap-2'>
-                                <button className={` w-[0.5rem] h-[0.5rem] rounded-full bg-[#2563EB] ${currentArticle === 0 && 'bg-white'}`}></button>
-                                <button className={`w-[0.5rem] h-[0.5rem] rounded-full bg-[#2563EB] ${currentArticle === 1 && 'bg-white'}`}></button>
-                                <button className={`w-[0.5rem] h-[0.5rem] rounded-full bg-[#2563EB] ${currentArticle === 2 && 'bg-white'}`}></button>
+                                <button aria-label='Article # 1 indicator' className={` w-[0.5rem] h-[0.5rem] rounded-full bg-[#2563EB] ${currentArticle === 0 && 'bg-white'}`}></button>
+                                <button aria-label='Article # 2 indicator' className={`w-[0.5rem] h-[0.5rem] rounded-full bg-[#2563EB] ${currentArticle === 1 && 'bg-white'}`}></button>
+                                <button aria-label='Article # 3 indicator' className={`w-[0.5rem] h-[0.5rem] rounded-full bg-[#2563EB] ${currentArticle === 2 && 'bg-white'}`}></button>
                             </div>
 
                         </div>
 
-                        <Image 
-                            className='z-10 hover:cursor-pointer'
-                            src={Right} 
-                            title='Right arrow' 
-                            alt='Right arrow' 
-                            onClick={() => {
-                                if(currentArticle < recentArticles.length - 1) {
-                                    setCurrentArticle(currentArticle + 1)
-                                } else {
-                                    setCurrentArticle(0)
-                                }
-                            }}
-                        />
+                        <div className='h-full flex '>
+                            <Image 
+                                className='z-10 hover:cursor-pointer self-center w-[34px] h-[30px]'
+                                src={Right} 
+                                title='Right arrow' 
+                                alt='Right arrow' 
+                                width={16}
+                                height={16}
+                                onClick={() => {
+                                    if(currentArticle < recentArticles.length - 1) {
+                                        setCurrentArticle(currentArticle + 1)
+                                    } else {
+                                        setCurrentArticle(0)
+                                    }
+                                }}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

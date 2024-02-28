@@ -69,6 +69,7 @@ export default function Header() {
             </Link>
             <button
                 id='hamburguer-button'
+                aria-label='Open mobile menu'
                 className=' cursor-pointer relative lg:hidden'
                 onClick={() => {
                     setMobileMenu(!mobileMenu)
@@ -97,7 +98,7 @@ export default function Header() {
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/'}>Home</Link></li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/about'}>About us</Link></li>
                         <li className='flex items-center gap-[0.2rem] cursor-pointer'>
-                            <p className='hover:text-[#F59E0B]'><Link href={'/services'} onClick={() => setLocationsDisplay(false)}>Services</Link></p>
+                            <p className='hover:text-[#F59E0B]'><Link href={'/services'} aria-label='Go to services' onClick={() => setLocationsDisplay(false)}>Services</Link></p>
                             {!servicesDisplay ? (
                                 <svg 
                                     onClick={() => {
@@ -123,6 +124,7 @@ export default function Header() {
                                     {(servicesFetched as any).map((service:any, index:any) => (
                                         <Link 
                                             key={index}
+                                            aria-label={`Visit ${service.fields.serviceTitle} service`}
                                             href={`/services#${service.fields.serviceUrl}`}
                                             scroll
                                             onClick={() => {
@@ -205,7 +207,7 @@ export default function Header() {
                         <li onClick={() => toggleMenu()}><Link href={'/'} scroll>Home</Link></li>
                         <li onClick={() => toggleMenu()}><Link href={'/about'}>About us</Link></li>
                         <li className='flex items-center gap-[0.2rem]'>
-                            <p><Link href={'/services'} onClick={() => {setMobileMenu(false); setServicesDisplay(false); setLocationsDisplay(false)}}>Services</Link></p>
+                            <p><Link href={'/services'} aria-label='Go to services' onClick={() => {setMobileMenu(false); setServicesDisplay(false); setLocationsDisplay(false)}}>Services</Link></p>
                             {!servicesDisplay ? (
                                 <svg 
                                     onClick={() => {
@@ -232,6 +234,7 @@ export default function Header() {
                                     <Link 
                                         key={index}
                                         href={`/services#${service.fields.serviceUrl}`}
+                                        aria-label={`Visit ${service.fields.serviceTitle} service`}
                                         scroll
                                         onClick={() => {
                                             toggleMenu()

@@ -44,17 +44,16 @@ export default async function Values() {
                         className={`py-[3rem] xl:py-[2rem] px-[1rem] xl:px-[2rem] 2xl:w-[23.3rem] 3xl:w-[27rem] bg-[#FFEDD5] rounded-tr-[2rem] xl:rounded-tr-3xl rounded-bl-[2rem] xl:rounded-bl-3xl flex flex-col md:flex-row items-center xl:flex-col gap-[0.5rem] sm:gap-[1rem] xl:gap-[0rem] ${index === values.length -1 ? 'xl:col-span-full xl:w-1/2 mx-auto' : ''} ${index === values.length - 1 || index === values.length - 2 ? 'mx-auto 2xl:min-w-[35rem]' : '' }`}
                     >
                         <Image 
-                            src={value?.fields?.valueImage.fields.file.url} 
+                            src={`https:${value?.fields?.valueImage.fields.file.url}`} 
                             className='w-[6rem] h-[6rem] md:w-[16rem] md:h-[16rem] xl:w-[6rem] xl:h-[6rem]'
                             alt={value?.fields?.valueImage.fields.description} 
                             title={value?.fields?.valueImage.fields.title}
-                            width={22.37}
-                            height={18} 
-                            // unoptimized
+                            width={96}
+                            height={96} 
                         />
                         <div className='flex flex-col items-center md:items-start xl:items-center gap-[0.5rem] sm:gap-[1rem] xl:gap-[0rem] '>
                             <div className='flex items-center gap-[1rem]'>
-                                <Image className='w-[1.9rem] md:w-[2.9rem] h-[1.4rem] md:h-[1.9rem]' src={Symbol} alt='Ausadvent symbol' title='Ausadvent symbol' width={20} height={20} />
+                                <Image className='w-[1.9rem] md:w-[2.9rem] h-[1.4rem] md:h-[1.9rem]' src={Symbol} alt='Ausadvent symbol' title='Ausadvent symbol' width={30.4} height={22.4} />
                                 <h3 className='cormorant text-[1.875rem] xl:text-[3rem] font-bold'>{value?.fields?.valueTitle}</h3>
                             </div>
                             <p className='xl:text-[1.25rem] leading-[1.5rem] xl:leading-[1.75rem] text-center md:text-left xl:text-center'>{value?.fields?.valueDescription}</p>

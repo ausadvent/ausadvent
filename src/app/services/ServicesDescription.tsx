@@ -1,11 +1,9 @@
-'use client'
 
 import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 
 // Assets
-import Vector from '../../../assets/rounded-vector.svg'
 import DownArrow from '../../../assets/down-arrow.svg'
 import RightArrow from '../../../assets/blue-right-arrow-2.svg'
 import MessageIcon from '../../../assets/message-icon.svg'
@@ -34,13 +32,12 @@ export default function ServicesDescription({services}:any) {
                         <div className='relative h-[18.75rem] md:h-[28.125rem] xl:h-[34.375rem] w-full'>
                             <Image 
                                 className=' h-[18.75rem] md:h-[28.125rem] xl:h-[34.375rem] w-full object-cover rounded-tr-[2rem]'
-                                src={service.fields.imageN2.fields.file.url}
+                                src={`https:${service.fields.imageN2.fields.file.url}`}
                                 title={service.fields.imageN2.fields.title}
                                 alt={service.fields.imageN2.fields.description}
-                                width={20}
-                                height={20}
-                                loading='lazy' 
-                                unoptimized  
+                                width={736}
+                                height={450}
+                                loading='lazy'  
                             />
                             <div className="absolute right-0 top-[18.75rem] md:top-[28.125rem] xl:top-[34.375rem] w-2/5 border-b-[0.3rem] border-blue-400"></div>
                         </div>
@@ -62,13 +59,12 @@ export default function ServicesDescription({services}:any) {
                                         <Image 
                                             key={index}
                                             className='w-full h-[15.625rem] object-cover rounded-tr-[2rem]'
-                                            src={item.data.target.fields.file.url}
+                                            src={`https:${item.data.target.fields.file.url}`}
                                             title={item.data.target.fields.title}
                                             alt={item.data.target.fields.description}
-                                            width={20}
-                                            height={20}
+                                            width={1248}
+                                            height={550}
                                             loading='lazy'
-                                            unoptimized
                                         />
                                     )
                                 }
@@ -79,13 +75,12 @@ export default function ServicesDescription({services}:any) {
                         <div className="hidden lg:flex items-stretch gap-[1.5rem] xl:gap-[2rem]">
                             <Image 
                                 className='w-[23.25rem] xl:min-w-[31rem] object-cover rounded-tr-[2rem]'
-                                src={service.fields.picture.content[1].data.target.fields.file.url} 
+                                src={`https:${service.fields.picture.content[1].data.target.fields.file.url}`} 
                                 title={service.fields.picture.content[1].data.target.fields.title}
                                 alt={service.fields.picture.content[1].data.target.fields.description}
-                                width={20}
-                                height={20}
+                                width={372}
+                                height={356}
                                 loading='lazy'
-                                unoptimized
                             />
                             {/* Paragraphs */}
                             <div className="flex flex-col gap-[1rem] text-[1.125rem]">
@@ -115,8 +110,8 @@ export default function ServicesDescription({services}:any) {
                                         }
                                     } )}
                                 </div>
-                                <Image className='hidden lg:inline w-[1.64rem] h-[1.5rem] mx-auto self-center' src={RightArrow} title='Right arrow' alt='Right arrow' width={20} height={20} loading='lazy' />
-                                <Image className='lg:hidden w-[1.64rem] h-[1.5rem] mx-auto self-center' src={DownArrow} title='Down arrow' alt='Down arrow' width={20} height={20} loading='lazy' />
+                                <Image className='hidden lg:inline w-[1.64rem] h-[1.5rem] mx-auto self-center' src={RightArrow} title='Right arrow' alt='Right arrow' width={13.6} height={24} loading='lazy' />
+                                <Image className='lg:hidden w-[1.64rem] h-[1.5rem] mx-auto self-center' src={DownArrow} title='Down arrow' alt='Down arrow' width={26.238} height={24} loading='lazy' />
                                 {/* About box 2*/}
                                 <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] 2xl:justify-center bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
                                     {service?.fields.aboutBox2.content.map((item: any, index: any) => {
@@ -131,8 +126,8 @@ export default function ServicesDescription({services}:any) {
                                         }
                                     } )}
                                 </div>
-                                <Image className='hidden lg:inline w-[1.64rem] h-[1.5rem] mx-auto self-center' src={RightArrow} title='Right arrow' alt='Right arrow' width={20} height={20} loading='lazy' />
-                                <Image className='lg:hidden w-[1.64rem] h-[1.5rem] mx-auto self-center' src={DownArrow} title='Down arrow' alt='Down arrow' width={20} height={20} loading='lazy' />
+                                <Image className='hidden lg:inline w-[1.64rem] h-[1.5rem] mx-auto self-center' src={RightArrow} title='Right arrow' alt='Right arrow' width={13.6} height={20} loading='lazy' />
+                                <Image className='lg:hidden w-[1.64rem] h-[1.5rem] mx-auto self-center' src={DownArrow} title='Down arrow' alt='Down arrow' width={26.238} height={24} loading='lazy' />
                                 {/* About box 3 */}
                                 <div className="p-[1rem] lg:p-[1.5rem] md:w-full sm:min-h-[7.6rem] lg:min-h-[16.4rem] flex flex-col gap-[1rem] 2xl:justify-center bg-[#FDBA74] border-2 border-[#2563EB] rounded lg:rounded-none lg:rounded-tr-[2rem] lg:rounded-bl-[1rem]">
                                     {service?.fields.aboutBox3.content.map((item: any, index: any) => {

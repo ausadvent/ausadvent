@@ -14,7 +14,15 @@ export default function Description() {
     <section className='relative'>
         {/* Lotus */}
         <div className='absolute -mt-[4rem] sm:-mt-[10rem] w-full flex justify-center '>
-            <Image className='w-[21.74rem] h-[15.63rem] mx-auto' src={Lotus} title='Ausadvent logo' alt='Ausadvent logo' width={20} height={20} loading='eager' />
+            <Image 
+                className='w-[21.74rem] h-[15.63rem] mx-auto' 
+                src={Lotus} 
+                title='Ausadvent logo' 
+                alt='Ausadvent logo' 
+                width={347.84} 
+                height={250} 
+                loading='eager' 
+            />
         </div>
         {/* Content */}
         <div className='page sm:mx-auto pt-[13rem] sm:pt-[8rem] pb-[2rem] 2xl:pb-[5.5rem] 3xl:pb-[6.5rem] '>

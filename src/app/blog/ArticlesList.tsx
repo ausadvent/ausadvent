@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 
 import Image from 'next/image';
@@ -40,8 +38,8 @@ export default function ArticlesList({articles}:any) {
                                   src={`https:${article?.fields.articleMainImage.fields.file.url}`} 
                                   title={article?.fields.articleMainImage.fields.title}
                                   alt={article?.fields.articleMainImage.fields.description}
-                                  width={343.2}
-                                  height={300}
+                                  width={487.14}
+                                  height={352}
                                   loading='lazy'
                               />
                               <div className="absolute w-1/3 right-0 border-b-[0.3rem] border-[#F59E0B]"></div>

@@ -1,7 +1,5 @@
-'use client'
-
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React from 'react'
 import Way from './Way';
 
 interface stepsContent {
@@ -42,12 +40,11 @@ export default function MainContent({article} : any) {
                       <div className='md:my-[1rem] md:border-[2px] md:border-[#93C5FD] md:rounded-tr-[2rem] md:rounded-bl-[1rem] md:p-[1rem]'>
                         <Image 
                           className='w-full h-[12.5rem] sm:h-[16rem] md:h-[21.875rem] xl:h-[31.25rem] rounded-tr-[2rem] object-cover' 
-                          src={entry.data.target.fields.file.url} 
+                          src={`https:${entry.data.target.fields.file.url}`} 
                           title={entry.data.target.fields.title} 
                           alt={entry.data.target.fields.description} 
-                          width={20} height={20} 
+                          width={956.8} height={500} 
                           loading='lazy'  
-                          unoptimized 
                         />
                         <div className="hidden md:flex mt-[2rem] border-b-[0.3125rem] border-[#F59E0B] w-[6.375rem] "></div>
                         <p className='hidden md:flex mt-[1rem] cormorant text-[2.25rem] leading-[2.25rem] '>

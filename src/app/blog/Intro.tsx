@@ -14,6 +14,8 @@ export default function Intro() {
                 src={BgImage} 
                 title='Hero image'
                 alt='Two women with a laptop' 
+                fill
+                sizes='100vw'
                 priority={true}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#1e3a8a] to-transparent opacity-90 " aria-hidden="true"></div>

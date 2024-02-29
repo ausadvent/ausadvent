@@ -15,7 +15,15 @@ export default function Blue() {
             <div className="bg-[#DBEAFE] pb-[2rem] sm:pb-[4rem] xl:pb-[2rem] rounded-bl-[1rem]">
                 <div className="flex flex-col gap-[2rem] sm:gap-[4rem] xl:gap-[2rem] 3xl:gap-[4rem]">
                     <div className="h-[15.625rem] sm:h-[28.125rem] w-full bg-gradient-to-b from-[#1D4ED8] to-[#DBEAFE]">
-                        <Image className='h-full w-full object-cover rounded-tr-[2rem] rounded-bl-[1rem]' src={Guide} title='NDIS idea 1' alt='Two women in a meeting' width={20} height={20} loading='lazy' unoptimized />
+                        <Image 
+                            className='h-full w-full object-cover rounded-tr-[2rem] rounded-bl-[1rem]' 
+                            src={Guide} 
+                            title='NDIS idea 1' 
+                            alt='Two women in a meeting' 
+                            width={1038.4} 
+                            height={450} 
+                            loading='lazy'  
+                        />
                     </div>
                     <div className="page xl:px-[4rem] sm:mx-auto flex flex-col gap-[2rem]">
                         <h3 className="cormorant text-blueHigher text-[1.5rem] xl:text-[2.25rem] leading-[1.625rem] xl:leading-[2.375rem] font-bold">Your Expert Guide Through Every Step</h3>
@@ -27,7 +35,15 @@ export default function Blue() {
             <div className="bg-[#DBEAFE] pb-[2rem] sm:pb-[4rem] xl:pb-[2rem] rounded-bl-[1rem]">
                 <div className="flex flex-col gap-[2rem] sm:gap-[4rem] xl:gap-[2rem] 3xl:gap-[4rem]">
                     <div className="h-[15.625rem] sm:h-[28.125rem] w-full bg-gradient-to-b from-[#1D4ED8] to-[#DBEAFE]">
-                        <Image className='h-full w-full object-cover rounded-tr-[2rem] rounded-bl-[1rem]' src={Overwhelm} title='NDIS idea 2' alt='A woman helping an smiling young guy in his weelchair' width={20} height={20} loading='lazy' unoptimized />
+                        <Image 
+                            className='h-full w-full object-cover rounded-tr-[2rem] rounded-bl-[1rem]' 
+                            src={Overwhelm} 
+                            title='NDIS idea 2' 
+                            alt='A woman helping an smiling young guy in his weelchair' 
+                            width={1038.4} 
+                            height={450}  
+                            loading='lazy'
+                        />
                     </div>
                     <div className="page xl:px-[4rem] sm:mx-auto flex flex-col gap-[2rem]">
                         <h3 className="cormorant text-blueHigher text-[1.5rem] xl:text-[2.25rem] leading-[1.625rem] xl:leading-[2.375rem] font-bold">Say Goodbye to Overwhelm, Embrace Empowerment</h3>
@@ -46,7 +62,7 @@ export default function Blue() {
                         <p>For more information about NDIS, visit the <Link href={'https://www.ndis.gov.au/applying-access-ndis/am-i-eligible'} target='_blank' className='text-[#F59E0B] font-bold'>official website</Link>.</p>
                     </div>
                     {/* Lotus till lg devices */}
-                    <Image className='xl:hidden mt-[4rem] w-[5.858rem] h-[3.922rem] mx-auto' src={Lotus} title='Ausadvent logo' alt='Ausadvent logo' width={20} height={20} loading='lazy' unoptimized/>
+                    <Image className='xl:hidden mt-[4rem] w-[5.858rem] h-[3.922rem] mx-auto' src={Lotus} title='Ausadvent logo' alt='Ausadvent logo' width={93.73} height={62.75} loading='lazy'/>
                     {/* Paragraphs */}
                     <div className="xl:w-1/2 mt-[2rem] xl:mt-0 md:mt-[3rem] cormorant flex flex-col gap-[1rem] text-primaryWhite text-center xl:text-left ">
                         <p className="text-[1.5rem] xl:text-[1.875rem] 3xl:text-[2.25rem] leading-[1.5rem] xl:leading-[1.875rem] 3xl:leading-[2.125rem] font-bold">TAKE THE FIRST STEP TOWARDS YOUR EMPOWERED FUTURE:</p>
@@ -56,7 +72,9 @@ export default function Blue() {
                 </div>
                 {/* Button */}
                 <div className="mt-[2rem] xl:mt-[4rem] w-full flex lg:justify-center">
-                    <button className=' w-full lg:w-[40rem] py-[1rem] rounded-[0.25rem] bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] font-bold xl:text-[1.125rem] 2xl:text-[1.25rem] 3xl:text-[1.5rem] '>Contact us</button>
+                    <Link href={'/locations#form'} scroll aria-label='Go to contact form section' className='w-full lg:w-[40rem]'>
+                        <button className='w-full l py-[1rem] rounded-[0.25rem] bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] font-bold xl:text-[1.125rem] 2xl:text-[1.25rem] 3xl:text-[1.5rem] '>Contact us</button>
+                    </Link>
                 </div>
             </div>
         </div>

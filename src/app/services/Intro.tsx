@@ -19,13 +19,13 @@ export default function Intro() {
                 <div className="flex flex-col gap-[1rem] 2xl:gap-[2rem] lg:text-[1.125rem] 2xl:text-[1.25rem]">
                     <p className='font-semibold'>At Ausadvent Care, we&apos;re more than just Queensland&apos;s trusted Disability Support partner with NDIS expertise. </p>
                     <p>We&apos;re your national champion for independent living, proudly guiding individuals towards vibrant lives throughout Queensland and Western Australia.</p>
-                    <Link href={'/locations#form'} scroll >
+                    <Link aria-label='Go to contact form section' href={'/locations#form'} scroll >
                       <button className='hidden 2xl:inline w-full lg:w-2/3 xl:w-[31.25rem] 2xl:w-full lg:mx-auto xl:mr-0 text-black bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] border py-[0.5rem] lg:py-[1rem] rounded-lg text-[1.125rem]'>
                         Contact us
                       </button>
                     </Link>
                 </div>
-                <Link href={'/locations#form'} scroll >
+                <Link aria-label='Go to contact form section' href={'/locations#form'} scroll >
                   <button className='2xl:hidden w-full lg:w-2/3 xl:w-[31.25rem] lg:mx-auto xl:mr-0 text-black bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74]  py-[0.5rem] lg:py-[1rem] rounded-lg text-[1.125rem]'>
                     Contact us
                   </button>

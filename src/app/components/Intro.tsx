@@ -16,8 +16,6 @@ export default function Intro() {
                     src={Hero} 
                     title='Hero image'
                     alt='Hero image, hands holding with support'
-                    // width={1080}
-                    // height={776}
                     fill
                     sizes='100vw'
                     priority={true}

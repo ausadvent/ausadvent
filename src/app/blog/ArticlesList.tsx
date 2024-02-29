@@ -26,7 +26,7 @@ export default function ArticlesList({articles}:any) {
                                 <div className="hidden md:flex flex-col gap-[1rem] lg:h-full lg:justify-between " >
                                     <p className='xl:text-[1.125rem] 3xl:text-[1.25rem]'>{article.fields.introductoryText.content[0].content[0].value.slice(0, 120)}...</p>
                                     {/* Button */}
-                                    <Link href={`blog/${article?.fields.articleUrl}`} className=" flex items-center gap-[0.5rem]">
+                                    <Link aria-label={`Visit our article ${article?.fields.articleTitle}`} href={`blog/${article?.fields.articleUrl}`} className=" flex items-center gap-[0.5rem]">
                                         <Image className='w-[1rem] h-[0.74rem]' src={Eye} title='Eye symbol' alt='Eye symbol' width={20} height={20} loading='lazy' />
                                         <p className='text-[#F59E0B] 2xl:text-[1.125rem] 3xl:text-[1.25rem]'>Read more</p>
                                         <Image className='w-[0.84rem] h-[0.44rem]' src={Right} title='Right arrow symbol' alt='Right arrow symbol' width={20} height={20} loading='lazy' />
@@ -37,13 +37,12 @@ export default function ArticlesList({articles}:any) {
                           <div className='relative w-full md:w-1/2 h-[18.75rem] md:h-auto'>
                               <Image 
                                   className=' rounded-tr-[2rem] md:rounded-tr-none md:rounded-bl-[1rem] w-full h-full object-cover object-right-top ' 
-                                  src={article?.fields.articleMainImage.fields.file.url} 
+                                  src={`https:${article?.fields.articleMainImage.fields.file.url}`} 
                                   title={article?.fields.articleMainImage.fields.title}
                                   alt={article?.fields.articleMainImage.fields.description}
-                                  width={20}
-                                  height={20}
+                                  width={343.2}
+                                  height={300}
                                   loading='lazy'
-                                  unoptimized
                               />
                               <div className="absolute w-1/3 right-0 border-b-[0.3rem] border-[#F59E0B]"></div>
                           </div>
@@ -52,7 +51,7 @@ export default function ArticlesList({articles}:any) {
                       <div className="md:hidden px-[1.5rem] pt-[1.5rem] pb-[1rem] bg-white rounded-br-[1rem]" >
                           <p>{article.fields.introductoryText.content[0].content[0].value.slice(0, 120)}...</p>
                           {/* Button */}
-                          <Link href={`blog/${article?.fields.articleUrl}`} className="mt-[1rem] flex items-center gap-[0.5rem]">
+                          <Link aria-label={`Visit our article ${article?.fields.articleTitle}`} href={`blog/${article?.fields.articleUrl}`} className="mt-[1rem] flex items-center gap-[0.5rem]">
                               <Image className='w-[1rem] h-[0.74rem]' src={Eye} title='Eye symbol' alt='Eye symbol' width={20} height={20} loading='lazy' />
                               <p className='text-[#F59E0B]'>Read more</p>
                               <Image className='w-[0.84rem] h-[0.44rem]' src={Right} title='Right arrow symbol' alt='Right arrow symbol' width={20} height={20} loading='lazy' />

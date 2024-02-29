@@ -7,13 +7,13 @@ export default function Intro({article}: any) {
             {/* Background image */}
             <div className="absolute inset-0 h-[57.5rem] sm:h-[45.5rem] md:h-[50.5rem] lg:h-[61.5rem] xl:h-[62.5rem] -z-10">
                 <Image 
-                    src={article.fields.articleMainImage.fields.file.url}
+                    src={`https:${article.fields.articleMainImage.fields.file.url}`}
                     title={article.fields.articleMainImage.fields.title} 
                     alt={article.fields.articleMainImage.fields.description} 
                     className='absolute inset-0 w-full h-full object-cover object-top opacity-80'
-                    width={20}
-                    height={20}
-                    unoptimized
+                    fill
+                    sizes='100vw'
+                    priority={true}
                 />
                 
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1e3a8a] to-[#1e3a8a] opacity-90 " aria-hidden="true"></div>
@@ -32,7 +32,6 @@ export default function Intro({article}: any) {
                         <div className="mt-[1rem] border-b-[0.3125rem] border-[#F59E0B] w-[6.375rem] "></div>
                     </div>
                     <div className='mt-[2rem] lg:mt-0 flex flex-col gap-[0.5rem] lg:w-1/2 '>
-                        {/* <h2 className='cormorant mt-[2rem]  text-[1.8rem] lg:text-[2.25rem] leading-[1.8rem] text-primaryWhite font-bold'>{article.fields.introductoryTitle}</h2> */}
                         {article.fields.introductoryText.content.map((idea: any, index: number) => (
                             <p key={index} className='md:text-[1.2rem]'>{idea.content[0].value}</p>
                         ))}

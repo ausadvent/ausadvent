@@ -17,7 +17,15 @@ export default function Western() {
             </div>
             <div className='lg:w-1/2 xl:w-full xl:flex flex-col gap-[1rem]'>
               <p className='lg:hidden xl:inline mt-[1rem] text-[#6B7280] md:text-[1.125rem] '>Level 6, 140 William Street, Perth, Western Australia 6000</p>
-              <Image className='sm:mt-[0.5rem] lg:mt-0 h-[12.188rem] w-full lg:h-full object-cover rounded-tr-[2rem] rounded-bl-[1rem]' src={Wa} title='Ausadvent location in Queensland' alt='Location of the company in a map' width={20} height={20} loading='eager' />
+              <Image 
+                className='sm:mt-[0.5rem] lg:mt-0 h-[12.188rem] w-full lg:h-full object-cover rounded-tr-[2rem] rounded-bl-[1rem]' 
+                src={Wa} 
+                title='Ausadvent location in Queensland' 
+                alt='Location of the company in a map' 
+                width={311.2} 
+                height={195}  
+                loading='eager' 
+              />
               <p className='lg:hidden xl:inline sm:mt-[0.5rem]  text-[#6B7280]  md:text-[1.125rem] font-semibold'>We have expanded our services to Western Australia, operating throughout the North and south Perth.</p>
             </div>
         </div>

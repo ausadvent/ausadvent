@@ -15,10 +15,9 @@ export default function Intro() {
                     src={BgImage} 
                     title='Hero image'
                     alt='Hero image, hands holding with support'
-                    width={20}
-                    height={20}
-                    priority={true}
-                    unoptimized 
+                    fill
+                    sizes='100vw'
+                    priority={true} 
                 />
                 <div className="absolute inset-0 bg-black opacity-40" aria-hidden="true"></div>
             </div>
@@ -30,7 +29,7 @@ export default function Intro() {
                     <div className='xl:w-1/2 flex flex-col gap-[2rem]'>
                         <p className='sm:w-[20rem] xl:w-full sm:mx-auto cormorant text-[1.25rem] lg:text-[1.5rem] 2xl:text-[1.857rem] leading-[1.375rem] lg:leading-[1.625rem] 2xl:leading-[2.0625rem] font-bold'>Embarking on your National Disability Insurance Scheme (NDIS) journey can be both exciting and overwhelming.</p>
                         <p className='sm:w-[20rem] xl:w-full sm:mx-auto lg:text-[1.125rem] 2xl:text-[1.25rem] 3xl:text-[1.5rem]'>We help you to make the most of your unique plan.</p>
-                        <Link href={'/locations#form'} scroll>
+                        <Link aria-label='Go to contact form section' href={'/locations#form'} scroll>
                             <button className='py-[0.5rem] border-[2px] border-[#F59E0B] rounded-[0.5rem] w-[18.75rem] xl:w-full mx-auto 2xl:text-[1.25rem] 3xl:text-[1.5rem]'>
                                 Contact us
                             </button>

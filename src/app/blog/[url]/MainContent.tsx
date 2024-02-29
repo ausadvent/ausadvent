@@ -29,13 +29,13 @@ export default function MainContent({article} : any) {
     <section className='bg-blue-100 pt-[2rem] pb-[3rem] md:pb-[4rem] 2xl:py-[4rem] 3xl:py-[8rem] sm:flex sm:flex-col items-center'>
         <div className='page flex flex-col gap-[1.5rem] md:gap-[1.9rem] '>
             {/* Steps */}
-            <div className='flex flex-col gap-[1rem]'>
+            <div className='flex flex-col gap-[1rem] 2xl:w-2/3 2xl:mx-auto '>
                 {article.fields.steps.content.map((entry: stepsContent, index: number) => (
                   <div key={index} className=''>
                     {entry.nodeType === "heading-3" ? (
                       <h3 className='cormorant text-[1.575rem] leading-[1.575rem] font-semibold'>{entry.content[0].value}</h3>
                     ): entry.nodeType === "paragraph" ? (
-                        <p>{entry.content[0].value}</p>
+                        <p className=''>{entry.content[0].value}</p>
                     ) : (
                       <div className='md:my-[1rem] md:border-[2px] md:border-[#93C5FD] md:rounded-tr-[2rem] md:rounded-bl-[1rem] md:p-[1rem]'>
                         <Image 

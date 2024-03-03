@@ -24,6 +24,19 @@ export default function Home() {
       "https://www.ausadventcare.com.au" // Add the canonical URL here
     ]
   }
+
+  const breadCrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": `https://www.ausadvencare.com.au`
+      }
+    ]
+  }
   
   return (
     <main className="">
@@ -34,7 +47,11 @@ export default function Home() {
       </Head>
       <script 
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd)  }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd)}}
+      />
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbData)}}
       />
       <Intro />
       <Services />

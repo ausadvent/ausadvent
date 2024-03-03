@@ -7,6 +7,7 @@ import Values from './Values'
 import Framework from '../components/Framework'
 import Closing from './Closing'
 import { Metadata } from 'next'
+import Head from 'next/head'
 
 
 
@@ -35,14 +36,40 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default function About() {
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "About Page Ausadvent Care",
+  "url": "https://www.ausadventcare.com.au/about",
+  "description": "About page of Ausadvent Care, a registered care provider located in Queensland and Western Australia.",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png"
+  },
+  "sameAs": [
+    "https://www.ausadventcare.com.au/about" // Add the canonical URL here
+  ]
+}
+
+export default async function About() {
+  const metadata:any = await generateMetadata()
+
   return (
     <main>
-        <Intro />
-        <Commitment />
-        <Values />
-        <Framework />
-        <Closing />
+      <Head>
+        <title>{metadata.title} </title>
+        <meta name="description" content={metadata.description} />
+        <link rel="canonical" href={metadata.alternates.canonical} />
+      </Head>
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd)  }}
+      />
+      <Intro />
+      <Commitment />
+      <Values />
+      <Framework />
+      <Closing />
     </main>
   )
 }

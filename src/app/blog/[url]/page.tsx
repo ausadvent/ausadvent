@@ -93,7 +93,7 @@ export default async function Article({ params }: any) {
       {
         '@type': 'ListItem',
         "position": 2,
-        "name": "About",
+        "name": "Blog",
         "item": `https://www.ausadvencare.com.au/blog`,
       },
       {

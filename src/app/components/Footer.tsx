@@ -69,7 +69,7 @@ export default function Footer() {
                             target='_blank'
                             className=" "
                         >
-                                Building 6, 2404 Logan Road, Eight Miles Plain QLD 4113
+                            Building 6, 2404 Logan Road, Eight Miles Plain QLD 4113
                         </Link>
                         <a href="tel:+61439430007" className="flex gap-[0.5rem] justify-center md:justify-start items-center">
                             <Image className='h-[1rem] w-[1rem]' src={Call} title='Call icon' alt='Phone calling icon' loading='lazy' />

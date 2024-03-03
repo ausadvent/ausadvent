@@ -51,6 +51,25 @@ const jsonLd = {
   ]
 }
 
+const breadCrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+      {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": `https://www.ausadvencare.com.au`
+      },
+      {
+          '@type': 'ListItem',
+          "position": 2,
+          "name": "About",
+          "item": `https://www.ausadvencare.com.au/about`,
+      }
+  ]
+}
+
 export default async function About() {
   const metadata:any = await generateMetadata()
 
@@ -64,6 +83,10 @@ export default async function About() {
       <script 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd)  }}
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbData)  }}
       />
       <Intro />
       <Commitment />

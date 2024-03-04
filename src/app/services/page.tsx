@@ -1,4 +1,8 @@
 import React from 'react'
+import { Metadata } from 'next'
+import Head from 'next/head'
+
+// Utils
 import { fetchData } from '../utils/fetchServices'
 
 // Components
@@ -8,7 +12,6 @@ import ServicesDescription from './ServicesDescription'
 import Framework from '../components/Framework'
 import Support from '../components/Support'
 import Jump from './Jump'
-import { Metadata } from 'next'
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -18,7 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical: 'https://www.ausadventcare.com.au/services'
     },
     openGraph: {
-      title: 'Service of Ausadvent Care',
+      title: 'Services',
       description: 'Services of Ausadvent Care, a national champion for independent living, guiding individuals towards vibrant lives throughout Queensland and Western Australia',
       url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png',
       type: 'website',
@@ -35,11 +38,61 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Services Page Ausadvent Care",
+  "url": "https://www.ausadventcare.com.au/services",
+  "headline": "Services of Ausadvent Care, a national champion for independent living, guiding individuals towards vibrant lives throughout Queensland and Western Australia",
+  "description": "Services of Ausadvent Care, a national champion for independent living, guiding individuals towards vibrant lives throughout Queensland and Western Australia",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png"
+  },
+  "sameAs": [
+    "https://www.ausadventcare.com.au/services"
+  ]
+}
+
+const breadCrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": `https://www.ausadvencare.com.au`
+    },
+    {
+      '@type': 'ListItem',
+      "position": 2,
+      "name": "Services",
+      "item": `https://www.ausadvencare.com.au/services`,
+    }
+  ]
+}
+
 export default async function Services() {
     const services = await fetchData()
 
+    const metadata:any = await generateMetadata()
+
     return (
       <main>
+        <Head>
+          <title>{metadata.title} </title>
+          <meta name="description" content={metadata.description} />
+          <link rel="canonical" href={metadata.alternates.canonical} />
+        </Head>
+        <script 
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd)}}
+        />
+        <script 
+          type="application/ld+json" 
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbData)}}
+        />
         <Intro />
         <Portfolio services={services} />
         <ServicesDescription services={services} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Metadata } from 'next'
+import Head from 'next/head'
 
 // Components
 import Queensland from './Queensland'
@@ -33,21 +34,70 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Locations Page Ausadvent Care",
+  "url": "https://www.ausadventcare.com.au/locations",
+  "headline": "Ausadvent Care provides NDIS solutions in Queensland and Western Australia",
+  "description": "Ausadvent Care provides NDIS solutions in Queensland and Western Australia",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png"
+  },
+  "sameAs": [
+    "https://www.ausadventcare.com.au/locations"
+  ]
+}
 
-export default function Locations() {
+const breadCrumbData = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": `https://www.ausadvencare.com.au`
+    },
+    {
+      '@type': 'ListItem',
+      "position": 2,
+      "name": "Locations",
+      "item": `https://www.ausadvencare.com.au/locations`,
+    }
+  ]
+}
+
+export default async function Locations() {
+  const metadata:any = await generateMetadata()
+  
   return (
     <main className='sm:mx-auto bg-blue-300  pb-[4rem]'>
-        <Intro />
-        <div className='xl:max-w-[1024px] xl:mx-auto xl:flex xl:gap-[2rem] xl:items-stretch'>
-          <div className='xl:flex-1 h-full'>
-            <Queensland />
-          </div>
-          <div className='xl:flex-1 xl:h-full'>
-            <Western />
-          </div>
+      <Head>
+        <title>{metadata.title} </title>
+        <meta name="description" content={metadata.description} />
+        <link rel="canonical" href={metadata.alternates.canonical} />
+      </Head>
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd)}}
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbData)}}
+      />
+      <Intro />
+      <div className='xl:max-w-[1024px] xl:mx-auto xl:flex xl:gap-[2rem] xl:items-stretch'>
+        <div className='xl:flex-1 h-full'>
+          <Queensland />
         </div>
-          <Reach />
-          <Contact />
+        <div className='xl:flex-1 xl:h-full'>
+          <Western />
+        </div>
+      </div>
+        <Reach />
+        <Contact />
     </main>
   )
 }

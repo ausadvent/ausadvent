@@ -88,7 +88,7 @@ export default function Footer() {
                 </div>
                 {/* Closing text */}
             </div>
-            <p className='px-[1rem] mt-[1.5rem] lg:mt-[2.5rem] pb-[1rem] xl:px-[8rem] md:max-w-[640px] xl:min-w-full md:mx-auto xl:ml-0 text-primaryWhite text-[0.775rem] sm:text-[0.875rem] sm:text-center md:text-left'>© 2021 Ausadvent Care. All Rights Reserved.  Site | Bytecho</p>     
+            <p className='px-[1rem] mt-[1.5rem] lg:mt-[2.5rem] pb-[1rem] xl:px-[8rem] md:max-w-[640px] xl:min-w-full md:mx-auto xl:ml-0 text-primaryWhite text-[0.775rem] sm:text-[0.875rem] sm:text-center md:text-left'>© 2024 Ausadvent Care. All Rights Reserved.  Site | Bytecho</p>     
         </div>
     </div>
   )

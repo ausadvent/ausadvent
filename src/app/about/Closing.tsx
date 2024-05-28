@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 
 import Logo from '../../../assets/about-lotus.svg'
+import Link from 'next/link'
 
 export default function Closing() {
   return (
@@ -14,7 +15,9 @@ export default function Closing() {
             </div>
             <div className="lg:mt-[4rem] 3xl:mt-[8rem] flex flex-col gap-[1rem] text-blueHigher text-center sm:w-full">
                 <p className="font-bold 2xl:text-[1.125rem] 3xl:text-[1.5rem]">Take the first step towards your empowered future</p>
-                <button className='py-[1rem] xl:py-[1.5rem] lg:text-[1.125rem] xl:text-[1.25rem] sm:w-full xl:w-1/2 3xl:w-[40rem] xl:mx-auto rounded bg-gradient-to-b from-[#1D51C3] to-[#3E7BFF] text-white'>Contact us</button>
+                <Link href={'/locations#form'} >
+                  <button className='py-[1rem] xl:py-[1.5rem] lg:text-[1.125rem] xl:text-[1.25rem] w-full xl:w-1/2 3xl:w-[40rem] xl:mx-auto rounded bg-gradient-to-b from-[#1D51C3] to-[#3E7BFF] text-white'>Contact us</button>
+                </Link>
             </div>
         </div>
     </div>

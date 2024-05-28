@@ -33,7 +33,7 @@ Amplify.configure(config, {
 export default function Form() {
   
   // States
-  const [buttonText, setButtonText] = useState('Submit');
+  const [buttonText, setButtonText] = useState('Send enquiry');
   const [isSending, setIsSending] = useState(false)
 
   // State to render or hide form when success sending message
@@ -118,12 +118,12 @@ export default function Form() {
   
   
   return (
-    <div id='form' className=''>
-      <h2 className='cormorant text-[#1F2937] text-[1.5rem] md:text-[1.875rem] lg:text-[2.25rem] font-bold '>Contact us</h2>
+    <div id='form' className='bg-white rounded-tr-[2rem] rounded-bl-[1rem]'>
+      <h2 className=' pt-[2rem] px-[1rem] md:px-[3rem] cormorant text-[#1F2937] text-[1.5rem] md:text-[1.875rem] lg:text-[2.25rem] font-bold '>Get in touch</h2>
       {renderForm && (
         <form
           onSubmit={formik.handleSubmit}
-          className='mt-[0.5rem] lg:mt-[2rem] px-[1rem] md:px-[3rem] py-[2rem] lg:py-[3rem]  bg-white rounded-tr-[2rem] rounded-bl-[1rem] flex flex-col gap-[1rem]'
+          className='lg:mt-[2rem] px-[1rem] md:px-[3rem] py-[1rem] lg:py-[3rem] flex flex-col gap-[1rem]'
         >
           <label htmlFor="firstName" className="flex flex-col gap-[0.5rem]">
             <span className={`${formik.touched.firstName && formik.errors.firstName ? 'text-red-600' : 'text-black'}`}>

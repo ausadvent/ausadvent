@@ -4,8 +4,8 @@ import React from 'react'
 
 export default function Queensland() {
   return (
-    <section className='page sm:mx-auto mt-[2rem] md:mt-[4rem] xl:mt-0 xl:min-h-[30.75rem] ' id='queensland' >
-      <div className='bg-white rounded-tr-[2rem] rounded-bl-[1rem] p-[1rem] md:p-[2rem] lg:p-[1.5rem] lg:flex xl:flex-col gap-[2rem] xl:gap-[0.5rem] xl:min-h-[30.75rem]'>
+    <section className='page sm:mx-auto mt-[2rem] md:mt-[4rem] xl:mt-0 xl:min-h-[33.5rem] ' id='queensland' >
+      <div className='bg-white xl:min-h-[33.5rem] rounded-tr-[2rem] rounded-bl-[1rem] p-[1rem] md:p-[2rem] lg:p-[1.5rem] lg:flex xl:flex-col gap-[2rem] xl:gap-[0.5rem] '>
           <div className='lg:w-1/2 xl:w-full lg:py-[2rem] xl:py-0 lg:flex flex-col gap-[1rem]'>
               <h2 className="cormorant text-[#6B7280] md:text-[1.5rem] font-bold">Queensland</h2>
               <div className=' border-b-[0.3125rem] border-[#F59E0B] w-[5.375rem] lg:-mt-[1rem]  '></div>

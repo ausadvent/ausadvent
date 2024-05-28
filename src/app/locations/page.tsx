@@ -73,9 +73,9 @@ export default async function Locations() {
   const metadata:any = await generateMetadata()
   
   return (
-    <main className='sm:mx-auto bg-blue-300  pb-[4rem]'>
+    <main className='sm:mx-auto bg-blue-300 pb-[4rem]'>
       <Head>
-        <title>{metadata.title} </title>
+        <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
         <link rel="canonical" href={metadata.alternates.canonical} />
       </Head>
@@ -88,7 +88,8 @@ export default async function Locations() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbData)}}
       />
       <Intro />
-      <div className='xl:max-w-[1024px] xl:mx-auto xl:flex xl:gap-[2rem] xl:items-stretch'>
+      <Contact />
+      <div className='xl:mt-[4rem] xl:max-w-[1024px] xl:mx-auto xl:flex xl:gap-[2rem] '>
         <div className='xl:flex-1 h-full'>
           <Queensland />
         </div>
@@ -97,7 +98,6 @@ export default async function Locations() {
         </div>
       </div>
         <Reach />
-        <Contact />
     </main>
   )
 }

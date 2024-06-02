@@ -4,6 +4,7 @@ import Image from 'next/image'
 // Assets
 import Logo from '../../../assets/about-logo.svg'
 import Lotus from '../../../assets/about-intro-lotus.svg'
+import Link from 'next/link'
 
 export default function Intro() {
   return (
@@ -24,10 +25,10 @@ export default function Intro() {
                 <div className="mt-[2rem] md:mt-0 flex flex-col md:flex-row items-center md:items-start gap-[2.5rem] ">
                     <div className='flex flex-col gap-[2rem] md:w-1/2'>
                         <p className='cormorant font-bold lg:text-[1.25rem] 3xl:text-[1.5rem] leading-[1.125rem] lg:leading-[1.375rem] 3xl:leading-[1.625rem] md:text-left md:order-last'>More Than Just Care Providers; We&apos;re Compassionate Partners On Your Journey Towards Independence, Growth, And Fulfilment. </p>
-                        <h2 className='text-[#1E40AF] text-[1.5rem] lg:text-[2rem] 2xl:text-[3rem] 3xl:text-[4rem] leading-[1.5rem] lg:leading-[2rem] 2xl:leading-[2.875rem] 3xl:leading-[3.75rem] font-extrabold md:text-left'>NURTURING INDEPENDENCE WITH COMPASSIONATE SUPPORT</h2>
+                        <h3 className='text-[#1E40AF] text-[1.5rem] lg:text-[2rem] 2xl:text-[3rem] 3xl:text-[4rem] leading-[1.5rem] lg:leading-[2rem] 2xl:leading-[2.875rem] 3xl:leading-[3.75rem] font-extrabold md:text-left'>NURTURING INDEPENDENCE WITH COMPASSIONATE SUPPORT</h3>
                     </div>
                     <div className=" flex flex-col gap-[1rem] md:w-1/2 md:text-left xl:text-[1.125rem] 3xl:text-[1.25rem]">
-                        <p className='text-blueHigher'>As a proud NDIS registered provider, we offer a range of services under the NDIS scheme in Brisbane and Perth, including Supported Independent Living (SIL), Short Term Accommodation (STA), and Individual Living Options (ILOs). </p>
+                        <p className='text-blueHigher'>As a proud <strong>NDIS registered provider</strong>, we offer a <Link href='/services'>range of services</Link> under the NDIS scheme in Brisbane and Perth, including <Link href='/services/#supported-independent-living' >Supported Independent Living (SIL)</Link>, <Link href='/services#short-term-accommodation' >Short Term Accommodation (STA)</Link>, and <Link href='/services#individualised-living-options' >Individual Living Options (ILOs)</Link>. </p>
                         <p className="text-blueHigher font-semibold">Designed to empower you to bloom just like the lotus flower – resilient, beautiful, and reaching your full potential.</p>
                     </div>
                 </div>

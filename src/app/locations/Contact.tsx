@@ -8,7 +8,7 @@ export default function Contact() {
             {/* Yellow container */}
             <div className='px-[1rem] flex flex-col gap-[1rem] lg:gap-[2rem] xl:w-1/3 xl:self-center'>
                 <div className=''>
-                    <h3 className="cormorant text-[1.875rem] md:text-[2.25rem] leading-[2.063rem] md:leading-[2.375rem] text-[#6B7280] font-bold">Your Journey To Personalised Care Starts With Us</h3>
+                    <h3 className="cormorant text-[1.875rem] md:text-[2.25rem] leading-[2.063rem] md:leading-[2.375rem] text-[#6B7280] font-bold">Your Journey To Personalised In-Home Care Starts With Us</h3>
                     <div className=' mt-[0.2rem] border-b-[0.3rem]  border-[#60A5FA] w-[5.375rem]  '></div>
                 </div>
                 <p>If you&apos;re seeking more information, have inquiries about our services, or want to understand the procedures better, send us a quick message online for prompt assistance.</p>

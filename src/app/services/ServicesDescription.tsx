@@ -24,7 +24,7 @@ export default function ServicesDescription({services}:any) {
                     <div className='page sm:mx-auto flex flex-col gap-[3rem] xl:gap-[4.5rem]'>
                         {/* Title */}
                         <div className='relative'>
-                            <h2 className=' cormorant text-[2.25rem] md:text-[3rem] xl:text-[4rem] leading-[2.375rem] md:leading-[3.125rem] xl:leading-[4.375rem] font-semibold' >{service?.fields.serviceTitle}</h2>
+                            <h3 className=' cormorant text-[2.25rem] md:text-[3rem] xl:text-[4rem] leading-[2.375rem] md:leading-[3.125rem] xl:leading-[4.375rem] font-semibold' >{service?.fields.serviceTitle}</h3>
                             <div className="absolute sm:mt-1 left-0 w-2/5 sm:w-[6.375rem] border-b-[0.3rem] border-blue-400"></div>
                         </div>
 
@@ -42,7 +42,7 @@ export default function ServicesDescription({services}:any) {
                             <div className="absolute right-0 top-[18.75rem] md:top-[28.125rem] xl:top-[34.375rem] w-2/5 border-b-[0.3rem] border-blue-400"></div>
                         </div>
                         
-                        <h3 className='cormorant text-[1.5rem] md:text-[1.875rem] xl:text-[2.25rem] font-bold leading-[1.625rem] md:leading-[2.065rem] xl:leading-[2.375rem]'>{service?.fields.serviceSlogan}</h3>
+                        <h4 className='cormorant text-[1.5rem] md:text-[1.875rem] xl:text-[2.25rem] font-bold leading-[1.625rem] md:leading-[2.065rem] xl:leading-[2.375rem]'>{service?.fields.serviceSlogan}</h4>
                         
                         <p className='lg:text-[1.125rem] xl:hidden'>{service?.fields.principalDescription}</p>
                         
@@ -93,7 +93,7 @@ export default function ServicesDescription({services}:any) {
 
                         {/* About boxes + Heading parent container */}
                         <div className="flex flex-col items-center gap-[1.5rem] lg:gap-[4rem] xl:gap-[4.5rem]">
-                            <h3 className="cormorant text-[1.775rem] lg:text-[2.25rem] xl:text-[3rem] leading-[2rem] lg:leading-[2.375rem]">Remember, {service.fields.serviceAcronym} Is All About:</h3>
+                            <h4 className="cormorant text-[1.775rem] lg:text-[2.25rem] xl:text-[3rem] leading-[2rem] lg:leading-[2.375rem]">Remember, {service.fields.serviceAcronym} Is All About:</h4>
                             {/* Just boxes container */}
                             <div className="flex flex-col lg:flex-row items-center lg:justify-center lg:items-stretch gap-[1.5rem] lg:gap-[0.5rem] xl:gap-[1rem]">
                                 {/* About box 1*/}
@@ -101,7 +101,7 @@ export default function ServicesDescription({services}:any) {
                                     {service?.fields.aboutBox1.content.map((item: any, index: any) => {
                                         if(item.nodeType.startsWith("heading")) {
                                             return (
-                                                <h3 key={index} className='text-[1.125rem] xl:text-[1.25rem] font-semibold text-[#1F2937]'>{item.content[0].value}</h3>
+                                                <h5 key={index} className='text-[1.125rem] xl:text-[1.25rem] font-semibold text-[#1F2937]'>{item.content[0].value}</h5>
                                             )
                                         } else {
                                             return (
@@ -133,7 +133,7 @@ export default function ServicesDescription({services}:any) {
                                     {service?.fields.aboutBox3.content.map((item: any, index: any) => {
                                         if(item.nodeType.startsWith("heading")) {
                                             return (
-                                                <h3 key={index} className='text-[1.125rem] xl:text-[1.25rem] font-semibold text-[#1F2937]'>{item.content[0].value}</h3>
+                                                <h5 key={index} className='text-[1.125rem] xl:text-[1.25rem] font-semibold text-[#1F2937]'>{item.content[0].value}</h5>
                                             )
                                         } else {
                                             return (
@@ -168,7 +168,7 @@ export default function ServicesDescription({services}:any) {
                         {/* Just for the last service */}
                         {service === services[services.length - 1] ? (
                             <div className='flex flex-col gap-[1rem] mb-[1rem] sm:mb-[3rem]'>
-                                <h3 className='cormorant text-[1.875rem] font-bold text-[#A16207] leading-[2.065rem] text-center'>At Ausadvent Care, we are committed to providing unparalleled support</h3>
+                                <h5 className='cormorant text-[1.875rem] font-bold text-[#A16207] leading-[2.065rem] text-center'>At Ausadvent Care, we are committed to providing unparalleled support</h5>
                                 <Image className='w-[6.375rem] h-[0.312rem] mx-auto' src={divider} title='Blue divider' alt='Blue divider' width={20} height={20} loading='lazy' />
                                 <p className='text-center'> Focusing on <strong>skill development</strong>, and facilitating <strong>community integration</strong>, ensuring that Medium-Term Accommodation becomes a transformative step toward long-term <strong>independent living</strong>.</p>
                             </div>

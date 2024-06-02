@@ -30,9 +30,9 @@ export default function Footer() {
                 <div className="flex flex-col items-center gap-[0.5rem] md:gap-[2rem] xl:max-w-[11.6rem] 2xl:max-w-[24rem]">
                     <div className='flex flex-col md:flex-row gap-[0.5rem] items-center'>
                         <Image src={Symbol} className='w-[2rem] md:w-[2.9rem] h-[1.4rem] md:h-[2rem]' title='Ausadvent symbol' alt='Lotus flower' width={20} height={20} loading='lazy' />
-                        <h2 className='font-bold text-primaryWhite text-center md:text-left leading-4'>AUSADVENT <br /> CARE</h2>
+                        <h3 className='font-bold text-primaryWhite text-center md:text-left leading-4'>AUSADVENT <br /> CARE</h3>
                     </div>
-                    <p className='text-primaryWhite text-[0.875rem] 2xl:text-[1.125rem] leading-[1.25rem] 2xl:leading-[1.625rem] text-center md:text-left '>At Ausadvent Care, we&apos;re more than just care providers; we&apos;re compassionate partners on your journey towards independence, growth, and fulfilment. </p>
+                    <p className='text-primaryWhite text-[0.875rem] 2xl:text-[1.125rem] leading-[1.25rem] 2xl:leading-[1.625rem] text-center md:text-left '>At Ausadvent Care, we&apos;re more than just NDIS care providers; we&apos;re compassionate partners on your journey towards independence, growth, and fulfilment. </p>
                     <p className='text-primaryWhite text-[0.875rem] text-center leading-[1.25rem] md:hidden'>Connect with us</p>
                     <div className="flex gap-[1rem] md:hidden">
                         <Link href='https://www.instagram.com/ausadventcare' target='_blank'><Image src={Instagram} className='w-[2rem] h-[2rem]' title='Instagram logo' alt='Instagram logo' width={20} height={20} loading='lazy' /></Link>

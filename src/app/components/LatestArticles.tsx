@@ -43,7 +43,7 @@ export default function LatestArticles() {
     return (
         <div>
             <div className='pt-[3rem] sm:pt-[2rem] md:pt-[2.5rem] lg:pt-[4.5rem] 3xl:mt-[6rem]'>
-                <h2 className='cormorant text-[1.5rem] lg:text-[2.25rem] font-bold text-center'>LATEST ARTICLES</h2>
+                <h3 className='cormorant text-[1.5rem] lg:text-[2.25rem] font-bold text-center'>LATEST ARTICLES</h3>
                 {/* Articles box */}
                 <div className='relative mt-[3rem] sm:mt-[2.5rem] lg:mt-[4.5rem] 3xl:mt-[6rem] h-[16rem] md:h-[25rem] lg:h-[31.25rem] xl:h-[37.5rem] 2xl:h-[43.75rem]'>
                     {/* Hero */}

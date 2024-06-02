@@ -26,7 +26,7 @@ export default function Blue() {
                         />
                     </div>
                     <div className="page xl:px-[4rem] sm:mx-auto flex flex-col gap-[2rem]">
-                        <h3 className="cormorant text-blueHigher text-[1.5rem] xl:text-[2.25rem] leading-[1.625rem] xl:leading-[2.375rem] font-bold">Your Expert Guide Through Every Step</h3>
+                        <h4 className="cormorant text-blueHigher text-[1.5rem] xl:text-[2.25rem] leading-[1.625rem] xl:leading-[2.375rem] font-bold">Your Expert Guide Through Every Step</h4>
                         <p className='xl:text-[1.25rem]'>At Ausadvent Care, navigating the NDIS landscape becomes straightforward. Our team of dedicated experts in Brisbane and Perth possesses an in-depth understanding of the NDIS system, funding policies, and available services. We&apos;ll be your compass, guiding you through plan development, funding allocation, and service selection, ensuring you maximise every opportunity your NDIS plan offers.</p>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ export default function Blue() {
                         />
                     </div>
                     <div className="page xl:px-[4rem] sm:mx-auto flex flex-col gap-[2rem]">
-                        <h3 className="cormorant text-blueHigher text-[1.5rem] xl:text-[2.25rem] leading-[1.625rem] xl:leading-[2.375rem] font-bold">Say Goodbye to Overwhelm, Embrace Empowerment</h3>
+                        <h4 className="cormorant text-blueHigher text-[1.5rem] xl:text-[2.25rem] leading-[1.625rem] xl:leading-[2.375rem] font-bold">Say Goodbye to Overwhelm, Embrace Empowerment</h4>
                         <p className='xl:text-[1.25rem]'>We understand the complexities of the NDIS can feel daunting. But with <strong>Ausadvent Care by your side</strong>, you can face them with confidence. Our compassionate support goes beyond the paperwork – we offer practical guidance, answer your questions with clarity, and connect you with resources that address your specific needs and aspirations.</p>
                     </div>
                 </div>

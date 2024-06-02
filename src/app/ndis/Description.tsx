@@ -27,7 +27,7 @@ export default function Description() {
         {/* Content */}
         <div className='page sm:mx-auto pt-[13rem] sm:pt-[8rem] pb-[2rem] 2xl:pb-[5.5rem] 3xl:pb-[6.5rem] '>
             <div className="flex flex-col gap-[1.5rem]">
-                <h2 className='cormorant text-[1.5rem] lg:text-[1.875rem] 2xl:text-[2.25rem] font-bold text-[#6B7280] '>Jump To Section</h2>
+                <h3 className='cormorant text-[1.5rem] lg:text-[1.875rem] 2xl:text-[2.25rem] font-bold text-[#6B7280] '>Jump To Section</h3>
                 <ul className='flex flex-col gap-[0.5rem] cormorant text-[1.5rem] text-[#2563EB]'>
                     <li className='flex gap-[0.5rem] items-center'>
                         <Image className='w-[0.81rem] h-[1rem]' src={Symbol} title='Ausadvent logo' alt='Ausadvent logo' width={20} height={20} loading='lazy' />
@@ -56,7 +56,7 @@ export default function Description() {
                 {/* Box for Eligibility */}
                 <div className=" 3xl:w-2/3 flex flex-col lg:flex-row gap-[2rem] text-[#374151]">
                     <div className='lg:w-1/2 flex flex-col gap-[2rem]'>
-                        <h2 className='cormorant text-[1.5rem] lg:text-[1.875rem] 2xl:text-[2.25rem] font-bold text-blueHigher '>Eligibility For NDIS</h2>
+                        <h3 className='cormorant text-[1.5rem] lg:text-[1.875rem] 2xl:text-[2.25rem] font-bold text-blueHigher '>Eligibility For NDIS</h3>
                         <p className='lg:text-[1.125rem] 2xl:text-[1.25rem]'>The NDIS is available for individuals who meet the following criteria:</p>
                         <ul className="flex flex-col gap-[0.5rem] lg:text-[1.125rem] 2xl:text-[1.25rem]">
                             <li className="flex items-center gap-[0.5rem]">

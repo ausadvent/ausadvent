@@ -34,7 +34,7 @@ export default async function Values() {
 
     return (
     <div className='page sm:px-[2rem] sm:mx-auto py-[3rem] md:py-[4.5rem] lg:py-[5rem] xl:py-[6rem]'>
-        <h2 className='cormorant text-[#1E3A8A] text-[1.875rem] xl:text-[2.25rem] font-bold'>OUR CORE VALUES</h2>
+        <h3 className='cormorant text-[#1E3A8A] text-[1.875rem] xl:text-[2.25rem] font-bold'>OUR CORE VALUES</h3>
         <p className='mt-[2rem] xl:max-w-[48rem] xl:text-[1.125rem] leading-[1.625rem]'>Our mission is to maintain the comfort and safety of our clients while providing them with the appropriate care services to nurture their independence.</p>
 
         {/* Services cards container */}
@@ -55,7 +55,7 @@ export default async function Values() {
                     <div className='flex flex-col items-center md:items-start xl:items-center gap-[0.5rem] sm:gap-[1rem] xl:gap-[0rem] '>
                         <div className='flex items-center gap-[1rem]'>
                             <Image className='w-[1.9rem] md:w-[2.9rem] h-[1.4rem] md:h-[1.9rem]' src={Symbol} alt='Ausadvent symbol' title='Ausadvent symbol' width={20} height={20} />
-                            <h3 className='cormorant text-[1.875rem] xl:text-[3rem] font-bold'>{value?.fields?.valueTitle}</h3>
+                            <h4 className='cormorant text-[1.875rem] xl:text-[3rem] font-bold'>{value?.fields?.valueTitle}</h4>
                         </div>
                         <p className='xl:text-[1.25rem] leading-[1.5rem] xl:leading-[1.75rem] text-center md:text-left xl:text-center'>{value?.fields?.valueDescription}</p>
 

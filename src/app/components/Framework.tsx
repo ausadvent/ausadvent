@@ -33,8 +33,8 @@ export default async function Framework() {
   
     return (
     <div className='page sm:mx-auto py-[2rem] sm:py-[4rem] md:py-[4.5rem] lg:py-[5rem] xl:py-[6rem]'>
-        <h2 className='cormorant text-[1.5rem] lg:text-[1.875rem] text-[#1E3A8A] font-bold'>FRAMEWORK OF PRACTICE</h2>
-        <h3 className='cormorant mt-[1rem] text-[1.5rem] lg:text-[1.875rem] text-[#1E3A8A] font-bold'>Person-Centred Approach</h3>
+        <h3 className='cormorant text-[1.5rem] lg:text-[1.875rem] text-[#1E3A8A] font-bold'>FRAMEWORK OF PRACTICE</h3>
+        <h4 className='cormorant mt-[1rem] text-[1.5rem] lg:text-[1.875rem] text-[#1E3A8A] font-bold'>Person-Centred Approach</h4>
         <div className='mt-[2rem] lg:mt-[4rem] xl:max-w-[50rem] flex flex-col gap-[1.5rem] sm:gap-[2rem] lg:text-[1.125rem] xl:text-[1.25rem] lg:leading-[1.625rem] xl:leading-[1.875rem] '>
             <p>Our framework is rooted in person-centred approaches, empowering individuals to lead service design, planning, delivery, and review.</p>
             <p>We prioritise maximising the capacity of people with disabilities to control their lives, reflecting the Human Rights principles of respect, non-discrimination, and full participation.</p>
@@ -45,7 +45,7 @@ export default async function Framework() {
         <div className="mt-[2rem] lg:mt-[4rem] flex flex-col lg:grid lg:grid-cols-2 2xl:grid-cols-3 gap-[2rem]">
             {standards.slice().reverse().map((item:any, index:any) => (
                 <div key={index} className='bg-orange-300 p-[1rem] xl:p-[2rem] rounded-tr-3xl rounded-bl-3xl border-[2px] border-[#2563EB]'>
-                    <h4 className='text-[#1E3A8A] text-[1.125rem] lg:text-[1.25rem] font-semibold'>{index+1}. {item?.fields.standardTitle}</h4>
+                    <h5 className='text-[#1E3A8A] text-[1.125rem] lg:text-[1.25rem] font-semibold'>{index+1}. {item?.fields.standardTitle}</h5>
                     <div className='mt-[0.5rem] lg:text-[1.125rem] flex items-center gap-[0.5rem]'>
                         <Image className='w-[1.5rem] h-[2rem]' src={BlueLotus} alt='Blue lotus symbol' title='Blue lotus symbol' width={20} height={20} loading='lazy' />
                         <p className='font-semibold '>{item?.fields.phrase}</p>

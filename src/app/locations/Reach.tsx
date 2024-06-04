@@ -10,7 +10,7 @@ export default function Reach() {
     <section className='page sm:mx-auto mt-[2rem] md:mt-[4rem] lg:w-[27.18rem] '>
         <div className='border bg-blue-50 border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem] p-[1rem] md:p-[2rem]'>
             <div className=''>
-                <h2 className="cormorant text-[#A16207] text-[1.5rem] md:text-[1.875rem] font-bold">To Reach Out</h2>
+                <h3 className="cormorant text-[#A16207] text-[1.5rem] md:text-[1.875rem] font-bold">To Reach Out</h3>
             </div>
 
             <p className='mt-[1rem] md:text-[1.125rem] '>Simply call us at</p>

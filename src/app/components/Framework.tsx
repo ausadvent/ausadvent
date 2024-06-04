@@ -32,7 +32,7 @@ export default async function Framework() {
     const standards = await fetchStandards()
   
     return (
-    <div className='page sm:mx-auto py-[2rem] sm:py-[4rem] md:py-[4.5rem] lg:py-[5rem] xl:py-[6rem]'>
+    <section className='page sm:mx-auto py-[2rem] sm:py-[4rem] md:py-[4.5rem] lg:py-[5rem] xl:py-[6rem]'>
         <h3 className='cormorant text-[1.5rem] lg:text-[1.875rem] text-[#1E3A8A] font-bold'>FRAMEWORK OF PRACTICE</h3>
         <h4 className='cormorant mt-[1rem] text-[1.5rem] lg:text-[1.875rem] text-[#1E3A8A] font-bold'>Person-Centred Approach</h4>
         <div className='mt-[2rem] lg:mt-[4rem] xl:max-w-[50rem] flex flex-col gap-[1.5rem] sm:gap-[2rem] lg:text-[1.125rem] xl:text-[1.25rem] lg:leading-[1.625rem] xl:leading-[1.875rem] '>
@@ -78,6 +78,6 @@ export default async function Framework() {
             </div>
             
         </div>
-    </div>
+    </section>
   )
 }

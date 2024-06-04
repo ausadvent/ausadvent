@@ -33,9 +33,9 @@ export default async function Values() {
     const values = await fetchValues()
 
     return (
-    <div className='page sm:px-[2rem] sm:mx-auto py-[3rem] md:py-[4.5rem] lg:py-[5rem] xl:py-[6rem]'>
+    <section className='page sm:px-[2rem] sm:mx-auto py-[3rem] md:py-[4.5rem] lg:py-[5rem] xl:py-[6rem]'>
         <h3 className='cormorant text-[#1E3A8A] text-[1.875rem] xl:text-[2.25rem] font-bold'>OUR CORE VALUES</h3>
-        <p className='mt-[2rem] xl:max-w-[48rem] xl:text-[1.125rem] leading-[1.625rem]'>Our mission is to maintain the comfort and safety of our clients while providing them with the appropriate care services to nurture their independence.</p>
+        <p className='mt-[2rem] xl:max-w-[48rem] xl:text-[1.125rem] leading-[1.625rem]'>Our mission is to maintain the comfort and safety of our clients while providing them with respite care to nurture their independence.</p>
 
         {/* Services cards container */}
         <div className='mt-[3rem] xl:mt-[5rem] flex flex-col xl:grid xl:grid-cols-2 2xl:flex 2xl:flex-row 2xl:flex-wrap gap-[3rem] 3xl:justify-center '>
@@ -63,6 +63,6 @@ export default async function Values() {
                 </div>
             ))}
         </div>
-    </div>
+    </section>
   )
 }

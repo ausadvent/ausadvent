@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 export default function Intro() {
   return (
-    <div className=' -mt-[4rem] md:h-screen'>
+    <main className=' -mt-[4rem] md:h-screen'>
         <div className="py-[4rem] bg-gradient-to-b from-[#AD6E03]  to-[#F59E0B]"></div>
         <div className=' bg-gradient-to-b from-[#F59E0B] to-white h-full '>
             {/* <Image 
@@ -34,6 +34,6 @@ export default function Intro() {
                 </div>
             </div>
         </div>
-    </div>
+    </main>
   )
 }

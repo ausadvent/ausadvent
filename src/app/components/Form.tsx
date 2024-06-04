@@ -119,7 +119,7 @@ export default function Form() {
   
   return (
     <div id='form' className='bg-white rounded-tr-[2rem] rounded-bl-[1rem]'>
-      <h2 className=' pt-[2rem] px-[1rem] md:px-[3rem] cormorant text-[#1F2937] text-[1.5rem] md:text-[1.875rem] lg:text-[2.25rem] font-bold '>Get in touch</h2>
+      <h3 className=' pt-[2rem] px-[1rem] md:px-[3rem] cormorant text-[#1F2937] text-[1.5rem] md:text-[1.875rem] lg:text-[2.25rem] font-bold '>Get in touch</h3>
       {renderForm && (
         <form
           onSubmit={formik.handleSubmit}

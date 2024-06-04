@@ -74,7 +74,7 @@ export default async function About() {
   const metadata:any = await generateMetadata()
 
   return (
-    <main>
+    <div>
       <Head>
         <title>{metadata.title} </title>
         <meta name="description" content={metadata.description} />
@@ -93,6 +93,6 @@ export default async function About() {
       <Values />
       <Framework />
       <Closing />
-    </main>
+    </div>
   )
 }

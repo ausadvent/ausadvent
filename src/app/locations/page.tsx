@@ -73,7 +73,7 @@ export default async function Locations() {
   const metadata:any = await generateMetadata()
   
   return (
-    <main className='sm:mx-auto bg-blue-300 pb-[4rem]'>
+    <div className='sm:mx-auto bg-blue-300 pb-[4rem]'>
       <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
@@ -89,15 +89,18 @@ export default async function Locations() {
       />
       <Intro />
       <Contact />
-      <div className='xl:mt-[4rem] xl:max-w-[1024px] xl:mx-auto xl:flex xl:gap-[2rem] '>
-        <div className='xl:flex-1 h-full'>
-          <Queensland />
-        </div>
-        <div className='xl:flex-1 xl:h-full'>
-          <Western />
-        </div>
-      </div>
+      <main>
+        <h3 className='page mt-[2rem] sm:mx-auto text-[1.375rem] md:text-[1.875rem] lg:text-[2rem] leading-[1.375rem] md:leading-[1.75rem] lg:leading-[2rem] text-[#1E40AF] font-black' >Our Areas Of Focus for NDIS Services and Support Independent Living</h3>
+        <aside className='xl:mt-[4rem] xl:max-w-[1024px] xl:mx-auto xl:flex xl:gap-[2rem] '>
+          <div className='xl:flex-1 h-full'>
+            <Queensland />
+          </div>
+          <div className='xl:flex-1 xl:h-full'>
+            <Western />
+          </div>
+        </aside>
         <Reach />
-    </main>
+      </main>
+    </div>
   )
 }

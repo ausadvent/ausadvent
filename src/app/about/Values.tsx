@@ -31,7 +31,7 @@ export default async function Values() {
     const values = await fetchValues()
   
     return (
-    <div className='bg-[#2563EB] rounded-tr-[3rem] lg:rounded-tr-[9rem] 2xl:rounded-tr-[12.5rem] rounded-bl-[3rem] lg:rounded-bl-[4rem] 2xl:rounded-bl-[6.25rem]'>
+    <section className='bg-[#2563EB] rounded-tr-[3rem] lg:rounded-tr-[9rem] 2xl:rounded-tr-[12.5rem] rounded-bl-[3rem] lg:rounded-bl-[4rem] 2xl:rounded-bl-[6.25rem]'>
         <div className="page sm:mx-auto py-[3rem] md:py-[4rem] lg:py-[4.5rem] xl:py-[5rem] 2xl:py-[6rem] 3xl:py-[8rem]">
             <div className=" flex flex-col gap-[2rem] text-primaryWhite">
                 <h3 className='cormorant text-[1.5rem] lg:text-[1.875rem] xl:text-[2.25rem] 3xl:text-[3rem] font-bold'>OUR CORE VALUES</h3>
@@ -63,6 +63,6 @@ export default async function Values() {
                 ))}
             </div>
         </div>
-    </div>
+    </section>
   )
 }

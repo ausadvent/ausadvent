@@ -22,10 +22,10 @@ export default function Services() {
   }, [])
   
   return (
-    <div className='page sm:mx-auto py-[2rem] md:py-[4.5rem] lg:py-[5rem] xl:py-[6rem]'>
+    <main className='page sm:mx-auto py-[2rem] md:py-[4.5rem] lg:py-[5rem] xl:py-[6rem]'>
         <h3 className='cormorant text-[1.875rem] md:text-[3rem] font-bold md:text-center'>OUR SERVICES</h3>
         <p className='mt-[3rem] md:mt-[4.5rem] lg:mt-[5rem] xl:mt-[6rem] xl:max-w-[44rem] xl:mx-auto text-[1rem] md:text-[1.25rem] leading-[1.5rem] md:leading-[1.75rem] md:text-center'>
-          Our <strong>Supported Accommodation</strong> and <strong>NDIS Accommodation</strong> services in Queensland and Western Australia are designed to empower individuals with tailored solutions for independent living, ensuring accesible housing and respite care. 
+          Our <strong>NDIS Services</strong> and <strong>Supported Accommodation</strong> solutions in Queensland and Western Australia are designed to empower individuals with tailored plans for independent living, ensuring accesible housing and respite care. 
           Discover our <Link rel="stylesheet" href="/locations" ><strong className='text-[#F59E0B]'> locations </strong>here</ Link>.
         </p>
 
@@ -71,6 +71,6 @@ export default function Services() {
             </div>
           ))}
         </div>
-    </div>
+    </main>
   )
 }

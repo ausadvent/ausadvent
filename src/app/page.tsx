@@ -39,7 +39,7 @@ export default function Home() {
   }
   
   return (
-    <main className="">
+    <div className="">
       <Head>
         <title>Ausadvent Care</title>
         <meta name="description" content="Registered care provider located in Queensland and Western Australia. Our services under the NDIS scheme, including Supported Independent Living, Short Term Accommodation and Individual Living Options" />
@@ -59,6 +59,6 @@ export default function Home() {
       <Independence />
       <Framework />
       <Support />
-    </main>
+    </div>
   )
 }

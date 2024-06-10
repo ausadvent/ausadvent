@@ -78,8 +78,8 @@ export default function ServicesDescription({services}:any) {
                                 src={`https:${service.fields.picture.content[1].data.target.fields.file.url}`} 
                                 title={service.fields.picture.content[1].data.target.fields.title}
                                 alt={service.fields.picture.content[1].data.target.fields.description}
-                                width={372}
-                                height={356}
+                                width={496}
+                                height={453}
                                 loading='lazy'
                             />
                             {/* Paragraphs */}

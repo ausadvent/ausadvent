@@ -33,7 +33,7 @@ export default function Intro() {
                     <h2 className='cormorant text-[1.5rem] sm:text-[1.875rem] xl:text-[3rem] 3xl:text-[4rem] sm:leading-8 xl:leading-[3.125rem] 3xl:leading-[3.75rem] font-bold '>Empowering Lives, Blooming  Independence</h2>
                 </div>
                 <div className='md:mt-[8rem] lg:mt-[6rem] xl:mt-[17rem] flex flex-col gap-[3.5rem] md:gap-[2rem]'>
-                    <p className=' text-[1rem] xl:text-[1.25rem] font-semibold leading-[1.75rem]'>We are a registered NDIS provider redefining care. Our commitment goes beyond assistance to tailored support services and indepentend living options in Queensland and Western Australia to your unique needs.</p>
+                    <p className=' text-[1rem] xl:text-[1.25rem] font-semibold leading-[1.75rem]'>We are a registered NDIS provider redefining care. Our commitment goes beyond assistance to tailored support services and independent living options in Queensland and Western Australia to your unique needs.</p>
                     <Link href={'/locations#form'} >
                         <button 
                             className='w-full sm:w-[25rem] md:w-full xl:w-1/2 xl:ml-0 text-black bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] sm:mx-auto sm:bg-none md:border-[2px] sm:border-[#F59E0B] py-[0.5rem] rounded-lg text-[1.125rem] sm:text-white lg:hover:border-transparent group lg:hover:bg-gradient-to-b lg:hover:from-[#FFD8AF] lg:hover:to-[#FDBA74] lg:transition lg:duration-500 lg:ease-linear '

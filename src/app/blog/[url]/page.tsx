@@ -114,7 +114,7 @@ export default async function Article({ params }: any) {
     }
   
     return (
-      <main>
+      <div>
         <Head>
           <title>{metadata.title} </title>
           <meta name="description" content={metadata.description} />
@@ -130,7 +130,7 @@ export default async function Article({ params }: any) {
         />
         <Intro article={currentArticle} />
         <MainContent article={currentArticle} />
-      </main>
+      </div>
     )
   } else {
     return (

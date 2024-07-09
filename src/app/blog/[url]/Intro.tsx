@@ -5,6 +5,8 @@ import React from 'react'
 
 export default function Intro({article}: any) {
 
+
+    console.log(article)
     return (
         <article className="page sm:mx-auto pb-[2rem] sm:pb-0 ">
             {/* Background image */}
@@ -30,7 +32,7 @@ export default function Intro({article}: any) {
                 <div className="lg:mt-[3rem] flex flex-col lg:flex-row lg:gap-[3rem] xl:gap-[2rem]">
                     <div className=' lg:w-1/2'>
                         <h1 className="mt-[1rem] lg:mt-0 text-[1.875rem] md:text-[1.875rem] lg:text-[2.5rem] xl:text-[3rem] 3xl:text-[4rem] leading-[1.85rem] md:leading-[1.75rem] lg:leading-[3rem] xl:leading-[2.875rem] 3xl:leading-[3.75rem] font-black  ">
-                            {article.fields.introductoryTitle.toUpperCase()}
+                            {article.fields.introductoryTitle?.toUpperCase()}
                         </h1>
                         <div className="mt-[1rem] border-b-[0.3125rem] border-[#F59E0B] w-[6.375rem] "></div>
                     </div>

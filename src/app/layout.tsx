@@ -12,6 +12,7 @@ import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import LatestArticles from './components/LatestArticles'
+import Metrics from './metrics'
 
 
 // Fonts
@@ -93,6 +94,7 @@ export default function RootLayout({
           <Footer />
         </>
       </body>
+      <Metrics />
       <GoogleAnalytics gaId={trackingId} />
     </html>
   )

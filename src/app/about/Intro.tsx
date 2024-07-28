@@ -11,12 +11,6 @@ export default function Intro() {
     <main className=' -mt-[4rem] md:h-screen'>
         <div className="py-[4rem] bg-gradient-to-b from-[#AD6E03]  to-[#F59E0B]"></div>
         <div className=' bg-gradient-to-b from-[#F59E0B] to-white h-full '>
-            {/* <Image 
-                src={Lotus} 
-                alt='Hero image, hands holding with support' 
-                className=' -z-20 absolute left-auto inset-0 w-[40.75rem] h-[24rem] md:h-[35rem] object-cover object-left-bottom opacity-55 md:opacity-85   '
-            /> */}
-            {/* <div className="absolute inset-0 bg-black opacity-40" aria-hidden="true"></div> */}
             <div className='page sm:mx-auto pt-[7rem] sm:pt-[4rem] lg:pt-[6rem] pb-[2rem] h-full md:flex md:flex-wrap md:gap-[2.5rem] xl:gap-[4rem] text-center' >
                 <div className=' md:flex-grow-0 md:self-end md:w-full flex flex-col md:flex-row gap-[1rem] items-center'>
                     <Image className='w-[5.52rem] h-[3.7rem]' src={Logo} title='Ausadvent logo' alt='Ausadvent logo' width={20} height={20} loading='eager' />

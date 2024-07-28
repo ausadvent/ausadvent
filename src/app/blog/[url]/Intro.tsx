@@ -5,8 +5,6 @@ import React from 'react'
 
 export default function Intro({article}: any) {
 
-
-    console.log(article)
     return (
         <article className="page sm:mx-auto pb-[2rem] sm:pb-0 ">
             {/* Background image */}

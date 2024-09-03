@@ -96,7 +96,7 @@ export default async function Locations() {
             <Queensland />
           </div>
           <div className='xl:flex-1 xl:h-full'>
-            <Western />
+            {/* <Western /> */}
           </div>
         </aside>
         <Reach />

@@ -90,13 +90,13 @@ export default async function Locations() {
       <Intro />
       <Contact />
       <main>
-        <h3 className='page mt-[2rem] sm:mx-auto text-[1.375rem] md:text-[1.875rem] lg:text-[2rem] leading-[1.375rem] md:leading-[1.75rem] lg:leading-[2rem] text-[#1E40AF] font-black' >Our Areas of Focus for NDIS Services and Supported Independent Living (SIL)</h3>
+        <h3 className='page mt-[2rem] sm:mx-auto text-[1.375rem] md:text-[1.875rem] lg:text-[2rem] leading-[1.375rem] md:leading-[1.75rem] lg:leading-[2rem] text-[#1E40AF] font-black' >Find us for NDIS Services and Supported Independent Living (SIL)</h3>
         <aside className='xl:mt-[4rem] xl:max-w-[1024px] xl:mx-auto xl:flex xl:gap-[2rem] '>
           <div className='xl:flex-1 h-full'>
             <Queensland />
           </div>
           <div className='xl:flex-1 xl:h-full'>
-            <Western />
+            {/* <Western /> */}
           </div>
         </aside>
         <Reach />

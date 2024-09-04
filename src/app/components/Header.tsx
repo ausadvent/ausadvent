@@ -180,9 +180,12 @@ export default function Header() {
                         </li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'><Link href={'/blog'}>Blog</Link></li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'>
-                            <a href="tel:+610731213060" className='flex items-center gap-2'>
+
+                            <a href="tel:0731213060" className='flex items-center gap-1'>
                                 <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' title='phone ringing icon' alt='phone ringing icon' width={20} height={20} loading='eager' />
-                                <p className=''>07 31213060</p>
+                                <p className='font-bold'>07 31213060</p>
+
+
                             </a>
                         </li>
                         <li onClick={() => toggleMenu()} className=' hover:text-[#F59E0B] cursor-pointer'>

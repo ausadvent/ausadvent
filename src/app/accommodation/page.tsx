@@ -1,16 +1,17 @@
 import React from 'react'
-import Intro from './Intro'
-import Features from './Features'
-import NotFound from '../not-found'
 import Support from '../components/Support'
+import AccommodationIntro from './AccommodationIntro'
+
+// Database
+import { propertiesArray } from '../accommodation/constants/properties'
+import PropertiesCards from './PropertiesCards'
 
 export default function Accommodation() {
   return (
     <div className='sm:mx-auto bg-gray-200 pb-[1rem]'>
-        <Intro />
-        <Features />
+        <AccommodationIntro />
+        <PropertiesCards properties={propertiesArray} />
         <Support />
     </div>
-    // <NotFound />
   )
 }

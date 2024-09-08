@@ -13,10 +13,6 @@ export default function AccommodationIntro() {
             <div className='border-b-[0.3rem] border-[#F59E0B] w-[5.375rem]'></div>
             <p className='md:text-[1.25rem]'>Experience Independent Living in a Convenient Location</p>
         </div>
-
-        <div className="sm:mx-auto mt-[0.8rem] page flex flex-col gap-[0.8rem] lg:gap-[1rem]">
-          {/* <AccommodationCarousel /> */}
-        </div>
     </article>
   )
 }

@@ -13,7 +13,7 @@ export default function PropertyFeatures({property}:propFeatures) {
     return (
         <section>
             <button 
-                className='mt-[1rem] flex justify-center items-center gap-1 mx-auto text-[1.125rem] text-blue-600 font-bold '
+                className='mt-[1rem] flex justify-center items-center gap-1 mx-auto text-[1.125rem] lg:text-[1.3rem] text-blue-600 font-bold '
                 onClick={() => setMoreInfo(prevState => !prevState)}
             >
                 <span>More info</span>
@@ -37,10 +37,10 @@ export default function PropertyFeatures({property}:propFeatures) {
                     </ul>
 
                     <h4 className='mt-[2rem] font-bold md:text-[1.5rem]'>Local Area:</h4>
-                    <p>{property.localAreaDescription}</p>
+                    <p className='md:text-[1.25rem]'>{property.localAreaDescription}</p>
 
                     <h4 className='mt-[1rem] font-bold md:text-[1.5rem]'>Perfect For:</h4>
-                    <p>{property.perfectForDescription}</p>
+                    <p className='md:text-[1.25rem]'>{property.perfectForDescription}</p>
                 </div>
             )}
     </section>

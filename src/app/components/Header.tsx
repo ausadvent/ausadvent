@@ -8,6 +8,7 @@ import { fetchData } from '../utils/fetchServices';
 // assets
 import Logo from '../../../assets/logo-header.svg'
 import Phone from '../../../assets/phone_icon.svg'
+import { trackGAEvent } from '../metrics';
 
 export default function Header() {
     // Fetch data
@@ -40,8 +41,12 @@ export default function Header() {
         setMobileMenu(false);
         setServicesDisplay(false)
         setLocationsDisplay(false)
-      };
+    };
   
+    // GA Event listener
+    function handleEvent(event:any) {
+        trackGAEvent("Contact", "Call Ausadvent Team", "Call");
+    }
 
     // Set state for services options
     const [servicesDisplay, setServicesDisplay] = useState(false);
@@ -288,7 +293,7 @@ export default function Header() {
                         )}
                         <li onClick={() => toggleMenu()}><Link href={'/blog'}>Blog</Link></li>
                         <li onClick={() => toggleMenu()}>
-                            <a href="tel:+610731213060" className='flex items-center gap-1'>
+                            <a href="tel:+610731213060" onClick={handleEvent} className='flex items-center gap-1'>
                                 <Image src={Phone} className='h-[1.5rem] w-[1.5rem]' title='phone ringing icon' alt='phone ringing icon' width={20} height={20} loading='eager' />
                                 <p>07 31213060</p>
                             </a>

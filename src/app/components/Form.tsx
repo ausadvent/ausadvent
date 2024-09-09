@@ -14,6 +14,7 @@ import Failure from '../../../assets/failure.json'
 import config from '@/amplifyconfiguration.json'
 import { Amplify } from 'aws-amplify';
 import { post } from 'aws-amplify/api';
+import { trackGAEvent } from '../metrics';
 
 // Api key
 const apiKey:string|undefined =  process.env.NEXT_PUBLIC_API_KEY;
@@ -116,13 +117,23 @@ export default function Form() {
     }
   })
   
+  // GA Event listener
+  function handleEvent(event:any) {
+    trackGAEvent("Contact", "Submit contact form", "Submit")
+  }
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    formik.handleSubmit();
+    handleEvent(event);
+  }
   
   return (
     <div id='form' className='bg-white rounded-tr-[2rem] rounded-bl-[1rem]'>
       <h3 className=' pt-[2rem] px-[1rem] md:px-[3rem] cormorant text-[#1F2937] text-[1.5rem] md:text-[1.875rem] lg:text-[2.25rem] font-bold '>Get in touch</h3>
       {renderForm && (
         <form
-          onSubmit={formik.handleSubmit}
+          onSubmit={handleSubmit}
           className='lg:mt-[2rem] px-[1rem] md:px-[3rem] py-[1rem] lg:py-[3rem] flex flex-col gap-[1rem]'
         >
           <label htmlFor="firstName" className="flex flex-col gap-[0.5rem]">

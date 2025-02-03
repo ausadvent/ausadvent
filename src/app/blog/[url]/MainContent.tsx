@@ -81,7 +81,7 @@ export default function MainContent({article} : any) {
 
 
           {/* Main idea */}
-          <article className='lg:max-w-[80%] mx-auto bg-red-200'>
+          {/* <article className='lg:max-w-[80%] mx-auto bg-red-200'>
             {article.fields.mainContent.content.slice(0, -1).map((entry: any, index: number) => (
               entry.nodeType === "embedded-asset-block" ? (
                 <div key={index} className='mt-[1rem] md:mt-[2rem] '>
@@ -109,7 +109,7 @@ export default function MainContent({article} : any) {
                 </div>
               )
             ))}
-          </article>
+          // </article>   -- comenting all code */}
 
           <div className='flex flex-col gap-2'>
             <div className="mt-[1rem] border-b-[0.3125rem] border-[#F59E0B] w-[6.375rem] "></div>

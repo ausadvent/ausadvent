@@ -67,11 +67,17 @@ export default function MainContent({article} : any) {
       <main className='page flex flex-col gap-[1.5rem] md:gap-[1.9rem] '>
           {/* Main Content title */}
           <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] max-w-[60%] '>{article.fields.mainContentTitle}</h3>
+          {article.fields.Conclusion}
           {/* Main Content with Rich Text */}
         <section className='mx-auto'>
           {documentToReactComponents(article.fields.mainContent, options)}
 
         </section>
+         {/* Conclusion */}
+         <article className='p-[2rem] mt-[1rem] bg-[#DBEAFE] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem] xl:max-w-[1024px] xl:mx-auto flex flex-col gap-[1rem] text-center text-blueHigher'>
+          {documentToReactComponents(article.fields.conclusion, options)}
+        </article>
+
 
 
           {/* Main idea */}

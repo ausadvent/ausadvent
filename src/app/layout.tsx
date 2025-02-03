@@ -3,7 +3,7 @@ import { Inter, Noto_Sans, Nunito_Sans } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import ReactGA from 'react-ga4'
-import { GoogleAnalytics } from '@next/third-parties/google'
+// import { GoogleAnalytics } from '@next/third-parties/google'- not used commenting
 
 // Amplify config
 import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
@@ -27,13 +27,13 @@ const cormorant = Cormorant_Garamond({
 })
 
 // Code for GA4
-const trackingId:any = process.env.NEXT_PUBLIC_TRACKING_ID
+// const trackingId:any = process.env.NEXT_PUBLIC_TRACKING_ID
 
-if( trackingId !== undefined) {
-  ReactGA.initialize(trackingId)
-} else {
-  console.error("Tracking ID is undefined")
-}
+// if( trackingId !== undefined) {
+//   ReactGA.initialize(trackingId)
+// } else {
+//   console.error("Tracking ID is undefined")
+// } - not used commenting
 
 ReactGA.send({ hitType: "pageview", page: "/" });
 
@@ -95,7 +95,7 @@ export default function RootLayout({
         </>
       </body>
       <Metrics />
-      <GoogleAnalytics gaId={trackingId} />
+      {/* <GoogleAnalytics gaId={trackingId} /> not used- commenting */}
     </html>
   )
 }

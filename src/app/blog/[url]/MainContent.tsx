@@ -2,7 +2,8 @@ import Image from 'next/image'
 import React from 'react'
 import Way from './Way';
 import Link from 'next/link';
-
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS, INLINES, Document, Node } from '@contentful/rich-text-types';
 
 // Assets
 import bullet from '../../../../assets/article-main-bullet.svg';
@@ -23,6 +24,37 @@ import bullet from '../../../../assets/article-main-bullet.svg';
 //   }
 // } commenting unused function
 
+ // Custom options to properly render rich text elements
+ const options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node: Node, children: React.ReactNode) => (
+      <p className='xl:text-[1.3rem] lg:max-w-[80%] my-4'>{children}</p>
+    ),
+    [BLOCKS.HEADING_3]: (node: Node, children: React.ReactNode) => (
+      <h3 className='font-bold text-4xl my-8'>{children}</h3>
+    ),
+    [INLINES.HYPERLINK]: (node: Node, children: React.ReactNode) => (
+      <a href={node.data.uri as string} className='text-blue-500 underline' target='_blank' rel='noopener noreferrer'>
+        {children}
+      </a>
+    ),
+    [BLOCKS.EMBEDDED_ASSET]: (node: Node) => (
+      <div className='mt-[1rem] md:mt-[2rem]'>
+        <Image 
+          className='w-full h-[24.375rem] sm:h-[16rem] md:h-[21.875rem] lg:h-[24rem] xl:h-[31.25rem] rounded-tr-[2rem] object-cover'
+          src={`https:${node.data.target.fields.file.url}`}
+          title={node.data.target.fields.title} 
+          alt={node.data.target.fields.description} 
+          width={956.8} height={500}  
+          loading='lazy'  
+        />
+      </div>
+      
+    )
+  }
+};
+
+
 interface closingContent {
   nodeType: string,
   content: { value: string } []
@@ -35,34 +67,12 @@ export default function MainContent({article} : any) {
       <main className='page flex flex-col gap-[1.5rem] md:gap-[1.9rem] '>
           {/* Main Content title */}
           <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] max-w-[60%] '>{article.fields.mainContentTitle}</h3>
+          {/* Main Content with Rich Text */}
+        <section className='mx-auto'>
+          {documentToReactComponents(article.fields.mainContent, options)}
 
-          {/* <section className='flex flex-col gap-[1rem] 2xl:w-2/3 2xl:mx-auto '>
-              
-            {article.fields.steps.content.map((entry: stepsContent, index: number) => (
-              <div key={index} className=''>
-                {entry.nodeType === "heading-3" ? (
-                  <h3 className='cormorant text-[1.575rem] leading-[1.575rem] font-semibold'>{entry.content[0].value}</h3>
-                ): entry.nodeType === "paragraph" ? (
-                    <p className=''>{entry.content[0].value}</p>
-                ) : (
-                  <div className='md:my-[1rem] md:border-[2px] md:border-[#93C5FD] md:rounded-tr-[2rem] md:rounded-bl-[1rem] md:p-[1rem]'>
-                    <Image 
-                      className='w-full h-[24.375rem] sm:h-[16rem] md:h-[21.875rem] xl:h-[31.25rem] rounded-tr-[2rem] object-cover' 
-                      src={`https:${entry.data.target.fields.file.url}`} 
-                      title={entry.data.target.fields.title} 
-                      alt={entry.data.target.fields.description} 
-                      width={956.8} height={500} 
-                      loading='lazy'  
-                    />
-                    <div className="hidden md:flex mt-[2rem] border-b-[0.3125rem] border-[#F59E0B] w-[6.375rem] "></div>
-                    <p className='hidden md:flex mt-[1rem] cormorant text-[2.25rem] leading-[2.25rem] '>
-                      Make Easy For Planners To Understand The Functional Impact Of Your Disability And The Personal Circumstances Of Your Everyday Life.
-                    </p>
-                  </div>
-                ) }
-              </div>
-            ))}
-          </section> */}
+        </section>
+
 
           {/* Main idea */}
           <article className='lg:max-w-[80%] mx-auto bg-red-200'>

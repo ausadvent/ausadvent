@@ -33,7 +33,7 @@ export default function MainContent({article} : any) {
     <div className=' pt-[2rem] pb-[3rem] md:pt-[4rem] md:pb-[4rem] 2xl:py-[4rem] 3xl:py-[8rem] sm:flex sm:flex-col items-center'>
       <main className='page flex flex-col gap-[1.5rem] md:gap-[1.9rem] '>
           {/* Main Content title */}
-          <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] '>{article.fields.mainContentTitle}</h3>
+          <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] max-w-[60%] '>{article.fields.mainContentTitle}</h3>
 
           {/* <section className='flex flex-col gap-[1rem] 2xl:w-2/3 2xl:mx-auto '>
               
@@ -64,10 +64,10 @@ export default function MainContent({article} : any) {
           </section> */}
 
           {/* Main idea */}
-          <article className=''>
+          <article className='lg:max-w-[80%] mx-auto bg-red-200'>
             {article.fields.mainContent.content.slice(0, -1).map((entry: any, index: number) => (
               entry.nodeType === "embedded-asset-block" ? (
-                <div key={index} className='mt-[1rem] md:mt-[2rem] xl:w-2/3 xl:mx-auto '>
+                <div key={index} className='mt-[1rem] md:mt-[2rem] '>
                   <Image 
                     className='w-full h-[24.375rem] sm:h-[16rem] md:h-[21.875rem] lg:h-[24rem] xl:h-[31.25rem] rounded-tr-[2rem] object-cover'
                     src={`https:${entry.data.target.fields.file.url}`}
@@ -78,14 +78,14 @@ export default function MainContent({article} : any) {
                   />
                 </div>
               ) : (
-                <div key={index} className='mt-[1rem] md:mt-[2rem] flex gap-[0.5rem]'>
+                <div key={index} className='mt-[1rem] md:mt-[3rem] flex gap-[0.5rem]'>
                   <Image
                     src={bullet}
-                    className='h-[1.5rem] w-[1.5rem] '
+                    className='h-[1rem] w-[1rem] '
                     title='Idea bullet'
                     alt="Idea's bullet"
-                    height={24}
-                    width={24}
+                    height={16}
+                    width={16}
                     loading='lazy'
                   />
                   <p className='xl:text-[1.3rem]'>{entry.content[0].value}</p>

@@ -3,24 +3,25 @@ import React from 'react'
 import Way from './Way';
 import Link from 'next/link';
 
+
 // Assets
 import bullet from '../../../../assets/article-main-bullet.svg';
 
-interface stepsContent {
-  nodeType: string | 'data' ,
-  content: { value: string } [];
-  data: {
-    target: {
-      fields: {
-        file: {
-          url: string
-        };
-        title: string;
-        description: string
-      }
-    }
-  }
-}
+// interface stepsContent {
+//   nodeType: string | 'data' ,
+//   content: { value: string } [];
+//   data: {
+//     target: {
+//       fields: {
+//         file: {
+//           url: string
+//         };
+//         title: string;
+//         description: string
+//       }
+//     }
+//   }
+// } commenting unused function
 
 interface closingContent {
   nodeType: string,

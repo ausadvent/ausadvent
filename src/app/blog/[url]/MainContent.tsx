@@ -31,7 +31,25 @@ import bullet from '../../../../assets/article-main-bullet.svg';
       <p className='xl:text-[1.3rem] lg:max-w-[80%] my-4'>{children}</p>
     ),
     [BLOCKS.HEADING_3]: (node: Node, children: React.ReactNode) => (
-      <h3 className='font-bold text-4xl my-8'>{children}</h3>
+      <h3 className='font-bold text-4xl my-12'>{children}</h3>
+    ),
+    [BLOCKS.HEADING_4]: (node: Node, children: React.ReactNode) => (
+      <h4 className='font-semibold text-2xl my-8'>{children}</h4>
+    ),
+    [BLOCKS.UL_LIST]: (node: Node, children: React.ReactNode) => (
+      <ul className='list-none pl-8 space-y-2'>{children}</ul>
+    ),
+    [BLOCKS.LIST_ITEM]: (node: Node, children: React.ReactNode) => (
+      <li className='flex items-center'>
+        <Image 
+          src={bullet}  // Your custom bullet image from imports
+          alt="List bullet" 
+          width={16} 
+          height={16} 
+          className='mr-4 inline-block'
+        />
+        <span className='xl:text-[1.3rem]'>{children}</span>
+      </li>
     ),
     [INLINES.HYPERLINK]: (node: Node, children: React.ReactNode) => (
       <a href={node.data.uri as string} className='text-blue-500 underline' target='_blank' rel='noopener noreferrer'>
@@ -71,10 +89,9 @@ export default function MainContent({article} : any) {
           {/* Main Content with Rich Text */}
         <section className='mx-auto'>
           {documentToReactComponents(article.fields.mainContent, options)}
-
         </section>
          {/* Conclusion */}
-         <article className='p-[2rem] mt-[1rem] bg-[#DBEAFE] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem] xl:max-w-[1024px] xl:mx-auto flex flex-col gap-[1rem] text-center text-blueHigher'>
+         <article className='p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col gap-[1rem]  text-blueHigher'>
           {documentToReactComponents(article.fields.conclusion, options)}
         </article>
 

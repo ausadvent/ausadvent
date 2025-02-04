@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Way() {
   return (
-    <div className='px-[2rem] py-[2rem] lg:py-[4rem] bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] rounded-tr-[2rem] rounded-bl-[1rem]  '>
+    <div className='mt-16 px-[2rem] py-[2rem] lg:py-[4rem] bg-gradient-to-b from-[#FFD8AF] to-[#FDBA74] rounded-tr-[2rem] rounded-bl-[1rem]  '>
         <div className="  flex flex-col xl:flex-row gap-[2rem] lg:gap-[3rem] max-w-[80%] mx-auto">
             <div className='xl:w-1/2 xl:flex xl:flex-col xl:justify-center '>
                 <h3 className='text-blueHigher text-[1.875rem] md:text-[3rem] 3xl:text-[4rem] leading-[1.875rem] md:leading-[3rem] 3xl:leading-[3.75rem] font-black '>

@@ -86,7 +86,7 @@ export default function MainContent({article} : any) {
 
     return (
     <div className=' pt-[2rem] pb-[3rem] md:pt-[4rem] md:pb-[4rem] 2xl:py-[4rem] 3xl:py-[8rem] sm:flex sm:flex-col items-center'>
-      <section className='page flex flex-col gap-[1.5rem] md:gap-[1.9rem] bg-red-300 '>
+      <section className='p-4 flex flex-col gap-[1.5rem] md:gap-[1.9rem] lg:max-w-[60%]'>
           {/* Main Content title */}
           <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] max-w-[60%] '>{article.fields.mainContentTitle}</h3>
           {article.fields.Conclusion}

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import Way from './Way';
+
 import Link from 'next/link';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES, Document, Node } from '@contentful/rich-text-types';
@@ -156,6 +156,8 @@ export default function MainContent({article} : any) {
             </div>
 
           </section>
+
+          
 
           {/* Closing tag */}
           <section className="p-[2rem] mt-[1rem] bg-[#DBEAFE] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem] xl:max-w-[1024px] xl:mx-auto flex flex-col gap-[1rem] text-center text-blueHigher">

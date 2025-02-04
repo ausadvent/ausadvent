@@ -1,6 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
 import Head from 'next/head'
+import Way from '../blog/[url]/Way';
 
 // Components
 import Intro from './Intro'
@@ -100,6 +101,9 @@ export default async function Blog() {
         ) : (
             <p>Loading articles...</p>
         )}
+        <section className="">
+            <Way />
+          </section>
     </main>     
   )
 }

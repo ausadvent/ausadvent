@@ -36,6 +36,10 @@ import bullet from '../../../../assets/article-main-bullet.svg';
     [BLOCKS.HEADING_4]: (node: Node, children: React.ReactNode) => (
       <h4 className='font-semibold text-2xl my-8'>{children}</h4>
     ),
+    // tip section
+    [BLOCKS.HEADING_6]: (node: Node, children: React.ReactNode) => (
+      <h6 className='font-medium text-2xl my-16 p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col   text-blueHigher lg:max-w-[80%]'>{children}</h6>
+    ),
     [BLOCKS.UL_LIST]: (node: Node, children: React.ReactNode) => (
       <ul className='list-none pl-8 space-y-2'>{children}</ul>
     ),
@@ -82,7 +86,7 @@ export default function MainContent({article} : any) {
 
     return (
     <div className=' pt-[2rem] pb-[3rem] md:pt-[4rem] md:pb-[4rem] 2xl:py-[4rem] 3xl:py-[8rem] sm:flex sm:flex-col items-center'>
-      <main className='page flex flex-col gap-[1.5rem] md:gap-[1.9rem] '>
+      <section className='page flex flex-col gap-[1.5rem] md:gap-[1.9rem] bg-red-300 '>
           {/* Main Content title */}
           <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] max-w-[60%] '>{article.fields.mainContentTitle}</h3>
           {article.fields.Conclusion}
@@ -138,7 +142,7 @@ export default function MainContent({article} : any) {
             </section>
 
           {/* Steps */}
-          <article className='flex flex-col gap-[2rem]'>
+          <section className='flex flex-col gap-[2rem]'>
             <h4 className='cormorant font-bold text-blueHigher text-[1.875rem]'>Go step by step</h4>
             <div className='flex flex-col xl:grid grid-cols-2 gap-[2rem]'>
               {article.fields.articleSteps.content.map((entry: any, index: number) => (
@@ -159,10 +163,10 @@ export default function MainContent({article} : any) {
             <p className='xl:flex xl:items-center px-[1rem] font-bold text-[#374151]'>It makes easy for planners to understand the functional impact of your disability and the personal circumstances of your everyday life.</p>
             </div>
 
-          </article>
+          </section>
 
           {/* Closing tag */}
-          <article className="p-[2rem] mt-[1rem] bg-[#DBEAFE] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem] xl:max-w-[1024px] xl:mx-auto flex flex-col gap-[1rem] text-center text-blueHigher">
+          <section className="p-[2rem] mt-[1rem] bg-[#DBEAFE] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem] xl:max-w-[1024px] xl:mx-auto flex flex-col gap-[1rem] text-center text-blueHigher">
             {article.fields.closing.content.map((entry: closingContent, index:number) => (
               entry.nodeType === "heading-3" ? (
                 <h3 key={index} className='font-bold'>{entry.content[0].value}</h3>
@@ -175,8 +179,8 @@ export default function MainContent({article} : any) {
                   Contact us
               </button>
             </Link>
-          </article>
-      </main>
+          </section>
+      </section>
     </div>
   )
 }

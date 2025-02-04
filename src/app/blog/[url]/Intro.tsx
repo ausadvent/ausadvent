@@ -24,7 +24,7 @@ export default function Intro({article}: any) {
 
             {/* Content */}
             <section className=' pt-[8rem] md:pt-[8rem] xl:pt-[12rem] h-[52rem] sm:h-[42rem] md:h-[46rem] lg:h-[57rem] xl:h-[58rem] text-primaryWhite '>
-                <h2 className='text-[0.75rem] lg:text-[1.4rem] text-[#93C5FD]'>
+                <h2 className='text-[0.75rem] lg:text-[1.4rem] text-white'>
                     Articles | {article.fields.articleTitle}
                 </h2>
                 <div className="lg:mt-[3rem] flex flex-col lg:flex-row lg:gap-[3rem] xl:gap-[2rem]">

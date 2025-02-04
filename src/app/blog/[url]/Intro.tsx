@@ -19,7 +19,7 @@ export default function Intro({article}: any) {
                     priority={true}
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1e3a8a] to-[#1e3a8a] opacity-90 " aria-hidden="true"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#1e3a8a]-40% to-[#1e3a8a] opacity-90 " aria-hidden="true"></div>
             </div>
 
             {/* Content */}

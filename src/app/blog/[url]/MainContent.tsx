@@ -91,13 +91,13 @@ export default function MainContent({article} : any) {
           <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] max-w-[60%] '>{article.fields.mainContentTitle}</h3>
           {article.fields.Conclusion}
           {/* Main Content with Rich Text */}
-        <section className='mx-auto'>
-          {documentToReactComponents(article.fields.mainContent, options)}
-        </section>
-         {/* Conclusion */}
-         <article className='p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col gap-[1rem]  text-blueHigher'>
-          {documentToReactComponents(article.fields.conclusion, options)}
-        </article>
+          <section className='mx-auto'>
+            {documentToReactComponents(article.fields.mainContent, options)}
+          </section>
+          {/* Conclusion */}
+          <section className='p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col   text-blueHigher'>
+            {documentToReactComponents(article.fields.conclusion, options)}
+          </section>
 
 
 
@@ -137,9 +137,9 @@ export default function MainContent({article} : any) {
             <p className='cormorant font-bold text-[1.5rem] leading-[1.7rem]'>Make easy for planners to understand the functional impact of your disability and the personal circumstances of your everyday life.</p>
           </div>
 
-            <section className="mt-[2rem] sm:mt-[3rem] lg:mt-[4rem]">
-              <Way />
-            </section>
+          <section className="mt-[2rem] sm:mt-[3rem] lg:mt-[4rem]">
+            <Way />
+          </section>
 
           {/* Steps */}
           <section className='flex flex-col gap-[2rem]'>

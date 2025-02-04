@@ -75,8 +75,6 @@ import bullet from '../../../../assets/article-main-bullet.svg';
     )
   }
 };
-
-
 interface closingContent {
   nodeType: string,
   content: { value: string } []
@@ -136,13 +134,8 @@ export default function MainContent({article} : any) {
             <div className="mt-[1rem] border-b-[0.3125rem] border-[#F59E0B] w-[6.375rem] "></div>
             <p className='cormorant font-bold text-[1.5rem] leading-[1.7rem]'>Make easy for planners to understand the functional impact of your disability and the personal circumstances of your everyday life.</p>
           </div>
-
-          <section className="mt-[2rem] sm:mt-[3rem] lg:mt-[4rem]">
-            <Way />
-          </section>
-
-          {/* Steps */}
-          <section className='flex flex-col gap-[2rem]'>
+             {/* Steps */}
+             <section className='flex flex-col gap-[2rem]'>
             <h4 className='cormorant font-bold text-blueHigher text-[1.875rem]'>Go step by step</h4>
             <div className='flex flex-col xl:grid grid-cols-2 gap-[2rem]'>
               {article.fields.articleSteps.content.map((entry: any, index: number) => (
@@ -160,7 +153,6 @@ export default function MainContent({article} : any) {
                   ))}
                 </section>
               ))}
-            <p className='xl:flex xl:items-center px-[1rem] font-bold text-[#374151]'>It makes easy for planners to understand the functional impact of your disability and the personal circumstances of your everyday life.</p>
             </div>
 
           </section>

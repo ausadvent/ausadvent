@@ -16,7 +16,7 @@ import Metrics from './metrics'
 
 
 // Fonts
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] }) - this import is not in use
 
 const Noto = Nunito_Sans({ subsets: ['latin']})
 
@@ -47,6 +47,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.ausadventcare.com.au'
   },
+
+  // handling apple icon error
+  icons: {
+    icon: '/favicon.ico',
+  },
+
+
   openGraph: {
     title: 'Ausadvent Care',
     description: 'Registered care provider located in Queensland and Western Australia. Our services under the NDIS scheme, including Supported Independent Living, Short Term Accommodation and Individual Living Options',
@@ -70,7 +77,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      {/* <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
           rel="icon"
@@ -84,7 +91,7 @@ export default function RootLayout({
           type="image/<generated>"
           sizes="<generated>"
         />
-      </head>
+      </head> --- Removed the entire <head> section (Next.js handles this automatically)*/  } 
       <body className={`${Noto.className} ${cormorant.variable}`}>
         <>
           <ConfigureAmplifyClientSide />

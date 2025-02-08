@@ -6,24 +6,24 @@ import React from 'react'
 export default function Intro({article}: any) {
 
     return (
-        <article className="page sm:mx-auto pb-[2rem] sm:pb-0 h-fit ">
+        <article className="  sm:mx-auto pb-[2rem] sm:pb-0 ">
             {/* Background image */}
-            <div className="absolute inset-0 h-full  -z-10">
+            <div className=" absolute inset-0 w-full  ">
                 <Image 
                     src={`https:${article.fields.articleMainImage.fields.file.url}`}
                     title={article.fields.articleMainImage.fields.title} 
                     alt={article.fields.articleMainImage.fields.description} 
-                    className='absolute inset-0 w-full h-full object-cover object-top opacity-80'
+                    className=' absolute inset-0 w-full h-full object-cover object-top opacity-100  -z-10'
                     fill
                     sizes='100vw'
                     priority={true}
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent  to-[#1e3a8a]  opacity-90 " aria-hidden="true"></div>
+                <div className="absolute h-full inset-0 bg-gradient-to-b from-transparent  to-[#1e3a8a]  opacity-90 -z-10 " aria-hidden="true"></div>
             </div>
 
             {/* Content */}
-            <section className=' pt-[8rem]  2xl:pt-[24rem] h-[52rem] sm:h-[42rem] md:h-[46rem] lg:h-[57rem] xl:h-[58rem] text-primaryWhite '>
+            <section className=' pt-[8rem] px-4 flex flex-col justify-end xl:pb-40 h-[90vh]  text-primaryWhite lg:max-w-[80vw] mx-auto '>
                 <h2 className='text-[0.75rem] lg:text-[1.4rem] text-white'>
                     Articles | {article.fields.articleTitle}
                 </h2>

@@ -8,7 +8,7 @@ export default function Intro({article}: any) {
     return (
         <article className="  sm:mx-auto pb-[2rem] sm:pb-0 ">
             {/* Background image */}
-            <div className=" absolute inset-0 w-full  ">
+            <div className=" absolute inset-0 w-full -z-10 ">
                 <Image 
                     src={`https:${article.fields.articleMainImage.fields.file.url}`}
                     title={article.fields.articleMainImage.fields.title} 

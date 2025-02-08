@@ -77,21 +77,16 @@ export default function MainContent({article} : any) {
           <section className='mx-auto'>
             {documentToReactComponents(article.fields.mainContent, options)}
           </section>
-          {/* Conclusion */}
-          <section className='p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col text-blueHigher'>
-            {documentToReactComponents(article.fields.conclusion, options)}
-          </section>
-
           <div className='flex flex-col gap-2'>
             <div className="mt-[1rem] border-b-[0.3125rem] border-[#F59E0B] w-[6.375rem] "></div>
             <p className='cormorant font-bold text-[1.5rem] leading-[1.7rem]'>Make easy for planners to understand the functional impact of your disability and the personal circumstances of your everyday life.</p>
           </div>
-             {/* Steps */}
-             <section className='flex flex-col gap-[2rem]'>
+          {/* Steps */}
+          <section className='flex flex-col gap-[2rem]'>
             <h4 className='cormorant font-bold text-blueHigher text-[1.875rem]'>Go step by step</h4>
             <div className='flex flex-col xl:grid grid-cols-2 gap-[2rem]'>
               {article.fields.articleSteps.content.map((entry: any, index: number) => (
-                <section key={index} className='bg-[#FFF7ED] p-[1rem] xl:p-[2rem] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]'>
+                <div key={index} className='bg-[#FFF7ED] p-[1rem] xl:p-[2rem] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]'>
                   {entry.content.map((idea: any, index: number) => (
                     index === 0 ? (
                       <h4 key={index} className='text-blueHigher font-bold'>
@@ -103,10 +98,13 @@ export default function MainContent({article} : any) {
                       </p>
                     )
                   ))}
-                </section>
+                </div>
               ))}
             </div>
-
+          </section>
+           {/* Conclusion */}
+           <section className='p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col text-blueHigher'>
+            {documentToReactComponents(article.fields.conclusion, options)}
           </section>
 
           

@@ -3,7 +3,7 @@ import { Inter, Noto_Sans, Nunito_Sans } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import ReactGA from 'react-ga4'
-import { GoogleAnalytics } from '@next/third-parties/google'
+// import { GoogleAnalytics } from '@next/third-parties/google'- not used commenting
 
 // Amplify config
 import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
@@ -16,7 +16,7 @@ import Metrics from './metrics'
 
 
 // Fonts
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] }) - this import is not in use
 
 const Noto = Nunito_Sans({ subsets: ['latin']})
 
@@ -26,14 +26,14 @@ const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant'
 })
 
-// Code for GA4
-const trackingId:any = process.env.NEXT_PUBLIC_TRACKING_ID
+// Code for GA4 change
+// const trackingId:any = process.env.NEXT_PUBLIC_TRACKING_ID
 
-if( trackingId !== undefined) {
-  ReactGA.initialize(trackingId)
-} else {
-  console.error("Tracking ID is undefined")
-}
+// if( trackingId !== undefined) {
+//   ReactGA.initialize(trackingId)
+// } else {
+//   console.error("Tracking ID is undefined")
+// } - not used commenting
 
 ReactGA.send({ hitType: "pageview", page: "/" });
 
@@ -47,6 +47,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.ausadventcare.com.au'
   },
+
+  // handling apple icon error
+  icons: {
+    icon: '/favicon.ico',
+  },
+
+
   openGraph: {
     title: 'Ausadvent Care',
     description: 'Registered care provider located in Queensland and Western Australia. Our services under the NDIS scheme, including Supported Independent Living, Short Term Accommodation and Individual Living Options',
@@ -70,7 +77,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      {/* <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link
           rel="icon"
@@ -84,7 +91,7 @@ export default function RootLayout({
           type="image/<generated>"
           sizes="<generated>"
         />
-      </head>
+      </head> --- Removed the entire <head> section (Next.js handles this automatically)*/  } 
       <body className={`${Noto.className} ${cormorant.variable}`}>
         <>
           <ConfigureAmplifyClientSide />
@@ -95,7 +102,7 @@ export default function RootLayout({
         </>
       </body>
       <Metrics />
-      <GoogleAnalytics gaId={trackingId} />
+      {/* <GoogleAnalytics gaId={trackingId} /> not used- commenting */}
     </html>
   )
 }

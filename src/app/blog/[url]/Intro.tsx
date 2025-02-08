@@ -6,7 +6,7 @@ import React from 'react'
 export default function Intro({article}: any) {
 
     return (
-        <article className="page sm:mx-auto pb-[2rem] sm:pb-0 h-fit ">
+        <article className="page sm:mx-auto pb-[2rem] sm:pb-0  bg-red-300 ">
             {/* Background image */}
             <div className="absolute inset-0 h-full  -z-10">
                 <Image 

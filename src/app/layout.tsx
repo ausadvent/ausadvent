@@ -1,72 +1,68 @@
 import type { Metadata } from 'next'
-import { Inter, Noto_Sans, Nunito_Sans } from 'next/font/google'
+import { Nunito_Sans } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import ReactGA from 'react-ga4'
-// import { GoogleAnalytics } from '@next/third-parties/google'- not used commenting
-
-// Amplify config
-import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
 
 // Components
+import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import LatestArticles from './components/LatestArticles'
 import Metrics from './metrics'
 
-
-// Fonts
-// const inter = Inter({ subsets: ['latin'] }) - this import is not in use
-
+// Fonts - Simplified font imports and removed unused ones
 const Noto = Nunito_Sans({ subsets: ['latin']})
-
 const cormorant = Cormorant_Garamond({ 
   weight: '700',
   subsets: ['latin'],
   variable: '--font-cormorant'
 })
 
-// Code for GA4 change 2
-// const trackingId:any = process.env.NEXT_PUBLIC_TRACKING_ID
-
-// if( trackingId !== undefined) {
-//   ReactGA.initialize(trackingId)
-// } else {
-//   console.error("Tracking ID is undefined")
-// } - not used commenting
-
+// Initialize GA page view
 ReactGA.send({ hitType: "pageview", page: "/" });
 
-// Metadata
+// Metadata configuration
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.ausadventcare.com.au'), // Added metadataBase for resolving social images
+
   title: {
     default: "Ausadvent Care",
     template: "%s - Ausadvent Care"
   },
   description: 'Registered care provider located in Queensland and Western Australia.',
+  
+  // Updated alternates with proper URL structure
   alternates: {
     canonical: 'https://www.ausadventcare.com.au'
   },
 
-  // handling apple icon error
   icons: {
     icon: '/favicon.ico',
   },
 
-
+  // Updated OpenGraph with proper URL structure and additional properties
   openGraph: {
     title: 'Ausadvent Care',
     description: 'Registered care provider located in Queensland and Western Australia. Our services under the NDIS scheme, including Supported Independent Living, Short Term Accommodation and Individual Living Options',
-    url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png',
+    url: 'https://www.ausadventcare.com.au', // Updated to use website URL instead of image URL
+    siteName: 'Ausadvent Care', // Added site name
+    locale: 'en_AU', // Added locale
     type: 'website',
-    images: [
-      {
-        url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png'
-      }
-    ]
+    images: [{
+      url: 'https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png',
+      width: 1200, // Added recommended dimensions
+      height: 630,
+      alt: 'Ausadvent Care Logo' // Added alt text for accessibility
+    }]
   },
+
+  // Enhanced Twitter card metadata
   twitter: {
-    card: 'summary_large_image'
+    card: 'summary_large_image',
+    title: 'Ausadvent Care', // Added title
+    description: 'Registered care provider located in Queensland and Western Australia.',
+    images: ['https://ausadvent-logo.s3.ap-southeast-2.amazonaws.com/logo-vertical.png'],
   }
 }
 
@@ -77,32 +73,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link
-          rel="icon"
-          href="/icon?<generated>"
-          type="image/<generated>"
-          sizes="<generated>"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="/apple-icon?<generated>"
-          type="image/<generated>"
-          sizes="<generated>"
-        />
-      </head> --- Removed the entire <head> section (Next.js handles this automatically)*/  } 
       <body className={`${Noto.className} ${cormorant.variable}`}>
-        <>
-          <ConfigureAmplifyClientSide />
-          <Header />
-          {children}
-          <LatestArticles />
-          <Footer />
-        </>
+        <ConfigureAmplifyClientSide />
+        <Header />
+        <main>{children}</main> {/* Added semantic main tag */}
+        <LatestArticles />
+        <Footer />
       </body>
       <Metrics />
-      {/* <GoogleAnalytics gaId={trackingId} /> not used- commenting */}
     </html>
   )
 }

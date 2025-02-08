@@ -40,11 +40,11 @@ export default function Home() {
   
   return (
     <div className="">
-      <Head>
+      {/* <Head>
         <title>Ausadvent Care</title>
         <meta name="description" content="Registered care provider located in Queensland and Western Australia. Our services under the NDIS scheme, including Supported Independent Living, Short Term Accommodation and Individual Living Options" />
         <link rel="canonical" href="https://www.ausadventcare.com.au" />
-      </Head>
+      // </Head> //Comented this to avoid the warning to migrate to metadata API for now*/} 
       <script 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd)}}

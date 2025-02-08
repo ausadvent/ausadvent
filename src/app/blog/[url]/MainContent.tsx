@@ -8,21 +8,6 @@ import { BLOCKS, INLINES, Document, Node } from '@contentful/rich-text-types';
 // Assets
 import bullet from '../../../../assets/article-main-bullet.svg';
 
-// interface stepsContent {
-//   nodeType: string | 'data' ,
-//   content: { value: string } [];
-//   data: {
-//     target: {
-//       fields: {
-//         file: {
-//           url: string
-//         };
-//         title: string;
-//         description: string
-//       }
-//     }
-//   }
-// } commenting unused function
 
  // Custom options to properly render rich text elements
  const options = {

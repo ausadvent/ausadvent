@@ -23,7 +23,7 @@ export default function Intro({article}: any) {
             </div>
 
             {/* Content */}
-            <section className=' px-4 flex flex-col justify-end xl:pb-40 h-[90vh]  text-primaryWhite lg:max-w-[80vw] mx-auto '>
+            <section className=' px-4  flex flex-col justify-end xl:pb-40 h-[90vh]  text-primaryWhite lg:max-w-[80vw] mx-auto '>
                 <h2 className='text-[0.75rem] lg:text-[1.2rem] text-white w-full xl:min-w-[20rem] max-w-[50rem]'>
                     Articles | {article.fields.articleTitle}
                 </h2>

@@ -13,7 +13,7 @@ import bullet from '../../../../assets/article-main-bullet.svg';
  const options = {
   renderNode: {
     [BLOCKS.PARAGRAPH]: (node: Node, children: React.ReactNode) => (
-      <p className='xl:text-[1.3rem] lg:max-w-[80%] my-4'>{children}</p>
+      <p className='xl:text-[1.3rem] lg:max-w-[90%] my-4'>{children}</p>
     ),
     [BLOCKS.HEADING_3]: (node: Node, children: React.ReactNode) => (
       <h3 className='font-bold text-4xl my-12'>{children}</h3>
@@ -71,49 +71,16 @@ export default function MainContent({article} : any) {
     <div className=' pt-[2rem] pb-[3rem] md:pt-[4rem] md:pb-[4rem] 2xl:py-[4rem] 3xl:py-[8rem] sm:flex sm:flex-col items-center'>
       <section className='p-4 flex flex-col gap-[1.5rem] md:gap-[1.9rem] lg:max-w-[60%]'>
           {/* Main Content title */}
-          <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] max-w-[60%] '>{article.fields.mainContentTitle}</h3>
+          <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] xl:max-w-[70%] '>{article.fields.mainContentTitle}</h3>
           {article.fields.Conclusion}
           {/* Main Content with Rich Text */}
           <section className='mx-auto'>
             {documentToReactComponents(article.fields.mainContent, options)}
           </section>
           {/* Conclusion */}
-          <section className='p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col   text-blueHigher'>
+          <section className='p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col text-blueHigher'>
             {documentToReactComponents(article.fields.conclusion, options)}
           </section>
-
-
-
-          {/* Main idea */}
-          {/* <article className='lg:max-w-[80%] mx-auto bg-red-200'>
-            {article.fields.mainContent.content.slice(0, -1).map((entry: any, index: number) => (
-              entry.nodeType === "embedded-asset-block" ? (
-                <div key={index} className='mt-[1rem] md:mt-[2rem] '>
-                  <Image 
-                    className='w-full h-[24.375rem] sm:h-[16rem] md:h-[21.875rem] lg:h-[24rem] xl:h-[31.25rem] rounded-tr-[2rem] object-cover'
-                    src={`https:${entry.data.target.fields.file.url}`}
-                    title={entry.data.target.fields.title} 
-                    alt={entry.data.target.fields.description} 
-                    width={956.8} height={500} 
-                    loading='lazy'  
-                  />
-                </div>
-              ) : (
-                <div key={index} className='mt-[1rem] md:mt-[3rem] flex gap-[0.5rem]'>
-                  <Image
-                    src={bullet}
-                    className='h-[1rem] w-[1rem] '
-                    title='Idea bullet'
-                    alt="Idea's bullet"
-                    height={16}
-                    width={16}
-                    loading='lazy'
-                  />
-                  <p className='xl:text-[1.3rem]'>{entry.content[0].value}</p>
-                </div>
-              )
-            ))}
-          // </article>   -- comenting all code */}
 
           <div className='flex flex-col gap-2'>
             <div className="mt-[1rem] border-b-[0.3125rem] border-[#F59E0B] w-[6.375rem] "></div>

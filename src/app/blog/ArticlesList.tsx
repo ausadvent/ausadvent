@@ -18,7 +18,7 @@ export default function ArticlesList({articles}:any) {
                       <div className={`lg:flex-auto lg:min-h-[22rem] 2xl:min-h-[25rem] 3xl:min-h-[31.25rem] pt-[1.5rem] md:pt-0 flex flex-col md:flex-row gap-[1rem] bg-[#F59E0B] md:bg-gradient-to-b from-[#F59E0B] via-white to-white rounded-tl-[2rem] ${index % 2 === 0 ? 'md:flex-row-reverse md:rounded-bl-[1rem] md:rounded-tr-[3rem] ' : ''} `}>
                           {/* Title container */}
                           <div className='relative md:w-1/2 px-[1.5rem] xl:px-[3rem] 3xl:px-[4rem] md:py-[1.5rem] lg:py-[3rem] 3xl:py-[4rem] flex flex-col md:gap-[1rem] xl:gap-[1.5rem]'>
-                                <h2 className='cormorant text-[2.25rem] xl:text-[3rem] 3xl:text-[4rem] leading-[2.375rem] xl:leading-[3.125rem] 3xl:leading-[4.375rem] font-semibold'>{article?.fields.articleTitle}</h2>
+                                <h2 className='cormorant text-[2rem] leading-none xl:text-[3rem] 3xl:text-[4rem] xl:leading-[3.125rem] 3xl:leading-[4.375rem] font-semibold'>{article?.fields.articleTitle}</h2>
                                 <div className=" mt-[0.5rem] md:-mt-[0.6rem] xl:-mt-[1.1rem] w-1/3 border-b-[0.3rem] border-[#3E7BFF]"></div>
                                 {/* Intro container from md */}
                                 <div className="hidden md:flex flex-col gap-[1rem] lg:h-full lg:justify-between " >

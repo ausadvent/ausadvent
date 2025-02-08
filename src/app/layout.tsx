@@ -26,7 +26,7 @@ const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant'
 })
 
-// Code for GA4
+// Code for GA4 change
 // const trackingId:any = process.env.NEXT_PUBLIC_TRACKING_ID
 
 // if( trackingId !== undefined) {

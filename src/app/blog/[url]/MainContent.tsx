@@ -3,7 +3,7 @@ import React from 'react'
 
 import Link from 'next/link';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, INLINES, Document, Node } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES,  Node } from '@contentful/rich-text-types';
 
 // Assets
 import bullet from '../../../../assets/article-main-bullet.svg';

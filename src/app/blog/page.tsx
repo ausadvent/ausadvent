@@ -1,6 +1,7 @@
 import React from 'react'
 import { Metadata } from 'next'
 import Head from 'next/head'
+import Way from '../blog/[url]/Way';
 
 // Components
 import Intro from './Intro'
@@ -8,6 +9,7 @@ import ArticlesList from './ArticlesList'
 
 // Utils
 import { fetchArticles } from '../utils/fetchArticles'
+
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
@@ -69,6 +71,9 @@ const breadCrumbData = {
   ]
 }
   
+//Enable ISR (revalidate every 60 seconds)
+export const revalidate = 60; 
+
 
 export default async function Blog() {
 
@@ -100,6 +105,9 @@ export default async function Blog() {
         ) : (
             <p>Loading articles...</p>
         )}
+        <section className="">
+            <Way />
+          </section>
     </main>     
   )
 }

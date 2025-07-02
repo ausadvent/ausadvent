@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 export default function Support() {
   return (
-    <article className='bg-gradient-to-b from-[#F59E0B] to-[#F9B84B] rounded-tr-[3rem] rounded-bl-[2rem]'>
+    <article className='my-[4rem] bg-gradient-to-b from-[#F59E0B] to-[#F9B84B] rounded-tr-[3rem] rounded-bl-[2rem]'>
       <div className='page sm:mx-auto py-[3rem] md:py-[4rem]'>
         <div className="cormorant px-[2rem] sm:px-0 flex flex-col xl:flex-row gap-[2rem] 3xl:gap-[4rem] items-center text-black text-center xl:text-left">
           <Image className='w-[8.769rem] md:w-[11.76rem] h-[6rem] md:h-[8rem] ' src={Lotus} alt='Lotus icon' title='Lotus icon' width={20} height={20} loading='lazy' unoptimized />

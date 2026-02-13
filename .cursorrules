@@ -1,0 +1,22 @@
+{
+  "branding": {
+    "primary": "#2563EB",
+    "primary_dark": "#1E40AF",
+    "secondary": "#F59E0B",
+    "font_family": "Inter, sans-serif",
+    "vibe": "Mindful, Accessible, Trustworthy"
+  },
+  "tech_stack": {
+    "framework": "Next.js 14+ (App Router)",
+    "styling": "Tailwind CSS",
+    "cms": "Contentful",
+    "database": "Airtable / Google Sheets"
+  },
+  "rules": [
+    "Always use 'use client' or 'use server' directives explicitly.",
+    "Accessibility: Maintain WCAG 2.1 AA. Check color contrast ratio for #2563EB against white.",
+    "Formatting: Disallow unescaped HTML entities (react/no-unescaped-entities). Use &apos; or &quot;.",
+    "Optimization: Use Next.js Image component with defined priority for LCP elements.",
+    "Pattern: Fetch Contentful data in Server Components where possible."
+  ]
+}

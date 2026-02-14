@@ -1,19 +1,8 @@
-import { createClient } from "contentful";
-
-
-// contentful keys
-const spaceKey:any =  process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
-const accessToken:any = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY;
-
-// Create client for Contentful
-const client = createClient({
-    space: spaceKey,
-    accessToken: accessToken
-});
+import { contentfulClient } from "@/lib/contentful";
 
 export async function fetchData() {
     // fetch data
-    const res = await client.getEntries({ content_type: 'services'})
+    const res = await contentfulClient.getEntries({ content_type: 'services'})
 
     // Store the data in a variable
     const data = res.items

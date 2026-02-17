@@ -1,25 +1,14 @@
-
-import { createClient } from 'contentful';
 import Image from 'next/image';
 import React from 'react'
+import { contentfulClient } from '@/lib/contentful';
 
 // Assets
 import Symbol from '../../../assets/symbol-lotus.svg'
 
-// Contentful keys
-const spaceKey:any = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
-const accessToken:any = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY;
-
-// Create client for contentful
-const client = createClient({
-    space: spaceKey,
-    accessToken: accessToken,
-})
-
 // Fetch the values from contentful
 async function fetchValues() {
     try {
-        const res = await client.getEntries({ content_type: 'values'})
+        const res = await contentfulClient.getEntries({ content_type: 'values'})
         // console.log(res.items)
         return res.items
     } catch(e) {

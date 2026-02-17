@@ -1,25 +1,15 @@
-import { createClient } from 'contentful';
 import React from 'react'
+import { contentfulClient } from '@/lib/contentful';
 
 // Assets
 import BlueLotus from '../../../assets/blue-lotus.svg'
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Contentful keys
-const spaceKey:any = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
-const accessToken:any = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_KEY;
-
-// Create client for contentful
-const client = createClient({
-    space: spaceKey,
-    accessToken: accessToken,
-})
-
 // Fetch the values from contentful
 async function fetchStandards() {
     try {
-        const res = await client.getEntries({ content_type: 'nationalStandards'})
+        const res = await contentfulClient.getEntries({ content_type: 'nationalStandards'})
         // console.log(res.items)
         return res.items
     } catch(e) {

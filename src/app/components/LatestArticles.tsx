@@ -42,10 +42,10 @@ export default function LatestArticles() {
 
     return (
         <div>
-            <div className='pt-[3rem] sm:pt-[2rem] md:pt-[2.5rem] lg:pt-[4.5rem] 3xl:mt-[6rem]'>
-                <h3 className='cormorant text-[1.5rem] lg:text-[2.25rem] font-bold text-center'>LATEST ARTICLES</h3>
+            <div className=''>
+                <h3 className='cormorant py-8 text-[1.5rem] lg:text-[2.25rem] font-bold text-center'>LATEST ARTICLES</h3>
                 {/* Articles box */}
-                <div className='relative mt-[3rem] sm:mt-[2.5rem] lg:mt-[4.5rem] 3xl:mt-[6rem] h-[16rem] md:h-[25rem] lg:h-[31.25rem] xl:h-[37.5rem] 2xl:h-[43.75rem]'>
+                <div className='relative h-[16rem] md:h-[25rem] lg:h-[31.25rem] xl:h-[37.5rem] 2xl:h-[43.75rem]'>
                     {/* Hero */}
                     <div className='absolute inset-0 box-content z-1 w-full h-[16rem] md:h-[25rem] lg:h-[31.25rem] xl:h-[37.5rem] 2xl:h-[43.75rem]'>
                         <Image 
@@ -82,10 +82,10 @@ export default function LatestArticles() {
                         </div>
 
                         {/* Text */}
-                        <div className="relative xl:w-full md:px-[4rem] py-[1rem] md:pb-[4rem] lg:pb-[5rem] xl:pb-[8rem] 2xl:pb-[12rem] 3xl:pb-[15rem] px-[0.5rem] h-full flex flex-col justify-end gap-[1rem]">
+                        <div className="relative xl:w-full md:px-[4rem] py-8  px-[0.5rem] h-full flex flex-col gap-[1rem] items-center justify-around ">
                             <div className="md:pb-[1rem] w-full flex justify-between items-start gap-[0.5rem]">
                                 <div className='flex flex-col gap-[1rem] text-primaryWhite'>
-                                    <h3 className='cormorant text-[1.875rem] sm:text-[2.25rem] md:text-[3rem] lg:text-[3.75rem] 3xl:text-[4.5rem] font-bold leading-[1.875rem] sm:leading-[2.125rem] md:leading-[3rem] lg:leading-[3.625rem]'>{articles && articles[currentArticle]?.fields?.articleTitle && articles[currentArticle]?.fields?.articleTitle.toUpperCase()}</h3>
+                                    <h3 className='cormorant text-[1.5rem] leading-none sm:text-[2rem] md:text-[2.8rem] lg:text-[3rem] 3xl:text-[4.5rem] font-bold sm:leading-[2.125rem] md:leading-none lg:leading-none'>{articles && articles[currentArticle]?.fields?.articleTitle && articles[currentArticle]?.fields?.articleTitle.toUpperCase()}</h3>
                                    {articles && (
                                      <Link href="/blog/[article]" as={linkHref} className="flex gap-[0.5rem] items-center lg:hover:cursor-pointer">
                                         <svg className="w-[1rem] md:w-[1.5rem] h-[1rem] md:h-[1.5rem] text-[#F59E0B]"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  

@@ -54,7 +54,7 @@ export default function Header() {
     const [locationsDisplay, setLocationsDisplay] = useState(false)
 
     return (
-    <header className='z-20 bg-gradient'>
+    <header className='z-20 bg-brand-flow'>
         <div className={`page sm:max-w-full sm:px-[6rem] lg:px-[4rem] 3xl:px-[12rem] py-[1rem] flex justify-between items-center z-30 ${mobileMenu && 'bg-[#1E40AF]'}`}>
             <Link href="/" className='flex items-center gap-[0.5rem]'>
                 <Image

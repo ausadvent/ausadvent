@@ -1,0 +1,97 @@
+{
+  "project": {
+    "name": "AUSADVENT CARE Digital Engine",
+    "description": "NDIS Provider website and automation platform (Queensland & Western Australia)",
+    "stack": "Next.js 14+ (App Router), Tailwind CSS, Contentful CMS, Airtable, n8n",
+    "hosting": "AWS Amplify (main = production, dev = staging)"
+  },
+  "branding": {
+    "primary": "#2563EB",
+    "primary_dark": "#1E40AF",
+    "secondary": "#F59E0B",
+    "error": "#DC2626",
+    "gray": "#6B7280",
+    "font_family": "Inter, sans-serif",
+    "vibe": "Mindful, Accessible, Trustworthy",
+    "voice": "Professional, calming, NDIS-compliant. No jargon. Clear and accessible."
+  },
+  "tech_stack": {
+    "framework": "Next.js 14+ (App Router, src/app/)",
+    "styling": "Tailwind CSS with brand- prefix tokens",
+    "cms": "Contentful (headless, centralized client at src/lib/contentful.ts)",
+    "database": "Airtable (Participants, Support Workers, Case Managers tables)",
+    "automation": "n8n (Docker container, never npm global install)",
+    "forms": "Tally (https://tally.so/r/mVAP0l)",
+    "email": "Gmail (free, via n8n)",
+    "pdf": "Google Docs template → PDF export via n8n"
+  },
+  "infrastructure": {
+    "docker_runtime_local": "OrbStack (lightweight macOS Docker GUI)",
+    "docker_runtime_production": "Docker on AWS Lightsail",
+    "production_server": "AWS Lightsail $5/mo (1 vCPU, 1GB RAM, 40GB SSD, 2TB transfer)",
+    "production_url": "automation.ausadventcare.com.au",
+    "node_version": "20 LTS (via nvm, .nvmrc in project root)",
+    "n8n": "Docker container only. Never npm global install.",
+    "webhook_testing": "ngrok http 5678"
+  },
+  "ide": {
+    "primary": "VS Code",
+    "extensions": [
+      "Continue.dev (AI chat, multi-provider: Claude + Gemini)",
+      "GitLens (inline blame, branch graph, diff comparison)",
+      "Tailwind CSS IntelliSense",
+      "ESLint",
+      "Prettier"
+    ]
+  },
+  "rules": [
+    "Always use 'use client' or 'use server' directives explicitly.",
+    "Use TypeScript interfaces for all component props.",
+    "Functional components only — no class components.",
+    "Accessibility: Maintain WCAG 2.1 AA. Color contrast 4.5:1 minimum for normal text.",
+    "Use #1E40AF (primary dark) for body text on white — #2563EB barely passes contrast.",
+    "Formatting: Disallow unescaped HTML entities (react/no-unescaped-entities). Use &apos; or &quot;.",
+    "Optimization: Use Next.js Image component with defined priority for LCP elements.",
+    "Pattern: Fetch Contentful data in Server Components via src/lib/contentful.ts.",
+    "Safety: Validate all environment variables before use. Never silently fail.",
+    "ESLint must pass with zero warnings before any commit.",
+    "All images must have meaningful alt text.",
+    "All form inputs must have associated labels.",
+    "All interactive elements must have visible focus indicators."
+  ],
+  "file_structure": {
+    "src/app/": "Next.js App Router pages",
+    "src/components/ui/": "Atomic components (Button, Input, Card, Badge)",
+    "src/components/sections/": "Page sections (Hero, Footer, ServiceCards)",
+    "src/lib/contentful.ts": "Centralized Contentful client (single instance)",
+    "src/lib/utils.ts": "Helper functions",
+    "src/types/": "TypeScript type definitions",
+    "n8n/docker-compose.yml": "n8n Docker configuration"
+  },
+  "git": {
+    "branches": {
+      "main": "Production (auto-deploys via AWS Amplify)",
+      "dev": "Staging (auto-deploys via AWS Amplify)",
+      "feature/": "New features — branch from dev",
+      "fix/": "Bug fixes — branch from dev",
+      "chore/": "Maintenance — branch from dev"
+    },
+    "commit_prefixes": ["feat:", "fix:", "chore:"],
+    "identity": "Always verify ausadvent GitHub account via gh auth status"
+  },
+  "ai_agent_rules": [
+    "Read RULES_OF_ENGAGEMENT.md before starting any task.",
+    "Scan codebase before refactoring — never modify files outside current feature scope.",
+    "Explain WHY before showing code — teach, don't just implement.",
+    "One step at a time. Wait for confirmation before proceeding.",
+    "Create reusable components. Fewer lines = better.",
+    "Start a new chat session for each new feature to save tokens."
+  ],
+  "automation": {
+    "tally_form": "https://tally.so/r/mVAP0l (15 fields)",
+    "n8n_webhook": "POST /webhook/referral-form",
+    "pipeline": "Tally → n8n → Airtable + Google Docs PDF → Gmail",
+    "template_placeholders": 16,
+    "airtable_tables": ["Participants", "Support Workers", "Case Managers"]
+  }
+}

@@ -1,0 +1,640 @@
+{
+  "name": "Referral form flow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "referral-form",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a6410d66-3f7a-4048-b7bf-e71b298f9ba6",
+      "name": "Webhook",
+      "webhookId": "1ac40a50-a43e-4735-a54c-3a5bac5539e7"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Node 2: Map Tally fields → template placeholders\n// Handles text fields, multiple choice, and trailing spaces\n\nconst fields = $json.body.data.fields;\n\n// Helper: get value by label (trims spaces from label names)\nconst getField = (label) => {\n  const field = fields.find(f => f.label.trim() === label.trim());\n  return field?.value ?? '';\n};\n\n// Helper: get human-readable text for multiple choice fields\nconst getChoice = (label) => {\n  const field = fields.find(f => f.label.trim() === label.trim());\n  if (!field || !field.options || !field.value) return '';\n  // value is an array of selected option IDs — get the matching text\n  const selectedId = field.value[0];\n  const match = field.options.find(o => o.id === selectedId);\n  return match?.text ?? '';\n};\n\nconst firstName = getField('First name');\nconst lastName  = getField('Last name');\n\nreturn [{\n  json: {\n    // — Template placeholders (must match Google Docs {{tags}} exactly) —\n    full_name:                firstName + ' ' + lastName,\n    preferred_name_alias:     getField('Preferred name'),\n    date_of_birth:            getField('Date of birth'),\n    email:                    getField('Email'),\n    telephone:                getField('Telephone'),\n    postal_address:           getField('Postal Address'),\n    address:                  getField('Address'),\n    ndis_number:              String(getField('NDIS Number')),\n    ndis_plan_management_type: getChoice('Plan type'),\n    plan_manager_name:        getField(\"Plan Manager's details\"),\n    ndis_plan_start_date:     getField('NDIS Plan start date'),\n    ndis_plan_end_date:       getField('NDIS Plan end date'),\n    atsi_cald:                getChoice('ATSI / CALD'),\n    mental_health_diagnosis:  getField('Mental Health Diagnosis'),\n    referral_date:            new Date().toISOString().split('T')[0],\n\n    // — Metadata for Airtable (not in PDF template) —\n    first_name: firstName,\n    last_name:  lastName,\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "1c466545-fe99-4f92-b838-d48a6098086b",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appduo63PmrzVEqfQ",
+          "mode": "list",
+          "cachedResultName": "AUSADVENT CARE Operations",
+          "cachedResultUrl": "https://airtable.com/appduo63PmrzVEqfQ"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblhpEh2d1WqsYOU0",
+          "mode": "list",
+          "cachedResultName": "Participants",
+          "cachedResultUrl": "https://airtable.com/appduo63PmrzVEqfQ/tblhpEh2d1WqsYOU0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "First Name": "={{ $json.first_name }}",
+            "Last Name": "={{ $json.last_name }}",
+            "Preferred Name": "={{ $json.preferred_name_alias }}",
+            "Email": "={{ $json.email}}",
+            "Date of Birth": "={{ $json.date_of_birth }}",
+            "Postal Address": "={{ $json.postal_address }}",
+            "Address": "={{ $json.address }}",
+            "Telephone": "={{ $json.telephone }}",
+            "NDIS Number": "={{ $json.ndis_number }}",
+            "ATSI CALD": "={{ $json.atsi_cald }}",
+            "Plan Manager Details": "={{ $json.plan_manager_name }}",
+            "Plan Start Date": "={{ $json.ndis_plan_start_date }}",
+            "Plan End Date": "={{ $json.ndis_plan_end_date }}",
+            "Mental Health Diagnosis": "={{ $json.mental_health_diagnosis }}",
+            "Referral Date": "={{ $json.referral_date }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Record ID",
+              "displayName": "Record ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "First Name",
+              "displayName": "First Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Last Name",
+              "displayName": "Last Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Preferred Name",
+              "displayName": "Preferred Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Date of Birth",
+              "displayName": "Date of Birth",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Postal Address",
+              "displayName": "Postal Address",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Address",
+              "displayName": "Address",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Telephone",
+              "displayName": "Telephone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "NDIS Number",
+              "displayName": "NDIS Number",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "ATSI CALD",
+              "displayName": "ATSI CALD",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Yes",
+                  "value": "Yes"
+                },
+                {
+                  "name": "No",
+                  "value": "No"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Plan type",
+              "displayName": "Plan type",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Self-managed",
+                  "value": "Self-managed"
+                },
+                {
+                  "name": "Plan managed",
+                  "value": "Plan managed"
+                },
+                {
+                  "name": "NDIA (Agency) managed",
+                  "value": "NDIA (Agency) managed"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Plan Manager Details",
+              "displayName": "Plan Manager Details",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Plan Start Date",
+              "displayName": "Plan Start Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Plan End Date",
+              "displayName": "Plan End Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Mental Health Diagnosis",
+              "displayName": "Mental Health Diagnosis",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Referral Date",
+              "displayName": "Referral Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Referral PDF",
+              "displayName": "Referral PDF",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "New",
+                  "value": "New"
+                },
+                {
+                  "name": "Assigned",
+                  "value": "Assigned"
+                },
+                {
+                  "name": "Active",
+                  "value": "Active"
+                },
+                {
+                  "name": "Inactive",
+                  "value": "Inactive"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Support Workers",
+              "displayName": "Support Workers",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Assigned Workers",
+              "displayName": "Assigned Workers",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Case Managers",
+              "displayName": "Case Managers",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "b3e95187-48bc-403c-8acf-9467d0d8c33b",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "OAg7EJ05fOsO23cF",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "1O8-YEO0z26aPF097QBcgwLPpqNDcIGxAjeJPqaVvUfY",
+          "mode": "id"
+        },
+        "name": "=Referral_{{ $('Code in JavaScript').item.json.last_name }}_{{ $('Code in JavaScript').item.json.first_name }}_{{ $('Code in JavaScript').item.json.referral_date }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        624,
+        0
+      ],
+      "id": "e2e9fa84-f8a6-47fe-bae0-c42ac597b5ef",
+      "name": "Copy file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "LZiIuvNRqX1YJM0P",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Node 5: Replace placeholders using HTTP Request approach\n// We pass the doc ID and data forward — the actual replacement \n// will be done by an HTTP Request node which handles OAuth automatically\n\nconst docId = $('Copy file').item.json.id;\nconst data = $('Code in JavaScript').item.json;\n\n// Build all 15 find-replace requests\nconst requests = [\n  ['{{full_name}}',                 data.full_name],\n  ['{{preferred_name_alias}}',      data.preferred_name_alias],\n  ['{{date_of_birth}}',             data.date_of_birth],\n  ['{{email}}',                     data.email],\n  ['{{telephone}}',                 data.telephone],\n  ['{{postal_address}}',            data.postal_address],\n  ['{{address}}',                   data.address],\n  ['{{ndis_number}}',               data.ndis_number],\n  ['{{ndis_plan_management_type}}', data.ndis_plan_management_type],\n  ['{{plan_manager_name}}',         data.plan_manager_name],\n  ['{{ndis_plan_start_date}}',      data.ndis_plan_start_date],\n  ['{{ndis_plan_end_date}}',        data.ndis_plan_end_date],\n  ['{{atsi_cald}}',                 data.atsi_cald],\n  ['{{mental_health_diagnosis}}',   data.mental_health_diagnosis],\n  ['{{referral_date}}',             data.referral_date],\n].map(([find, replace]) => ({\n  replaceAllText: {\n    containsText: { text: find, matchCase: true },\n    replaceText: replace || '',\n  }\n}));\n\nreturn [{ json: { \n  docId,\n  docName: $('Copy file').item.json.name,\n  requests  // Pass requests to next node\n}}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        832,
+        0
+      ],
+      "id": "cb8abb19-be15-45f3-8a74-41ae96f193f6",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://docs.googleapis.com/v1/documents/{{ $json.docId }}:batchUpdate",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleDocsOAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ requests: $json.requests }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1040,
+        0
+      ],
+      "id": "68670d33-1caf-4ac2-9776-7792e803d1fd",
+      "name": "HTTP Request",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "pF8eTa7UDZC21aLB",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Copy file').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "application/pdf"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1248,
+        0
+      ],
+      "id": "8172a188-b742-4525-b27d-daf632a28374",
+      "name": "Download file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "LZiIuvNRqX1YJM0P",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "dmontzdigital@gmail.com",
+        "toEmail": "jamesdigital33@gmail.com, montivive@hotmail.com",
+        "subject": "=New NDIS Referral: {{ $('Code in JavaScript').item.json.full_name }}",
+        "html": "=<p>Hi,</p>\n\n<p>A new participant referral has been submitted.</p>\n\n<p><strong>Participant:</strong> {{ $('Code in JavaScript').item.json.full_name }}<br>\n<strong>NDIS Number:</strong> {{ $('Code in JavaScript').item.json.ndis_number }}<br>\n<strong>Plan Type:</strong> {{ $('Code in JavaScript').item.json.ndis_plan_management_type }}<br>\n<strong>Date:</strong> {{ $('Code in JavaScript').item.json.referral_date }}</p>\n\n<p>The full referral PDF is attached </p>\n\n<p>Please review and assign a support worker.</p>\n\n<p>Regards,<br>\nAUSADVENT CARE</p>",
+        "options": {
+          "attachments": "=data"
+        }
+      },
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1664,
+        0
+      ],
+      "id": "400a80a7-dbae-4eb9-92fb-bc42e9a10f37",
+      "name": "Send an Email",
+      "webhookId": "2d311e72-ef82-4b81-b26a-60e290ea2769",
+      "credentials": {
+        "smtp": {
+          "id": "phc1SfxZuSPD35hg",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Fix: Ensure binary has .pdf extension and correct MIME type\n// The SMTP node uses the filename to determine attachment type\n// Without .pdf extension, recipients see an unknown file\n\nconst items = $input.all();\n\nfor (const item of items) {\n  if (item.binary) {\n    for (const key of Object.keys(item.binary)) {\n      const bin = item.binary[key];\n      if (!bin.fileName || !bin.fileName.endsWith('.pdf')) {\n        // Use the doc name from earlier in the workflow, or fallback\n        const docName = $('Code in JavaScript1').item.json.docName || 'Referral';\n        bin.fileName = docName.replace(/\\s+/g, '_') + '.pdf';\n      }\n      bin.mimeType = 'application/pdf';\n    }\n  }\n}\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1456,
+        0
+      ],
+      "id": "d4ffafc3-8659-4862-aace-20db4cdaa07f",
+      "name": "Fix PDF Filename"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record": {
+      "main": [
+        [
+          {
+            "node": "Copy file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Copy file": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Fix PDF Filename",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fix PDF Filename": {
+      "main": [
+        [
+          {
+            "node": "Send an Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "334d9f73-0bc7-48ab-9322-d11fb7b9da8a",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "127c4999ee6ff2e79db5074600837b706b8fb6e8cdc6e6674ab1a6a4026a687c"
+  },
+  "id": "RWLZL3nZURoo70P1",
+  "tags": []
+}

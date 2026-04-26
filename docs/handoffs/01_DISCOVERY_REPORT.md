@@ -101,9 +101,10 @@ The `??` fallback to `NEXT_PUBLIC_*` is the security issue on the dev side.
 ## 3. AWS Amplify state
 
 ### Hosted environments
-- `main` (production)
-- `dev` (development)
+- `main` (production) — branch on `ausadvent/ausadvent`
+- `dev` (development) — branch on `ausadvent/ausadvent`
 - No other branches are auto-deployed.
+- AWS Amplify is connected to `ausadvent/ausadvent` (NOT `jamescripto/ausadvent`, which is a contributor's fork)
 
 ### Environment variables (shared across ALL branches)
 
@@ -188,6 +189,7 @@ These rules apply to ALL handoff packages.
 5. **Never paste secrets in commits, logs, or chat.** Use Amplify console for production secrets, `.env.local` for local. If a secret appears anywhere it shouldn't, treat as compromised and rotate.
 6. **WCAG 2.1 AA.** Maintain accessibility. Run `npm run lint` before every commit. Lint must pass with zero warnings.
 7. **No `any` types in new code.** When refactoring existing `:any` usage, replace with proper types. Do not propagate `:any`.
+8. **Multi-account authentication.** This repo requires `ausadvent` as the active GitHub identity in BOTH the terminal (`gh auth switch --user ausadvent`) AND the browser (for PR operations). The `jamescripto` account has contributor status but cannot push directly or open PRs. Verify identity before pushing: `gh auth status` should show `ausadvent` as active.
 
 ---
 
@@ -215,11 +217,14 @@ Amplify env vars apply to all branches by default. This means dev cannot test en
 
 ## 9. Deviations log
 
-_Empty. Implementation engineer to populate as deviations occur._
+## 9. Deviations log
 
 | Date | Phase | Deviation | Reason | Resolution |
 |------|-------|-----------|--------|------------|
-| | | | | |
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | Initial `git push` failed with `Permission to ausadvent/ausadvent.git denied to jamesunboun` | macOS Keychain Internet password cached for `jamesunboun` (a third GitHub account); `gh` CLI also had `jamesunboun` set as active account, taking precedence over Keychain | Cleared Keychain Internet password entries for `github.com`. Switched `gh` CLI active account using `gh auth switch --user ausadvent`. Push then succeeded. PROPER FIX: SSH host aliases — deferred to Batch 2 platform setup. |
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | PR creation in browser failed with `Validation failed: must be a collaborator` | Browser was logged into GitHub as `jamescripto`, who has contributor status (can fork, can commit, cannot open PRs against this repo) | Logged into browser as `ausadvent` (collaborator/owner with full PR rights). LESSON: For this repo, BOTH terminal `gh` CLI active account AND browser session must be `ausadvent`. They are separate authentication contexts. |
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | Discovered redundant `upstream` remote — points to same URL as `origin` (`https://github.com/ausadvent/ausadvent.git`) | Likely set up early in the project's life when a fork-based workflow was being considered, but never used | Removed via `git remote remove upstream`. |
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | GitHub reported 78 Dependabot vulnerabilities on `ausadvent/ausadvent` default branch (3 critical, 34 high, 33 moderate, 8 low) on first push | Dependencies have not been updated for an extended period | Logged here for future remediation phase. NOT addressed during current migration work to keep scope focused. Consider as a follow-on phase after migration completes. |
 
 ---
 
@@ -230,6 +235,7 @@ End-of-session summary. Update at the end of every work session.
 | Date | Engineer | Phase worked on | Outcome | Next session starts with |
 |------|----------|-----------------|---------|--------------------------|
 | 25 Apr 2026 | Lead Architect (planning) | Discovery | All four locations mapped (main code, dev code, Amplify, .env.local). Three handoff docs produced. | Phase 0 — branch cleanup |
+| 26 Apr 2026 | Lead Architect (planning) + James (execution) | Pre-Phase 0: agent install + multi-account git resolution | Agents and 4 handoffs committed to `dev` via `chore/install-agents-and-handoffs` PR. Migration branch synced. Multi-account git issue resolved (use `ausadvent` for this repo). 4 deviations logged. README + CURRENT.md added to `docs/handoffs/`. | Phase 0 — Branch Cleanup |
 
 ---
 
@@ -239,3 +245,6 @@ End-of-session summary. Update at the end of every work session.
 - Original `CLAUDE.MD` and `cursorrules` are project-level and remain authoritative
 - Sanity docs: https://www.sanity.io/docs
 - Next.js env var docs: https://nextjs.org/docs/app/building-your-application/configuring/environment-variables
+- GitHub repo: `ausadvent/ausadvent` (public). Contributors: `juanserna8`, `jamescripto`, `ausadvent` (collaborator). AWS Amplify deploys from this repo's `main` and `dev` branches.
+- Active git identity for this repo: `ausadvent` (`ausadventdevelopment@gmail.com`) — set in `git config user.email` locally, must also be active in `gh auth status` and in browser session.
+- Pending issue (logged for future): 78 Dependabot vulnerabilities on `main` branch. Schedule a remediation phase after migration completes.

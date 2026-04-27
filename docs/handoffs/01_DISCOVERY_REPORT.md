@@ -158,6 +158,7 @@ Unknown what this is for. Must be investigated before Phase 1 closes. Likely can
 | `staging-james` | ✅ | ✅ | Confirmed mistake by owner. | **Delete** |
 
 `upstream/*` remotes exist — likely from a fork-based workflow during early development. Not actioned in this plan; can be reviewed later.
+| 27 Apr 2026 | Engineer 2 | Phase 0 | Branch cleanup complete. Stale branches deleted. CURRENT.md and handoffs README recovered and merged to dev. SHAs logged above. | Phase 1 — Security Hotfix |
 
 ---
 

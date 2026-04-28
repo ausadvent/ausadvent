@@ -3,31 +3,15 @@
 import { useFormik } from 'formik'
 import * as Yup from "yup";
 import React, { useState } from 'react'
-import Lottie, {LottieRefCurrentProps} from 'lottie-react';
+import dynamic from 'next/dynamic';
 import { sendGAEvent } from '@next/third-parties/google';
 
 // Assets
 import Success from '../../../assets/sucess.json'
 import Failure from '../../../assets/failure.json'
-
-// Amplify configuration
-import config from '@/amplifyconfiguration.json'
-import { Amplify } from 'aws-amplify';
-import { post } from 'aws-amplify/api';
 import { trackGAEvent } from '../metrics';
 
-// Api key
-const apiKey:string|undefined =  process.env.NEXT_PUBLIC_API_KEY;
-
-Amplify.configure(config, {
-  API: {
-    REST: {
-      headers: async () => {
-        return { 'X-Api-Key': apiKey || ''}
-      }
-    }
-  }
-})
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
 
 
@@ -78,18 +62,15 @@ export default function Form() {
       setButtonText('Sending...')
       setIsSending(true)
       try {
-        // console.log('submitted')
-        let resOperation = post({
-          apiName: 'ausadventQuotes',
-          path: '/items',
-          options: {
-            body: {
-              values
-            }
-          }
+        const response = await fetch('/api/form-submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ values }),
         })
 
-        if((await resOperation.response).statusCode == 200) {
+        if(response.ok) {
           setRenderForm(!renderForm)
           setRenderSuccessMessage(true)
           setTimeout(() => {

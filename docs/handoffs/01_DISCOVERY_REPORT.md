@@ -176,6 +176,7 @@ Unknown what this is for. Must be investigated before Phase 1 closes. Likely can
 
 Each phase has a dedicated handoff document. **Do not skip phases.** Each phase has a verification gate.
 
+> **Note:** Phase 1 was revised on 26 Apr 2026 after Engineer 2's pre-flight `security-auditor` scan found two issues beyond the original scope (`NEXT_PUBLIC_API_KEY` exposing AWS API Gateway key; Contentful used in client components). Original Phase 1 (`03_PHASE_1_SECURITY_HOTFIX.md`) is superseded by `05_PHASE_1_SECURITY_HARDENING.md`. Original retained for historical reference only.
 ---
 
 ## 7. Standing rules for the implementation engineer
@@ -189,6 +190,11 @@ These rules apply to ALL handoff packages.
 5. **Never paste secrets in commits, logs, or chat.** Use Amplify console for production secrets, `.env.local` for local. If a secret appears anywhere it shouldn't, treat as compromised and rotate.
 6. **WCAG 2.1 AA.** Maintain accessibility. Run `npm run lint` before every commit. Lint must pass with zero warnings.
 7. **No `any` types in new code.** When refactoring existing `:any` usage, replace with proper types. Do not propagate `:any`.
+8. **Security audit findings need verification before scope expansion.** When the `security-auditor` agent flags a finding, verify the underlying assumption (e.g., "is this actually a client component?") with targeted commands (`head -5` on the file, etc.) before treating the finding as confirmed. False positives are part of read-only heuristic scans. Always verify with targeted commands before expanding scope or modifying plans.
+
+9. **Pre-flight scans before any phase that touches production.** Before executing any phase marked "production deploy," run the relevant audit agents (security-auditor, scout) and review findings with the Lead Architect. Pre-flight scans surface issues that initial discovery missed — better to find them before code changes than during them.
+
+10. **Dev URL is the validation gate, not a development environment.** AWS Amplify dev branch deploys are real production-like environments. Use them as the gate before merging to main. Test functionality AND security on the dev URL before promoting to production.
 
 ---
 
@@ -220,7 +226,10 @@ _Empty. Implementation engineer to populate as deviations occur._
 
 | Date | Phase | Deviation | Reason | Resolution |
 |------|-------|-----------|--------|------------|
-| | | | | |
+| 26 Apr 2026 | Phase 1 prep | `NEXT_PUBLIC_API_KEY` confirmed as AWS API Gateway key (was listed as "unknown" in initial discovery). Used by `Form.tsx` (line 20) and `ConfigureAmplifyClientSide.ts` (line 13), sent as `X-Api-Key` header to AWS Lambda for email sending. | Initial discovery flagged the var as unknown but didn't trace usage. Engineer 2's pre-flight `security-auditor` scan + manual verification confirmed purpose. | Original Phase 1 scope expanded to cover this credential too. New Phase 1 includes Next.js API route proxy at `/api/form-submit` to hold key server-side. Lambda endpoint stays unchanged. |
+| 26 Apr 2026 | Phase 1 prep | Contentful client imported and called from 3 client components: `Header.tsx`, `Services.tsx`, `LatestArticles.tsx` (via `fetchData`/`fetchArticles` utilities). All three have `'use client'` directives confirmed. | Original Phase 1 plan would have removed `NEXT_PUBLIC_*` fallback assuming all Contentful calls were server-side. They are not. Removing the fallback would have caused undefined env vars in browser → Contentful client throw → site break. | Phase 1 revised to refactor each component into a server+client pair: `Header.tsx` (server, fetches) renders `HeaderClient.tsx` (client, interactive). Same pattern for Services and LatestArticles. After refactor, `NEXT_PUBLIC_*` fallback can be safely removed. |
+| 26 Apr 2026 | Phase 1 prep | Architectural decision: ship as single coordinated Phase 1 instead of splitting into 1A/1B/1C | James proposed leveraging dev environment as validation gate. Confirmed: AWS Amplify dev branch IS a production-like environment. If fixes are validated on dev URL before merging to main, production breakage risk is minimized. Single coordinated fix is cleaner than three deploys. | Phase 1 (Revised) plans all fixes on a single feature branch off `dev`, with thorough dev URL verification before main merge. Documented in `05_PHASE_1_SECURITY_HARDENING.md`. |
+
 
 ---
 
@@ -231,7 +240,9 @@ End-of-session summary. Update at the end of every work session.
 | Date | Engineer | Phase worked on | Outcome | Next session starts with |
 |------|----------|-----------------|---------|--------------------------|
 | 25 Apr 2026 | Lead Architect (planning) | Discovery | All four locations mapped (main code, dev code, Amplify, .env.local). Three handoff docs produced. | Phase 0 — branch cleanup |
-
+| Date | Engineer | Phase worked on | Outcome | Next session starts with |
+|------|----------|-----------------|---------|--------------------------|
+| 26 Apr 2026 | Engineer 2 (Sonnet) + James (verification) | Phase 0 + Phase 1 pre-flight | Phase 0 complete (stale branches deleted). Phase 1 pre-flight scan revealed 2 new findings; escalated to Lead Architect; Phase 1 plan revised. New `05_PHASE_1_SECURITY_HARDENING.md` produced. CURRENT.md updated. | Phase 1 (Revised) — Security Hardening, starting from feat/security-hardening branch off dev |
 ---
 
 ## 11. References

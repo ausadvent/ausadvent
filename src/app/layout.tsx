@@ -2,10 +2,8 @@ import type { Metadata } from 'next'
 import { Nunito_Sans } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
-import ReactGA from 'react-ga4'
 
 // Components
-import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import LatestArticles from './components/LatestArticles'
@@ -18,9 +16,6 @@ const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
   variable: '--font-cormorant'
 })
-
-// Initialize GA page view
-ReactGA.send({ hitType: "pageview", page: "/" });
 
 // Metadata configuration
 export const metadata: Metadata = {
@@ -74,7 +69,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${Noto.className} ${cormorant.variable}`}>
-        <ConfigureAmplifyClientSide />
         <Header />
         <main>{children}</main> {/* Added semantic main tag */}
         <LatestArticles />

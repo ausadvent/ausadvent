@@ -15,14 +15,7 @@ interface PageProps{
   params: {url: string}
 }
 
-export async function generateStaticParams() {
-  const articles = await fetchArticles()
-
-  return articles
-    .map((entry: any) => entry.fields.articleUrl)
-    .filter(Boolean)
-    .map((url: string) => ({ url }))
-}
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   

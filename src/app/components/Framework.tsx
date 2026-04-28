@@ -1,5 +1,5 @@
 import React from 'react'
-import { contentfulClient } from '@/lib/contentful';
+import { getContentfulClient } from '@/lib/contentful';
 
 // Assets
 import BlueLotus from '../../../assets/blue-lotus.svg'
@@ -9,11 +9,12 @@ import Link from 'next/link';
 // Fetch the values from contentful
 async function fetchStandards() {
     try {
+        const contentfulClient = getContentfulClient();
         const res = await contentfulClient.getEntries({ content_type: 'nationalStandards'})
         // console.log(res.items)
         return res.items
-    } catch(e) {
-        console.log(e)
+    } catch(error) {
+        console.warn("Unable to fetch Contentful standards.", error);
         return []
     }
 }

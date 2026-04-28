@@ -3,16 +3,17 @@ import React from 'react'
 // Assets
 import Symbol from '../../../assets/symbol-lotus.svg'
 import Image from 'next/image';
-import { contentfulClient } from '@/lib/contentful';
+import { getContentfulClient } from '@/lib/contentful';
 
 // Fetch the values from contentful
 async function fetchValues() {
     try {
+        const contentfulClient = getContentfulClient();
         const res = await contentfulClient.getEntries({ content_type: 'values'})
         // console.log(res.items)
         return res.items
-    } catch(e) {
-        console.log(e)
+    } catch(error) {
+        console.warn("Unable to fetch Contentful values.", error);
         return []
     }
 }

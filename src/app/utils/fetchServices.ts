@@ -1,11 +1,14 @@
-import { contentfulClient } from "@/lib/contentful";
+import { getContentfulClient } from "@/lib/contentful";
 
 export async function fetchData() {
-    // fetch data
-    const res = await contentfulClient.getEntries({ content_type: 'services'})
+    try {
+        const contentfulClient = getContentfulClient();
+        const res = await contentfulClient.getEntries({ content_type: 'services'})
 
-    // Store the data in a variable
-    const data = res.items
+        return res.items
+    } catch (error) {
+        console.warn("Unable to fetch Contentful services.", error);
 
-    return data
+        return []
+    }
 }

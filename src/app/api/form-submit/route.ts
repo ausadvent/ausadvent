@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
+import amplifyConfig from '@/amplifyconfiguration.json'
 
-const apiGatewayEndpoint = process.env.AUSADVENT_QUOTES_ENDPOINT
+const amplifyApiEndpoint = amplifyConfig.aws_cloud_logic_custom.find(
+  (api) => api.name === 'ausadventQuotes'
+)?.endpoint
+
+const apiGatewayEndpoint = process.env.AUSADVENT_QUOTES_ENDPOINT || amplifyApiEndpoint
 const apiKey = process.env.API_KEY
 
 export async function POST(request: NextRequest) {
-  if (!apiGatewayEndpoint || !apiKey) {
+  if (!apiGatewayEndpoint) {
     console.error('Form proxy: missing required env vars')
     return NextResponse.json(
       { error: 'Server configuration error' },
@@ -20,7 +25,7 @@ export async function POST(request: NextRequest) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Api-Key': apiKey,
+        ...(apiKey ? { 'X-Api-Key': apiKey } : {}),
       },
       body: JSON.stringify(body),
     })

@@ -13,6 +13,16 @@ interface ServicesClientProps {
   servicesData: any[];
 }
 
+function getAssetUrl(asset: any) {
+  const url = asset?.fields?.file?.url
+
+  if (!url) {
+    return ''
+  }
+
+  return url.startsWith('http') ? url : `https:${url}`
+}
+
 export default function ServicesClient({ servicesData }: ServicesClientProps) {
   
   return (
@@ -35,7 +45,7 @@ export default function ServicesClient({ servicesData }: ServicesClientProps) {
               <div className='relative'>
                 <div className='md:w-[19rem] lg:w-[23rem] xl:w-[31rem] 2xl:w-full'>
                   <Image 
-                    src={`https:${service.fields.serviceMainImage.fields.file.url}`}
+                    src={getAssetUrl(service.fields.serviceMainImage)}
                     className='w-full sm:w-[31.25rem] md:w-[19rem] lg:w-[23rem] xl:w-[31rem] 2xl:w-full h-[18rem] rounded-tr-3xl rounded-bl-3xl object-cover'
                     alt={service?.fields.serviceMainImage.fields.description }
                     title={service?.fields.serviceMainImage.fields.title}

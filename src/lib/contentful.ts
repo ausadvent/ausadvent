@@ -16,3 +16,52 @@ export function getContentfulClient() {
     accessToken: accessToken,
   });
 }
+
+export async function getContentfulEntries(contentType: string) {
+  try {
+    const contentfulClient = getContentfulClient();
+    const res = await contentfulClient.getEntries({ content_type: contentType });
+
+    return res.items;
+  } catch (error) {
+    console.error(`Unable to fetch Contentful entries for "${contentType}".`, error);
+
+    if (process.env.NODE_ENV === 'production') {
+      throw error;
+    }
+
+    return [];
+  }
+}
+
+export function getContentfulAssetUrl(asset: any) {
+  const url = asset?.fields?.file?.url;
+
+  if (!url) {
+    return '';
+  }
+
+  return url.startsWith('http') ? url : `https:${url}`;
+}
+
+export function getRichTextPlainText(document: any) {
+  const values: string[] = [];
+
+  function walk(node: any) {
+    if (!node) {
+      return;
+    }
+
+    if (typeof node.value === 'string') {
+      values.push(node.value);
+    }
+
+    if (Array.isArray(node.content)) {
+      node.content.forEach(walk);
+    }
+  }
+
+  walk(document);
+
+  return values.join(' ').trim();
+}

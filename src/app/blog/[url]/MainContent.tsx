@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, INLINES,  Node } from '@contentful/rich-text-types';
+import { getContentfulAssetUrl } from '@/lib/contentful';
 
 // Assets
 import bullet from '../../../../assets/article-main-bullet.svg';
@@ -49,7 +50,7 @@ import bullet from '../../../../assets/article-main-bullet.svg';
       <div className='mt-[1rem] md:mt-[2rem]'>
         <Image 
           className='w-full h-[24.375rem] sm:h-[16rem] md:h-[21.875rem] lg:h-[24rem] xl:h-[31.25rem] rounded-tr-[2rem] object-cover'
-          src={`https:${node.data.target.fields.file.url}`}
+          src={getContentfulAssetUrl(node.data.target)}
           title={node.data.target.fields.title} 
           alt={node.data.target.fields.description} 
           width={956.8} height={500}  
@@ -66,6 +67,8 @@ interface closingContent {
 }
 
 export default function MainContent({article} : any) {
+    const articleSteps = article?.fields?.articleSteps?.content ?? []
+    const closing = article?.fields?.closing?.content ?? []
 
     return (
     <div className=' pt-[2rem] pb-[3rem] md:pt-[4rem] md:pb-[4rem] 2xl:py-[4rem] 3xl:py-[8rem] sm:flex sm:flex-col items-center'>
@@ -85,7 +88,7 @@ export default function MainContent({article} : any) {
           <section className='flex flex-col gap-[2rem]'>
             <h4 className='cormorant font-bold text-blueHigher text-[1.875rem]'>Go step by step</h4>
             <div className='flex flex-col xl:grid grid-cols-2 gap-[2rem]'>
-              {article.fields.articleSteps.content.map((entry: any, index: number) => (
+              {articleSteps.map((entry: any, index: number) => (
                 <div key={index} className='bg-[#FFF7ED] p-[1rem] xl:p-[2rem] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]'>
                   {entry.content.map((idea: any, index: number) => (
                     index === 0 ? (
@@ -103,15 +106,17 @@ export default function MainContent({article} : any) {
             </div>
           </section>
            {/* Conclusion */}
-           <section className='p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col text-blueHigher'>
-            {documentToReactComponents(article.fields.conclusion, options)}
-          </section>
+          {article.fields.conclusion && (
+            <section className='p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col text-blueHigher'>
+              {documentToReactComponents(article.fields.conclusion, options)}
+            </section>
+          )}
 
           
 
           {/* Closing tag */}
           <section className="p-[2rem] mt-[1rem] bg-[#DBEAFE] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem] xl:max-w-[1024px] xl:mx-auto flex flex-col gap-[1rem] text-center text-blueHigher">
-            {article.fields.closing.content.map((entry: closingContent, index:number) => (
+            {closing.map((entry: closingContent, index:number) => (
               entry.nodeType === "heading-3" ? (
                 <h3 key={index} className='font-bold'>{entry.content[0].value}</h3>
               ): (

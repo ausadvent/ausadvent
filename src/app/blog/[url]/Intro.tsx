@@ -3,14 +3,25 @@
 import Image from 'next/image'
 import React from 'react'
 
+function getAssetUrl(asset: any) {
+    const url = asset?.fields?.file?.url
+
+    if (!url) {
+        return ''
+    }
+
+    return url.startsWith('http') ? url : `https:${url}`
+}
+
 export default function Intro({article}: any) {
+    const imageUrl = getAssetUrl(article?.fields?.articleMainImage)
 
     return (
         <article className="  sm:mx-auto pb-[2rem] sm:pb-0 h-screen ">
             {/* Background image */}
             <div className=" absolute inset-0  -z-10 ">
                 <Image 
-                    src={`https:${article.fields.articleMainImage.fields.file.url}`}
+                    src={imageUrl}
                     title={article.fields.articleMainImage.fields.title} 
                     alt={article.fields.articleMainImage.fields.description} 
                     className=' absolute inset-0  object-cover object-top opacity-100  -z-10'

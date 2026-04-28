@@ -9,12 +9,18 @@ import Footer from './components/Footer'
 import LatestArticles from './components/LatestArticles'
 import Metrics from './metrics'
 
+export const revalidate = 300
+
 // Fonts - Simplified font imports and removed unused ones
-const Noto = Nunito_Sans({ subsets: ['latin']})
+const nunitoSans = Nunito_Sans({
+  subsets: ['latin'],
+  adjustFontFallback: false,
+})
 const cormorant = Cormorant_Garamond({ 
   weight: '700',
   subsets: ['latin'],
-  variable: '--font-cormorant'
+  variable: '--font-cormorant',
+  adjustFontFallback: false,
 })
 
 // Metadata configuration
@@ -68,7 +74,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${Noto.className} ${cormorant.variable}`}>
+      <body className={`${nunitoSans.className} ${cormorant.variable}`}>
         <Header />
         <main>{children}</main> {/* Added semantic main tag */}
         <LatestArticles />

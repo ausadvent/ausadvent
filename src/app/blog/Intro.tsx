@@ -6,9 +6,9 @@ import BgImage from '../../../assets/blog-hero.webp'
 
 export default function Intro() {
   return (
-    <section className=" sm:mx-auto max-w-[90%] 2xl:max-w-[80%] mx-auto">
+    <section className="relative overflow-hidden bg-[#1e3a8a]">
         {/* Background image */}
-        <div className="absolute inset-0 h-full -z-10">
+        <div className="absolute inset-0">
             <Image 
                 className='absolute inset-0 w-full h-full object-cover opacity-80'
                 src={BgImage} 
@@ -22,7 +22,7 @@ export default function Intro() {
         </div>
 
         {/* Content */}
-        <div className='  py-32 text-primaryWhite '>
+        <div className='relative z-10 sm:mx-auto max-w-[90%] 2xl:max-w-[80%] mx-auto py-32 text-primaryWhite '>
             <h2 className='text-[0.75rem] lg:text-[1.2rem] text-[#93C5FD]'>Articles</h2>
             <div className="lg:mt-[3rem] flex flex-col xl:flex-row lg:gap-[1rem] xl:gap-[2rem]">
                 <div className=' lg:w-1/2'>

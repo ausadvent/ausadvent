@@ -14,17 +14,33 @@ interface LatestArticlesClientProps {
   articles: any[];
 }
 
+function getAssetUrl(asset: any) {
+    const url = asset?.fields?.file?.url
+
+    if (!url) {
+        return ''
+    }
+
+    return url.startsWith('http') ? url : `https:${url}`
+}
+
 export default function LatestArticlesClient({ articles }: LatestArticlesClientProps) {
     
     // Store the 3 latest articles in a variable
-    const recentArticles = articles?.slice(0,3)
+    const recentArticles = articles?.slice(0,3) ?? []
 
     const [currentArticle, setCurrentArticle] = useState(0)
 
-    const articleUrl = articles && articles[currentArticle]?.fields.articleUrl;
+    const article = recentArticles[currentArticle]
+    const articleUrl = article?.fields?.articleUrl
+    const imageUrl = getAssetUrl(article?.fields?.articleMainImage)
     
     // Use an absolute path or a fully qualified URL
-    const linkHref = `/blog/${articleUrl}`;
+    const linkHref = articleUrl ? `/blog/${articleUrl}` : '/blog'
+
+    if (!article || !imageUrl) {
+        return null
+    }
 
     // Go to next article automatically after 5 seconds
     // const nextArticle = setTimeout(() => {
@@ -41,9 +57,9 @@ export default function LatestArticlesClient({ articles }: LatestArticlesClientP
                     <div className='absolute inset-0 box-content z-1 w-full h-[16rem] md:h-[25rem] lg:h-[31.25rem] xl:h-[37.5rem] 2xl:h-[43.75rem]'>
                         <Image 
                             className='inset-0 w-full h-full object-cover object-top opacity-90'
-                            src={articles && articles[currentArticle]?.fields.articleMainImage.fields.file.url}  
-                            title={articles && articles[currentArticle]?.fields.articleMainImage.fields.title}
-                            alt={articles && articles[currentArticle]?.fields.articleMainImage.fields.description}
+                            src={imageUrl}  
+                            title={article?.fields?.articleMainImage?.fields?.title}
+                            alt={article?.fields?.articleMainImage?.fields?.description ?? article?.fields?.articleTitle}
                             width={100}
                             height={100}
                             unoptimized
@@ -76,9 +92,9 @@ export default function LatestArticlesClient({ articles }: LatestArticlesClientP
                         <div className="relative xl:w-full md:px-[4rem] py-8  px-[0.5rem] h-full flex flex-col gap-[1rem] items-center justify-around ">
                             <div className="md:pb-[1rem] w-full flex justify-between items-start gap-[0.5rem]">
                                 <div className='flex flex-col gap-[1rem] text-primaryWhite'>
-                                    <h3 className='cormorant text-[1.5rem] leading-none sm:text-[2rem] md:text-[2.8rem] lg:text-[3rem] 3xl:text-[4.5rem] font-bold sm:leading-[2.125rem] md:leading-none lg:leading-none'>{articles && articles[currentArticle]?.fields?.articleTitle && articles[currentArticle]?.fields?.articleTitle.toUpperCase()}</h3>
-                                   {articles && (
-                                     <Link href="/blog/[article]" as={linkHref} className="flex gap-[0.5rem] items-center lg:hover:cursor-pointer">
+                                    <h3 className='cormorant text-[1.5rem] leading-none sm:text-[2rem] md:text-[2.8rem] lg:text-[3rem] 3xl:text-[4.5rem] font-bold sm:leading-[2.125rem] md:leading-none lg:leading-none'>{article?.fields?.articleTitle?.toUpperCase()}</h3>
+                                   {articleUrl && (
+                                     <Link href={linkHref} className="flex gap-[0.5rem] items-center lg:hover:cursor-pointer">
                                         <svg className="w-[1rem] md:w-[1.5rem] h-[1rem] md:h-[1.5rem] text-[#F59E0B]"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  
                                             <path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="2" />
                                             <path d="M2 12l1.5 2a11 11 0 0 0 17 0l1.5 -2" />

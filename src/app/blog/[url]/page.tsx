@@ -9,9 +9,19 @@ import NotFound from '@/app/not-found'
 
 // Utils
 import { fetchArticles } from '@/app/utils/fetchArticles'
+import { getContentfulAssetUrl, getRichTextPlainText } from '@/lib/contentful'
 
 interface PageProps{
   params: {url: string}
+}
+
+export async function generateStaticParams() {
+  const articles = await fetchArticles()
+
+  return articles
+    .map((entry: any) => entry.fields.articleUrl)
+    .filter(Boolean)
+    .map((url: string) => ({ url }))
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -23,20 +33,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if(currentArticle) {
     // Ensure the image URL is absolute
-    const imageUrl = currentArticle?.fields.articleMainImage.fields.file.url;
-    const absoluteImageUrl = imageUrl.startsWith("http")
-      ? imageUrl
-      : `https:${imageUrl}`;
+    const absoluteImageUrl = getContentfulAssetUrl(currentArticle?.fields.articleMainImage);
+    const description = getRichTextPlainText(currentArticle.fields.introductoryText).slice(0, 70)
   
     return {
       title: `${currentArticle.fields.articleTitle}`,
-      description: `${currentArticle.fields.introductoryText.content[0].content[0].value.slice(0, 70)}`,
+      description,
       alternates: {
         canonical: `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`
       },
       openGraph: {
         title: `${currentArticle.fields.articleTitle}`,
-        description: `${currentArticle.fields.introductoryText.content[0].content[0].value.slice(0, 70)}`,
+        description,
         url: absoluteImageUrl,
         type: 'website',
         images: [
@@ -67,10 +75,8 @@ export default async function Article({ params }: any) {
   const currentArticle:any = articles.find(entry => entry.fields.articleUrl === params.url)
 
   if(currentArticle) {
-    const imageUrl = currentArticle?.fields.articleMainImage.fields.file.url;
-    const absoluteImageUrl = imageUrl.startsWith("http")
-      ? imageUrl
-      : `https:${imageUrl}`;
+    const absoluteImageUrl = getContentfulAssetUrl(currentArticle?.fields.articleMainImage);
+    const description = getRichTextPlainText(currentArticle.fields.introductoryText).slice(0, 70)
   
     const jsonLd = {
       "@context": "https://schema.org",
@@ -78,7 +84,7 @@ export default async function Article({ params }: any) {
       "name": `${currentArticle.fields.articleTitle}`,
       "url": `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`,
       "headline": "Blog articles, tips and news about NDIS support independent living",
-      "description": `${currentArticle.fields.introductoryText.content[0].content[0].value.slice(0, 70)}`,
+      "description": description,
       "logo": {
         "@type": "ImageObject",
         "url": absoluteImageUrl

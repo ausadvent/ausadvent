@@ -51,8 +51,8 @@ import bullet from '../../../../assets/article-main-bullet.svg';
         <Image 
           className='w-full h-[24.375rem] sm:h-[16rem] md:h-[21.875rem] lg:h-[24rem] xl:h-[31.25rem] rounded-tr-[2rem] object-cover'
           src={getContentfulAssetUrl(node.data.target)}
-          title={node.data.target.fields.title} 
-          alt={node.data.target.fields.description} 
+          title={node.data?.target?.fields?.title} 
+          alt={node.data?.target?.fields?.description} 
           width={956.8} height={500}  
           loading='lazy'  
         />
@@ -74,11 +74,11 @@ export default function MainContent({article} : any) {
     <div className=' pt-[2rem] pb-[3rem] md:pt-[4rem] md:pb-[4rem] 2xl:py-[4rem] 3xl:py-[8rem] sm:flex sm:flex-col items-center'>
       <section className='p-4 flex flex-col gap-[1.5rem] md:gap-[1.9rem] lg:max-w-[60%]'>
           {/* Main Content title */}
-          <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] xl:max-w-[70%] '>{article.fields.mainContentTitle}</h3>
+          <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] xl:max-w-[70%] '>{article?.fields?.mainContentTitle}</h3>
           {article.fields.Conclusion}
           {/* Main Content with Rich Text */}
           <section className='mx-auto'>
-            {documentToReactComponents(article.fields.mainContent, options)}
+            {article?.fields?.mainContent && documentToReactComponents(article.fields.mainContent, options)}
           </section>
           <div className='flex flex-col gap-2'>
             <div className="mt-[1rem] border-b-[0.3125rem] border-[#F59E0B] w-[6.375rem] "></div>
@@ -90,7 +90,7 @@ export default function MainContent({article} : any) {
             <div className='flex flex-col xl:grid grid-cols-2 gap-[2rem]'>
               {articleSteps.map((entry: any, index: number) => (
                 <div key={index} className='bg-[#FFF7ED] p-[1rem] xl:p-[2rem] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]'>
-                  {entry.content.map((idea: any, index: number) => (
+                  {entry?.content?.map((idea: any, index: number) => (
                     index === 0 ? (
                       <h4 key={index} className='text-blueHigher font-bold'>
                         {idea.value}
@@ -118,9 +118,9 @@ export default function MainContent({article} : any) {
           <section className="p-[2rem] mt-[1rem] bg-[#DBEAFE] border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem] xl:max-w-[1024px] xl:mx-auto flex flex-col gap-[1rem] text-center text-blueHigher">
             {closing.map((entry: closingContent, index:number) => (
               entry.nodeType === "heading-3" ? (
-                <h3 key={index} className='font-bold'>{entry.content[0].value}</h3>
+                <h3 key={index} className='font-bold'>{entry.content?.[0]?.value}</h3>
               ): (
-                <p key={index}>{entry.content[0].value}</p>
+                <p key={index}>{entry.content?.[0]?.value}</p>
               )
             ))}
             <Link className='mt-[1.5rem] sm:mx-auto w-full flex' href={'/locations#form'} scroll >

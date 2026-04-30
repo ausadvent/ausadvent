@@ -15,6 +15,7 @@ function getAssetUrl(asset: any) {
 
 export default function Intro({article}: any) {
     const imageUrl = getAssetUrl(article?.fields?.articleMainImage)
+    const introductoryTextContent = article?.fields?.introductoryText?.content
 
     return (
         <article className="  sm:mx-auto pb-[2rem] sm:pb-0 h-screen ">
@@ -22,8 +23,8 @@ export default function Intro({article}: any) {
             <div className=" absolute inset-0  -z-10 ">
                 <Image 
                     src={imageUrl}
-                    title={article.fields.articleMainImage.fields.title} 
-                    alt={article.fields.articleMainImage.fields.description} 
+                    title={article?.fields?.articleMainImage?.fields?.title} 
+                    alt={article?.fields?.articleMainImage?.fields?.description} 
                     className=' absolute inset-0  object-cover object-top opacity-100  -z-10'
                     fill
                     sizes='100vw'
@@ -47,8 +48,8 @@ export default function Intro({article}: any) {
                     </div>
                     <div className=''>
                         <div className='mt-[2rem] lg:mt-0 flex flex-col gap-[0.5rem] '>
-                            {article.fields.introductoryText.content.map((idea: any, index: number) => (
-                                <p key={index} className='md:text-[1.2rem] lg:text-[1.4rem] '>{idea.content[0].value}</p>
+                            {Array.isArray(introductoryTextContent) && introductoryTextContent.map((idea: any, index: number) => (
+                                <p key={index} className='md:text-[1.2rem] lg:text-[1.4rem] '>{idea?.content?.[0]?.value}</p>
                             ))}
                         </div> 
                         <div className='mt-[4rem] sm:mt-[4rem] sm:p-[1rem] xl:p-[1.5rem]  sm:border sm:border-[#F59E0B] sm:rounded-tr-[2rem] sm:rounded-bl-[1rem] sm:bg-gradient-to-b from-[#3E7BFF33] to-[#1D51C3CC] '>

@@ -22,21 +22,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const articles = await fetchArticles()
 
   // Find the current article
-  const currentArticle:any = articles.find(entry => entry.fields.articleUrl === params.url)
+  const currentArticle:any = articles.find(entry => entry?.fields?.articleUrl === params.url)
   
   if(currentArticle) {
+    const articleFields = currentArticle?.fields ?? {}
     // Ensure the image URL is absolute
-    const absoluteImageUrl = getContentfulAssetUrl(currentArticle?.fields.articleMainImage);
-    const description = getRichTextPlainText(currentArticle.fields.introductoryText).slice(0, 70)
+    const absoluteImageUrl = getContentfulAssetUrl(articleFields.articleMainImage);
+    const description = getRichTextPlainText(articleFields.introductoryText).slice(0, 70)
   
     return {
-      title: `${currentArticle.fields.articleTitle}`,
+      title: `${articleFields.articleTitle}`,
       description,
       alternates: {
-        canonical: `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`
+        canonical: `https://www.ausadventcare.com.au/blog/${articleFields.articleUrl}`
       },
       openGraph: {
-        title: `${currentArticle.fields.articleTitle}`,
+        title: `${articleFields.articleTitle}`,
         description,
         url: absoluteImageUrl,
         type: 'website',
@@ -65,17 +66,19 @@ export default async function Article({ params }: any) {
   const metadata:any = await generateMetadata({ params })
 
   // Find the current article
-  const currentArticle:any = articles.find(entry => entry.fields.articleUrl === params.url)
+  const currentArticle:any = articles.find(entry => entry?.fields?.articleUrl === params.url)
 
   if(currentArticle) {
-    const absoluteImageUrl = getContentfulAssetUrl(currentArticle?.fields.articleMainImage);
-    const description = getRichTextPlainText(currentArticle.fields.introductoryText).slice(0, 70)
+    const articleFields = currentArticle?.fields ?? {}
+    const articleUrl = articleFields.articleUrl ?? params.url
+    const absoluteImageUrl = getContentfulAssetUrl(articleFields.articleMainImage);
+    const description = getRichTextPlainText(articleFields.introductoryText).slice(0, 70)
   
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "name": `${currentArticle.fields.articleTitle}`,
-      "url": `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`,
+      "name": `${articleFields.articleTitle}`,
+      "url": `https://www.ausadventcare.com.au/blog/${articleUrl}`,
       "headline": "Blog articles, tips and news about NDIS support independent living",
       "description": description,
       "logo": {
@@ -83,7 +86,7 @@ export default async function Article({ params }: any) {
         "url": absoluteImageUrl
       },
       "sameAs": [
-        `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`
+        `https://www.ausadventcare.com.au/blog/${articleUrl}`
       ]
     }
   
@@ -106,8 +109,8 @@ export default async function Article({ params }: any) {
         {
           '@type': 'ListItem',
           "position": 3,
-          "name": currentArticle.fields.articleTitle,
-          "item": `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`,
+          "name": articleFields.articleTitle,
+          "item": `https://www.ausadventcare.com.au/blog/${articleUrl}`,
       },
       ]
     }

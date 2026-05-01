@@ -46,19 +46,26 @@ import bullet from '../../../../assets/article-main-bullet.svg';
         {children}
       </a>
     ),
-    [BLOCKS.EMBEDDED_ASSET]: (node: Node) => (
-      <div className='mt-[1rem] md:mt-[2rem]'>
-        <Image 
-          className='w-full h-[24.375rem] sm:h-[16rem] md:h-[21.875rem] lg:h-[24rem] xl:h-[31.25rem] rounded-tr-[2rem] object-cover'
-          src={getContentfulAssetUrl(node.data.target)}
-          title={node.data?.target?.fields?.title} 
-          alt={node.data?.target?.fields?.description} 
-          width={956.8} height={500}  
-          loading='lazy'  
-        />
-      </div>
-      
-    )
+    [BLOCKS.EMBEDDED_ASSET]: (node: Node) => {
+      const assetUrl = getContentfulAssetUrl(node.data?.target)
+
+      if (!assetUrl) {
+        return null
+      }
+
+      return (
+        <div className='mt-[1rem] md:mt-[2rem]'>
+          <Image 
+            className='w-full h-[24.375rem] sm:h-[16rem] md:h-[21.875rem] lg:h-[24rem] xl:h-[31.25rem] rounded-tr-[2rem] object-cover'
+            src={assetUrl}
+            title={node.data?.target?.fields?.title} 
+            alt={node.data?.target?.fields?.description} 
+            width={956.8} height={500}  
+            loading='lazy'  
+          />
+        </div>
+      )
+    }
   }
 };
 interface closingContent {
@@ -75,7 +82,7 @@ export default function MainContent({article} : any) {
       <section className='p-4 flex flex-col gap-[1.5rem] md:gap-[1.9rem] lg:max-w-[60%]'>
           {/* Main Content title */}
           <h3 className='cormorant text-blueHigher font-bold text-[1.875rem] md:text-[3rem] leading-[2.063rem] md:leading-[3.2rem] xl:max-w-[70%] '>{article?.fields?.mainContentTitle}</h3>
-          {article.fields.Conclusion}
+          {article?.fields?.Conclusion}
           {/* Main Content with Rich Text */}
           <section className='mx-auto'>
             {article?.fields?.mainContent && documentToReactComponents(article.fields.mainContent, options)}
@@ -106,7 +113,7 @@ export default function MainContent({article} : any) {
             </div>
           </section>
            {/* Conclusion */}
-          {article.fields.conclusion && (
+          {article?.fields?.conclusion && (
             <section className='p-[2rem] mt-[1rem]  border border-[#F59E0B] rounded-tr-[2rem] rounded-bl-[1rem]  flex flex-col text-blueHigher'>
               {documentToReactComponents(article.fields.conclusion, options)}
             </section>

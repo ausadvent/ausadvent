@@ -101,9 +101,10 @@ The `??` fallback to `NEXT_PUBLIC_*` is the security issue on the dev side.
 ## 3. AWS Amplify state
 
 ### Hosted environments
-- `main` (production)
-- `dev` (development)
+- `main` (production) — branch on `ausadvent/ausadvent`
+- `dev` (development) — branch on `ausadvent/ausadvent`
 - No other branches are auto-deployed.
+- AWS Amplify is connected to `ausadvent/ausadvent` (NOT `jamescripto/ausadvent`, which is a contributor's fork)
 
 ### Environment variables (shared across ALL branches)
 
@@ -195,6 +196,7 @@ These rules apply to ALL handoff packages.
 9. **Pre-flight scans before any phase that touches production.** Before executing any phase marked "production deploy," run the relevant audit agents (security-auditor, scout) and review findings with the Lead Architect. Pre-flight scans surface issues that initial discovery missed — better to find them before code changes than during them.
 
 10. **Dev URL is the validation gate, not a development environment.** AWS Amplify dev branch deploys are real production-like environments. Use them as the gate before merging to main. Test functionality AND security on the dev URL before promoting to production.
+11. **Multi-account authentication.** This repo requires `ausadvent` as the active GitHub identity in BOTH the terminal (`gh auth switch --user ausadvent`) AND the browser (for PR operations). The `jamescripto` account has contributor status but cannot push directly or open PRs. Verify identity before pushing: `gh auth status` should show `ausadvent` as active.
 
 ---
 
@@ -222,8 +224,6 @@ Amplify env vars apply to all branches by default. This means dev cannot test en
 
 ## 9. Deviations log
 
-_Empty. Implementation engineer to populate as deviations occur._
-
 | Date | Phase | Deviation | Reason | Resolution |
 |------|-------|-----------|--------|------------|
 | 26 Apr 2026 | Phase 1 prep | `NEXT_PUBLIC_API_KEY` confirmed as AWS API Gateway key (was listed as "unknown" in initial discovery). Used by `Form.tsx` (line 20) and `ConfigureAmplifyClientSide.ts` (line 13), sent as `X-Api-Key` header to AWS Lambda for email sending. | Initial discovery flagged the var as unknown but didn't trace usage. Engineer 2's pre-flight `security-auditor` scan + manual verification confirmed purpose. | Original Phase 1 scope expanded to cover this credential too. New Phase 1 includes Next.js API route proxy at `/api/form-submit` to hold key server-side. Lambda endpoint stays unchanged. |
@@ -232,7 +232,10 @@ _Empty. Implementation engineer to populate as deviations occur._
 | 28 Apr 2026 | Phase 1 | Amplify SSR runtime could not read non-prefixed env vars without writing them to `.env.production` via `amplify.yml`. | Amplify CodeBuild env vars are not automatically available to the Next.js SSR runtime. | Accepted as interim pattern. `amplify.yml` now writes `CONTENTFUL_SPACE_ID`, `CONTENTFUL_ACCESS_TOKEN`, `API_KEY`, `AUSADVENT_QUOTES_ENDPOINT` to `.env.production` during build. Revisit if project moves off Amplify or adds genuinely sensitive credentials. |
 | 28 Apr 2026 | Phase 1 | `NEXT_PUBLIC_` fallback re-introduced to `contentful.ts` by Codex during build debugging, then protected by server-only import. | Workaround for Amplify runtime env var issue. | Fallback retained server-side only. `import 'server-only'` prevents client bundle exposure. Legacy `NEXT_PUBLIC_*` vars removed from Amplify after verification. |
 | 01 May 2026 | Phase 1 | API Gateway key rotation deferred. | Time constraint. | Pending — must complete before Phase 2 begins. |
-
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | Initial `git push` failed with `Permission to ausadvent/ausadvent.git denied to jamesunboun` | macOS Keychain Internet password cached for `jamesunboun` (a third GitHub account); `gh` CLI also had `jamesunboun` set as active account, taking precedence over Keychain | Cleared Keychain Internet password entries for `github.com`. Switched `gh` CLI active account using `gh auth switch --user ausadvent`. Push then succeeded. PROPER FIX: SSH host aliases — deferred to Batch 2 platform setup. |
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | PR creation in browser failed with `Validation failed: must be a collaborator` | Browser was logged into GitHub as `jamescripto`, who has contributor status (can fork, can commit, cannot open PRs against this repo) | Logged into browser as `ausadvent` (collaborator/owner with full PR rights). LESSON: For this repo, BOTH terminal `gh` CLI active account AND browser session must be `ausadvent`. They are separate authentication contexts. |
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | Discovered redundant `upstream` remote — points to same URL as `origin` (`https://github.com/ausadvent/ausadvent.git`) | Likely set up early in the project's life when a fork-based workflow was being considered, but never used | Removed via `git remote remove upstream`. |
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | GitHub reported 78 Dependabot vulnerabilities on `ausadvent/ausadvent` default branch (3 critical, 34 high, 33 moderate, 8 low) on first push | Dependencies have not been updated for an extended period | Logged here for future remediation phase. NOT addressed during current migration work to keep scope focused. Consider as a follow-on phase after migration completes. |
 
 ---
 
@@ -243,9 +246,8 @@ End-of-session summary. Update at the end of every work session.
 | Date | Engineer | Phase worked on | Outcome | Next session starts with |
 |------|----------|-----------------|---------|--------------------------|
 | 25 Apr 2026 | Lead Architect (planning) | Discovery | All four locations mapped (main code, dev code, Amplify, .env.local). Three handoff docs produced. | Phase 0 — branch cleanup |
-| Date | Engineer | Phase worked on | Outcome | Next session starts with |
-|------|----------|-----------------|---------|--------------------------|
 | 26 Apr 2026 | Engineer 2 (Sonnet) + James (verification) | Phase 0 + Phase 1 pre-flight | Phase 0 complete (stale branches deleted). Phase 1 pre-flight scan revealed 2 new findings; escalated to Lead Architect; Phase 1 plan revised. New `05_PHASE_1_SECURITY_HARDENING.md` produced. CURRENT.md updated. | Phase 1 (Revised) — Security Hardening, starting from feat/security-hardening branch off dev |
+| 26 Apr 2026 | Lead Architect (planning) + James (execution) | Pre-Phase 0: agent install + multi-account git resolution | Agents and 4 handoffs committed to `dev` via `chore/install-agents-and-handoffs` PR. Migration branch synced. Multi-account git issue resolved (use `ausadvent` for this repo). 4 deviations logged. README + CURRENT.md added to `docs/handoffs/`. | Phase 0 — Branch Cleanup |
 | 28 Apr–01 May 2026 | Engineer 2 (Sonnet) + James | Phase 1 Security Hardening | All credentials removed from browser bundle. Components refactored to server+client pairs. Form proxy created. Dev and main verified working. Legacy `NEXT_PUBLIC_*` vars removed from Amplify. Contentful token rotated. API Gateway key rotation deferred. | API Gateway key rotation, then update `CURRENT.md` to Phase 2. |
 ---
 
@@ -255,3 +257,6 @@ End-of-session summary. Update at the end of every work session.
 - Original `CLAUDE.MD` and `cursorrules` are project-level and remain authoritative
 - Sanity docs: https://www.sanity.io/docs
 - Next.js env var docs: https://nextjs.org/docs/app/building-your-application/configuring/environment-variables
+- GitHub repo: `ausadvent/ausadvent` (public). Contributors: `juanserna8`, `jamescripto`, `ausadvent` (collaborator). AWS Amplify deploys from this repo's `main` and `dev` branches.
+- Active git identity for this repo: `ausadvent` (`ausadventdevelopment@gmail.com`) — set in `git config user.email` locally, must also be active in `gh auth status` and in browser session.
+- Pending issue (logged for future): 78 Dependabot vulnerabilities on `main` branch. Schedule a remediation phase after migration completes.

@@ -101,9 +101,10 @@ The `??` fallback to `NEXT_PUBLIC_*` is the security issue on the dev side.
 ## 3. AWS Amplify state
 
 ### Hosted environments
-- `main` (production)
-- `dev` (development)
+- `main` (production) — branch on `ausadvent/ausadvent`
+- `dev` (development) — branch on `ausadvent/ausadvent`
 - No other branches are auto-deployed.
+- AWS Amplify is connected to `ausadvent/ausadvent` (NOT `jamescripto/ausadvent`, which is a contributor's fork)
 
 ### Environment variables (shared across ALL branches)
 
@@ -195,6 +196,7 @@ These rules apply to ALL handoff packages.
 9. **Pre-flight scans before any phase that touches production.** Before executing any phase marked "production deploy," run the relevant audit agents (security-auditor, scout) and review findings with the Lead Architect. Pre-flight scans surface issues that initial discovery missed — better to find them before code changes than during them.
 
 10. **Dev URL is the validation gate, not a development environment.** AWS Amplify dev branch deploys are real production-like environments. Use them as the gate before merging to main. Test functionality AND security on the dev URL before promoting to production.
+8. **Multi-account authentication.** This repo requires `ausadvent` as the active GitHub identity in BOTH the terminal (`gh auth switch --user ausadvent`) AND the browser (for PR operations). The `jamescripto` account has contributor status but cannot push directly or open PRs. Verify identity before pushing: `gh auth status` should show `ausadvent` as active.
 
 ---
 
@@ -222,7 +224,7 @@ Amplify env vars apply to all branches by default. This means dev cannot test en
 
 ## 9. Deviations log
 
-_Empty. Implementation engineer to populate as deviations occur._
+## 9. Deviations log
 
 | Date | Phase | Deviation | Reason | Resolution |
 |------|-------|-----------|--------|------------|
@@ -230,6 +232,10 @@ _Empty. Implementation engineer to populate as deviations occur._
 | 26 Apr 2026 | Phase 1 prep | Contentful client imported and called from 3 client components: `Header.tsx`, `Services.tsx`, `LatestArticles.tsx` (via `fetchData`/`fetchArticles` utilities). All three have `'use client'` directives confirmed. | Original Phase 1 plan would have removed `NEXT_PUBLIC_*` fallback assuming all Contentful calls were server-side. They are not. Removing the fallback would have caused undefined env vars in browser → Contentful client throw → site break. | Phase 1 revised to refactor each component into a server+client pair: `Header.tsx` (server, fetches) renders `HeaderClient.tsx` (client, interactive). Same pattern for Services and LatestArticles. After refactor, `NEXT_PUBLIC_*` fallback can be safely removed. |
 | 26 Apr 2026 | Phase 1 prep | Architectural decision: ship as single coordinated Phase 1 instead of splitting into 1A/1B/1C | James proposed leveraging dev environment as validation gate. Confirmed: AWS Amplify dev branch IS a production-like environment. If fixes are validated on dev URL before merging to main, production breakage risk is minimized. Single coordinated fix is cleaner than three deploys. | Phase 1 (Revised) plans all fixes on a single feature branch off `dev`, with thorough dev URL verification before main merge. Documented in `05_PHASE_1_SECURITY_HARDENING.md`. |
 
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | Initial `git push` failed with `Permission to ausadvent/ausadvent.git denied to jamesunboun` | macOS Keychain Internet password cached for `jamesunboun` (a third GitHub account); `gh` CLI also had `jamesunboun` set as active account, taking precedence over Keychain | Cleared Keychain Internet password entries for `github.com`. Switched `gh` CLI active account using `gh auth switch --user ausadvent`. Push then succeeded. PROPER FIX: SSH host aliases — deferred to Batch 2 platform setup. |
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | PR creation in browser failed with `Validation failed: must be a collaborator` | Browser was logged into GitHub as `jamescripto`, who has contributor status (can fork, can commit, cannot open PRs against this repo) | Logged into browser as `ausadvent` (collaborator/owner with full PR rights). LESSON: For this repo, BOTH terminal `gh` CLI active account AND browser session must be `ausadvent`. They are separate authentication contexts. |
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | Discovered redundant `upstream` remote — points to same URL as `origin` (`https://github.com/ausadvent/ausadvent.git`) | Likely set up early in the project's life when a fork-based workflow was being considered, but never used | Removed via `git remote remove upstream`. |
+| 26 Apr 2026 | Pre-Phase 0 (agent install) | GitHub reported 78 Dependabot vulnerabilities on `ausadvent/ausadvent` default branch (3 critical, 34 high, 33 moderate, 8 low) on first push | Dependencies have not been updated for an extended period | Logged here for future remediation phase. NOT addressed during current migration work to keep scope focused. Consider as a follow-on phase after migration completes. |
 
 ---
 
@@ -243,6 +249,8 @@ End-of-session summary. Update at the end of every work session.
 | Date | Engineer | Phase worked on | Outcome | Next session starts with |
 |------|----------|-----------------|---------|--------------------------|
 | 26 Apr 2026 | Engineer 2 (Sonnet) + James (verification) | Phase 0 + Phase 1 pre-flight | Phase 0 complete (stale branches deleted). Phase 1 pre-flight scan revealed 2 new findings; escalated to Lead Architect; Phase 1 plan revised. New `05_PHASE_1_SECURITY_HARDENING.md` produced. CURRENT.md updated. | Phase 1 (Revised) — Security Hardening, starting from feat/security-hardening branch off dev |
+| 26 Apr 2026 | Lead Architect (planning) + James (execution) | Pre-Phase 0: agent install + multi-account git resolution | Agents and 4 handoffs committed to `dev` via `chore/install-agents-and-handoffs` PR. Migration branch synced. Multi-account git issue resolved (use `ausadvent` for this repo). 4 deviations logged. README + CURRENT.md added to `docs/handoffs/`. | Phase 0 — Branch Cleanup |
+
 ---
 
 ## 11. References
@@ -251,3 +259,6 @@ End-of-session summary. Update at the end of every work session.
 - Original `CLAUDE.MD` and `cursorrules` are project-level and remain authoritative
 - Sanity docs: https://www.sanity.io/docs
 - Next.js env var docs: https://nextjs.org/docs/app/building-your-application/configuring/environment-variables
+- GitHub repo: `ausadvent/ausadvent` (public). Contributors: `juanserna8`, `jamescripto`, `ausadvent` (collaborator). AWS Amplify deploys from this repo's `main` and `dev` branches.
+- Active git identity for this repo: `ausadvent` (`ausadventdevelopment@gmail.com`) — set in `git config user.email` locally, must also be active in `gh auth status` and in browser session.
+- Pending issue (logged for future): 78 Dependabot vulnerabilities on `main` branch. Schedule a remediation phase after migration completes.

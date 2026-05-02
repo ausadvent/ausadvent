@@ -1,17 +1,23 @@
 import { MetadataRoute } from "next";
 
-// Utils
-import { fetchArticles } from "./utils/fetchArticles";
+export const dynamic = "force-dynamic";
 
+async function getArticleEntries(): Promise<MetadataRoute.Sitemap> {
+    try {
+        const { fetchArticles } = await import("./utils/fetchArticles");
+        const articles = await fetchArticles();
+
+        return articles.map((article) => ({
+            url: `https://www.ausadventcare.com.au/blog/${article.fields.articleUrl}`
+        }));
+    } catch (error) {
+        console.warn("Unable to fetch articles for sitemap.", error);
+        return [];
+    }
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  
-    // Fetch blog articles
-    const articles = await fetchArticles()
-
-    const articlesEntries: MetadataRoute.Sitemap = articles.map((article) => ({
-        url: `https://www.ausadventcare.com.au/blog/${article.fields.articleUrl}`
-    }))
+    const articlesEntries = await getArticleEntries();
 
     return [
         {

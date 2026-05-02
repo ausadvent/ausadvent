@@ -7,6 +7,14 @@ frontend:
         - npm ci
     build:
       commands:
+        - test -n "$CONTENTFUL_SPACE_ID" || (echo "CONTENTFUL_SPACE_ID is missing" && exit 1)
+        - test -n "$CONTENTFUL_ACCESS_TOKEN" || (echo "CONTENTFUL_ACCESS_TOKEN is missing" && exit 1)
+        - test -n "$API_KEY" || (echo "API_KEY is missing" && exit 1)
+        - test -n "$AUSADVENT_QUOTES_ENDPOINT" || (echo "AUSADVENT_QUOTES_ENDPOINT is missing" && exit 1)
+        - printf "CONTENTFUL_SPACE_ID=%s\n" "$CONTENTFUL_SPACE_ID" >> .env.production
+        - printf "CONTENTFUL_ACCESS_TOKEN=%s\n" "$CONTENTFUL_ACCESS_TOKEN" >> .env.production
+        - printf "API_KEY=%s\n" "$API_KEY" >> .env.production
+        - printf "AUSADVENT_QUOTES_ENDPOINT=%s\n" "$AUSADVENT_QUOTES_ENDPOINT" >> .env.production
         - npm run build
   artifacts:
     baseDirectory: .next

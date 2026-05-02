@@ -1,11 +1,20 @@
+'use client'
+
+import { useEffect } from "react";
 import Clarity from "./Clarity";
 import ReactGA from 'react-ga4'
 
-const Metrics = () => (
-    <>
-        <Clarity />
-    </>
-)
+const Metrics = () => {
+    useEffect(() => {
+        ReactGA.send({ hitType: "pageview", page: "/" });
+    }, [])
+
+    return (
+        <>
+            <Clarity />
+        </>
+    )
+}
 
 export default Metrics
 

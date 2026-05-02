@@ -9,34 +9,36 @@ import NotFound from '@/app/not-found'
 
 // Utils
 import { fetchArticles } from '@/app/utils/fetchArticles'
+import { getContentfulAssetUrl, getRichTextPlainText } from '@/lib/contentful'
 
 interface PageProps{
   params: {url: string}
 }
+
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   
   const articles = await fetchArticles()
 
   // Find the current article
-  const currentArticle:any = articles.find(entry => entry.fields.articleUrl === params.url)
+  const currentArticle:any = articles.find(entry => entry?.fields?.articleUrl === params.url)
   
   if(currentArticle) {
+    const articleFields = currentArticle?.fields ?? {}
     // Ensure the image URL is absolute
-    const imageUrl = currentArticle?.fields.articleMainImage.fields.file.url;
-    const absoluteImageUrl = imageUrl.startsWith("http")
-      ? imageUrl
-      : `https:${imageUrl}`;
+    const absoluteImageUrl = getContentfulAssetUrl(articleFields.articleMainImage);
+    const description = getRichTextPlainText(articleFields.introductoryText).slice(0, 70)
   
     return {
-      title: `${currentArticle.fields.articleTitle}`,
-      description: `${currentArticle.fields.introductoryText.content[0].content[0].value.slice(0, 70)}`,
+      title: `${articleFields.articleTitle}`,
+      description,
       alternates: {
-        canonical: `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`
+        canonical: `https://www.ausadventcare.com.au/blog/${articleFields.articleUrl}`
       },
       openGraph: {
-        title: `${currentArticle.fields.articleTitle}`,
-        description: `${currentArticle.fields.introductoryText.content[0].content[0].value.slice(0, 70)}`,
+        title: `${articleFields.articleTitle}`,
+        description,
         url: absoluteImageUrl,
         type: 'website',
         images: [
@@ -64,27 +66,27 @@ export default async function Article({ params }: any) {
   const metadata:any = await generateMetadata({ params })
 
   // Find the current article
-  const currentArticle:any = articles.find(entry => entry.fields.articleUrl === params.url)
+  const currentArticle:any = articles.find(entry => entry?.fields?.articleUrl === params.url)
 
   if(currentArticle) {
-    const imageUrl = currentArticle?.fields.articleMainImage.fields.file.url;
-    const absoluteImageUrl = imageUrl.startsWith("http")
-      ? imageUrl
-      : `https:${imageUrl}`;
+    const articleFields = currentArticle?.fields ?? {}
+    const articleUrl = articleFields.articleUrl ?? params.url
+    const absoluteImageUrl = getContentfulAssetUrl(articleFields.articleMainImage);
+    const description = getRichTextPlainText(articleFields.introductoryText).slice(0, 70)
   
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "name": `${currentArticle.fields.articleTitle}`,
-      "url": `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`,
+      "name": `${articleFields.articleTitle}`,
+      "url": `https://www.ausadventcare.com.au/blog/${articleUrl}`,
       "headline": "Blog articles, tips and news about NDIS support independent living",
-      "description": `${currentArticle.fields.introductoryText.content[0].content[0].value.slice(0, 70)}`,
+      "description": description,
       "logo": {
         "@type": "ImageObject",
         "url": absoluteImageUrl
       },
       "sameAs": [
-        `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`
+        `https://www.ausadventcare.com.au/blog/${articleUrl}`
       ]
     }
   
@@ -107,8 +109,8 @@ export default async function Article({ params }: any) {
         {
           '@type': 'ListItem',
           "position": 3,
-          "name": currentArticle.fields.articleTitle,
-          "item": `https://www.ausadventcare.com.au/blog/${currentArticle.fields.articleUrl}`,
+          "name": articleFields.articleTitle,
+          "item": `https://www.ausadventcare.com.au/blog/${articleUrl}`,
       },
       ]
     }

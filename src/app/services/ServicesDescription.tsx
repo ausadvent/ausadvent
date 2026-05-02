@@ -9,6 +9,7 @@ import RightArrow from '../../../assets/blue-right-arrow-2.svg'
 import MessageIcon from '../../../assets/message-icon.svg'
 import MessageIcon2 from '../../../assets/message-icon-2.svg'
 import divider from '../../../assets/divider.svg'
+import { getContentfulAssetUrl } from '@/lib/contentful'
 
 export default function ServicesDescription({services}:any) {
 
@@ -32,7 +33,7 @@ export default function ServicesDescription({services}:any) {
                         <div className='relative h-[18.75rem] md:h-[28.125rem] xl:h-[34.375rem] w-full'>
                             <Image 
                                 className=' h-[18.75rem] md:h-[28.125rem] xl:h-[34.375rem] w-full object-cover rounded-tr-[2rem]'
-                                src={`https:${service.fields.imageN2.fields.file.url}`}
+                                src={getContentfulAssetUrl(service.fields.imageN2)}
                                 title={service.fields.imageN2.fields.title}
                                 alt={service.fields.imageN2.fields.description}
                                 width={736}
@@ -59,7 +60,7 @@ export default function ServicesDescription({services}:any) {
                                         <Image 
                                             key={index}
                                             className='w-full h-[15.625rem] object-cover rounded-tr-[2rem]'
-                                            src={`https:${item.data.target.fields.file.url}`}
+                                            src={getContentfulAssetUrl(item.data.target)}
                                             title={item.data.target.fields.title}
                                             alt={item.data.target.fields.description}
                                             width={1248}
@@ -75,7 +76,7 @@ export default function ServicesDescription({services}:any) {
                         <div className="hidden lg:flex items-stretch gap-[1.5rem] xl:gap-[2rem]">
                             <Image 
                                 className='w-[23.25rem] xl:min-w-[31rem] object-cover rounded-tr-[2rem]'
-                                src={`https:${service.fields.picture.content[1].data.target.fields.file.url}`} 
+                                src={getContentfulAssetUrl(service.fields.picture.content[1].data.target)} 
                                 title={service.fields.picture.content[1].data.target.fields.title}
                                 alt={service.fields.picture.content[1].data.target.fields.description}
                                 width={496}

@@ -2,25 +2,26 @@ import type { Metadata } from 'next'
 import { Nunito_Sans } from 'next/font/google'
 import { Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
-import ReactGA from 'react-ga4'
 
 // Components
-import ConfigureAmplifyClientSide from './ConfigureAmplifyClientSide'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import LatestArticles from './components/LatestArticles'
 import Metrics from './metrics'
 
+export const revalidate = 300
+
 // Fonts - Simplified font imports and removed unused ones
-const Noto = Nunito_Sans({ subsets: ['latin']})
+const nunitoSans = Nunito_Sans({
+  subsets: ['latin'],
+  adjustFontFallback: false,
+})
 const cormorant = Cormorant_Garamond({ 
   weight: '700',
   subsets: ['latin'],
-  variable: '--font-cormorant'
+  variable: '--font-cormorant',
+  adjustFontFallback: false,
 })
-
-// Initialize GA page view
-ReactGA.send({ hitType: "pageview", page: "/" });
 
 // Metadata configuration
 export const metadata: Metadata = {
@@ -73,8 +74,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${Noto.className} ${cormorant.variable}`}>
-        <ConfigureAmplifyClientSide />
+      <body className={`${nunitoSans.className} ${cormorant.variable}`}>
         <Header />
         <main>{children}</main> {/* Added semantic main tag */}
         <LatestArticles />

@@ -3,18 +3,11 @@ import React from 'react'
 // Assets
 import Symbol from '../../../assets/symbol-lotus.svg'
 import Image from 'next/image';
-import { contentfulClient } from '@/lib/contentful';
+import { getContentfulAssetUrl, getContentfulEntries } from '@/lib/contentful';
 
 // Fetch the values from contentful
 async function fetchValues() {
-    try {
-        const res = await contentfulClient.getEntries({ content_type: 'values'})
-        // console.log(res.items)
-        return res.items
-    } catch(e) {
-        console.log(e)
-        return []
-    }
+    return getContentfulEntries('values')
 }
 
 export default async function Values() {
@@ -34,7 +27,7 @@ export default async function Values() {
                         className={`py-[3rem] xl:py-[2rem] px-[1rem] xl:px-[2rem] 2xl:w-[23.3rem] 3xl:w-[27rem] bg-[#FFEDD5] rounded-tr-[2rem] xl:rounded-tr-3xl rounded-bl-[2rem] xl:rounded-bl-3xl flex flex-col md:flex-row items-center xl:flex-col gap-[0.5rem] sm:gap-[1rem] xl:gap-[0rem] ${index === values.length -1 ? 'xl:col-span-full xl:w-1/2 mx-auto' : ''} ${index === values.length - 1 || index === values.length - 2 ? 'mx-auto 2xl:min-w-[35rem]' : '' }`}
                     >
                         <Image 
-                            src={`https:${value?.fields?.valueImage.fields.file.url}`} 
+                            src={getContentfulAssetUrl(value?.fields?.valueImage)} 
                             className='w-[6rem] h-[6rem] md:w-[16rem] md:h-[16rem] xl:w-[6rem] xl:h-[6rem]'
                             alt={value?.fields?.valueImage.fields.description} 
                             title={value?.fields?.valueImage.fields.title}
